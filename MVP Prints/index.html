@@ -7,6 +7,9 @@
         <title>MVP 3D Prints</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
 
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -15,7 +18,7 @@
     <!-- header section starts -->
         <header class="header">
 
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/MVP Logo.svg" alt="MVP LOGO">
             </a>
 
@@ -23,9 +26,11 @@
                 <a href="#home">home</a>
                 <a href="#about">about</a>
                 <a href="#menu">services</a>
-                <a href="#roducts">products</a>
+                <a href="#products">products</a>
+                <a href="order.html">order</a>
                 <a href="#review">gallery</a>
                 <a href="#contact">contact</a>
+                <a href="faq.html">FAQ</a>
             </nav>
 
             <div class="icons">
@@ -78,12 +83,14 @@
                     <h3>Why Chose MVP Printing?</h3>
                     <p>MVP Printing uses the Creality K1 Max, one of the largest, fastest, most reliable 3D Printers on the market</p>
                     <p>This printer can reach up to 600mm per second print speeds, meaning your part can be finished in less than half the time another printer would take!</p>
-                    <a href="#" class="btn">learn more</a>
+                    <a href="faq.html" class="btn">learn more</a>
                 </div>
 
                 <div class="owner">
                     <h3> Student <span>Owned</span></h3>
                     <p>MVP Printing is owned and operated by a student, for students. We understand the needs of students and the importance of deadlines.</p>
+                    <img src="images/owner-profile.jpg" alt="headshot" class="headshot">
+                    <p class="small-text">Matthew Franke <span class="owner-tag">| Owner of MVP</span></p> <!-- Add this line -->
                 </div>
 
             </div>
@@ -101,18 +108,18 @@
             <div class="box-container">
                 
                 <div class="box">
-                    <img src="images/speaker-print.jpg" alt="">
-                    <h3> Fun Prints </h3>
+                    <img src="images/iron-man.jpg" alt="iron man" class="services">
+                    <h3> Cosplay </h3>
                 </div>
 
                 <div class="box">
-                    <img src="images/kcup-print.jpg" alt="">
+                    <img src="images/usb-holder2.webp" alt="usb holder" class="services">
                     <h3> Practical Prints </h3>
                 </div>
 
                 <div class="box">
-                    <img src="images/free3dpropellor.jpg" alt="">
-                    <h3> Prototype Prints </h3>
+                    <img src="images/free3dpropellor.jpg" alt="propellor" class="services">
+                    <h3> Prototypes </h3>
                 </div>
 
             </div>
@@ -122,17 +129,17 @@
             <div class="box-container">
                 
                 <div class="box-type">
-                    <img src="images/stl.png" alt="" class="file-type">
+                    <a href="order.html"><img src="images/stl.png" alt="" class="file-type"></a>
                     <h3>STL Files</h3>
                 </div>
 
                 <div class="box-type">
-                    <img src="images/obj.png" alt="" class="file-type">
+                    <a href="order.html"><img src="images/obj.png" alt="" class="file-type"></a>
                     <h3>OBJ Files</h3>
                 </div>
 
                 <div class="box-type">
-                    <img src="images/3d.png" alt="" class="file-type">
+                    <a href="order.html"><img src="images/3d.png" alt="" class="file-type"></a>
                     <h3>3MF Files</h3>
             </div>
 
@@ -148,17 +155,106 @@
             <h1 class="heading"> Printed <span>Gallery</span> </h1>
             </h1>
 
-            <div class="box">
-
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide">
+                            <img src="images/3DFrog.jpg" alt="frog">
+                        </li>
+                        <li class="glide__slide">
+                            <img src="images/kcup-print.jpg" alt="pod holder">
+                        </li>
+                        <li class="glide__slide">
+                            <img src="images/speaker-mask.jpg" alt="mask">
+                        </li>
+                        <li class="glide__slide">
+                            <img src="images/Pauldrons.jpg" alt="pauldrons">
+                        </li>
+                        <!-- Add more slides as needed -->
+                    </ul>
+                </div>
+            
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"></button>
+                </div>
+            
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                    <button class="glide__bullet" data-glide-dir="=0"></button>
+                    <button class="glide__bullet" data-glide-dir="=1"></button>
+                    <button class="glide__bullet" data-glide-dir="=2"></button>
+                    <button class="glide__bullet" data-glide-dir="=3"></button>
+                    <!-- Add more bullets as needed -->
+                </div>
             </div>
 
         </section>
 
     <!-- review section ends -->   
+    <!-- contact section starts -->
+
+    <section class="contact" id="contact">
+   
+        <h1 class="heading"> Get in <span>Touch</span> </h1>
+
+        <div class="content">
+            <div class="form-wrapper"> <!-- Add this line -->
+                <img src="images/send-email.svg" alt="email icon" class="email-icon">
+                
+                <form action="/submit_contact" method="post">
+                    <h1 class="contact-h3">Give Us A Holler!</h1>
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" required></textarea><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- contact section ends -->
+    <!-- footer section starts -->
+
+    <section class="footer">
+
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-youtube"></a>
+        </div>
+
+        <div class="links">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#menu">services</a>
+            <a href="#products">products</a>
+            <a href="order">order</a>
+            <a href="#review">gallery</a>
+            <a href="#contact">contact</a>
+        </div>
+
+        <div class="credit">inspried by <span>Mr. Web Designer / Created By Matthew Franke</span> | all rights reserved </div>
+
+    </section>
+
+    <!-- footer section ends -->
 
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
+        })();
+    </script>
         <script src="js/index.js"></script>
 
     </body>
