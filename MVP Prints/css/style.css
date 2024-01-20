@@ -100,6 +100,10 @@ section{
     z-index: 1000;
 }
 
+.header .navbar {
+    margin-left: auto;
+}
+
 .header .logo img{
     height: 5rem;
 }
@@ -189,12 +193,25 @@ section{
         display: inline-block;
     }
 
+    .header {
+        justify-content: flex-end;
+    }
+
+    .logo img {
+        justify-content: left;
+    }
+
     .header .navbar{
         position: absolute;
         top:100%; right: -100%;
         background: #fff;
         width: 30rem;
         height: calc(100vh - 9.5rem);
+        justify-content: flex-start;
+    }
+
+    .header .icon {
+        margin-left: auto;
     }
 
     .header .navbar.active{
@@ -282,6 +299,50 @@ section{
     color: #eee;
 }
 
+.content-owner-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 60rem; /* Adjust as needed */
+    margin: 0 auto; /* Centers the content */
+}
+
+.owner {
+    order: 2;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem; /* Adds space above the .owner div */
+    padding: 1rem; /* Adds space around the text */
+}
+
+.owner img {
+    margin-left: auto;
+}
+
+.owner h3 {
+    margin-right: 1.5rem;
+}
+
+.owner p {
+    margin-right: 1rem;
+}
+
+.owner .small-text {
+    font-size: 0.8rem; /* Adjust as needed */
+    color: #888; /* Adjust as needed */
+}
+
+.owner {
+    order: 2;
+    display: flex;
+    flex-direction: column; /* Change this */
+    align-items: flex-end; /* Add this */
+    margin-top: 2rem; /* Adds space above the .owner div */
+    padding: 1rem; /* Adds space around the text */
+}
+
+.owner-tag{
+    color:#d3ad7f;
+}
 
 .about .row{
     display: flex;
@@ -332,6 +393,10 @@ section{
     line-height: 1.8;
 }
 
+.headshot {
+    width: 200px;
+    border-radius: 20px;
+}
 .menu .box-container{
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -393,4 +458,448 @@ section{
 
 .menu .box-container .box .file-type{
     border: none;
+}
+
+.services {
+    border-radius: 20px;
+    width: 175px;
+    display: center;
+}
+
+
+
+/*---------- Carousel Code ----------*/
+
+/* This will set a specific height for the carousel */
+.glide {
+    height: 700px; /* Change this to the height you want */
+}
+
+/* This will make the images fit within the carousel */
+.glide__slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* This will change the size of the slides */
+.glide__slide {
+    width: 300px;
+    height: 700px;
+}
+
+/* This will change the background color of the active slide */
+.glide__slide.glide__slide--active {
+    background-color: #f0f0f0;
+}
+
+/* This will change the appearance of the arrows */
+.glide__arrow--left, .glide__arrow--right {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* This will change the appearance of the bullets */
+.glide__bullet {
+    background-color: #f0f0f0;
+}
+
+.glide__bullet--active {
+    background-color: #000;
+}
+
+/* This will change the appearance of the arrows */
+.glide__arrow {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* This will change the appearance of the bullets */
+.glide__bullet {
+    background-color: #ddd;
+    border: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.glide__bullet--active {
+    background-color: var(--main-color);
+}
+
+/* This will position the arrows on the left and right sides of the carousel */
+.glide__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 4em;
+    width: 60px;
+    height: 60px;
+    line-height: 40px;
+    text-align: center;
+    padding: 10px;
+}
+
+.glide__arrow--left {
+    left: 10px;
+}
+
+.glide__arrow--right {
+    right: 10px;
+}
+
+/* This will position the bullets at the bottom center of the carousel */
+.glide__bullets {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+/* This will change the text of the arrows to Font Awesome icons */
+.glide__arrow--left::before {
+    content: '\f104';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.glide__arrow--right::before {
+    content: '\f105';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* This will add a circle around the arrows when hovering over them */
+.glide__arrow:hover {
+    background-color: rgba(0, 0, 0, 0.425); /* Change this to the color you want */
+    border-radius: 50%;
+    transition: background-color 0.3s ease; /* This will animate the color change */
+}
+
+/*Contact Form Code*/
+
+form {
+    background-color: var(--black); /* Change this to the color you want */
+    padding: 20px; /* Change this to the size you want */
+    border-radius: 5px; /* Change this to the size you want */
+    width: 100%;
+    max-width: 500px; /* Change this to the size you want */
+    margin: 0 auto; /* This will center the form */
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px; /* Change this to the size you want */
+    color: #fff;
+    font-size: 1.5em;
+}
+
+form input[type="text"], form input[type="email"], form textarea {
+    width: 100%;
+    padding: 10px; /* Change this to the size you want */
+    border: 1px solid #ddd; /* Change this to the color you want */
+    border-radius: 5px; /* Change this to the size you want */
+    margin-bottom: 20px; /* Change this to the size you want */
+}
+
+form input[type="submit"] {
+    background-color: var(--main-color); /* Change this to the color you want */
+    color: #fff; /* Change this to the color you want */
+    padding: 10px 20px; /* Change this to the size you want */
+    border: none;
+    border-radius: 5px; /* Change this to the size you want */
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #444; /* Change this to the color you want */
+}
+
+/* This will create a flex container */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px; /* Adjust this to change the size of the container */
+    margin: 0 auto; /* This will center the container */
+}
+
+/* This will style the form */
+.contact-container form {
+    flex: 1;
+    /* Add the same CSS properties as the "About Us" box */
+}
+
+/* This will style the image box */
+.contact-container .image-box {
+    flex: 1;
+    /* Add the same CSS properties as the "About Us" box */
+}
+
+.contact-h3 {
+    color: var(--main-color);
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Footer Code */ 
+.footer{
+    background:var(--black);
+    text-align: center;
+}
+
+.footer .share{
+    padding: 1rem 0;
+}
+
+.footer .share a {
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    border:var(--border);
+    margin: 3rem;
+    border-radius: 50%;
+}
+
+.footer .share a:hover{
+    background: var(--main-color);
+    transform: scale(1.1);
+}
+
+.footer .links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 1rem;
+}
+
+.footer .links a{
+    padding: .7rem 2rem;
+    color: #fff;
+    border: var(--border);
+    font-size: 2rem;
+}
+
+.footer .links a:hover{
+    background: var(--main-color);
+}
+
+.footer .credit{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: lighter;
+    padding: 1.5rem;
+}
+
+.footer .credit span {
+    color: var(--main-color);
+}
+
+.form-wrapper {
+    display: flex;
+}
+
+.email-icon {
+    margin-right: 1rem; /* Adds space to the right of the icon */
+    width: 30%;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .email-icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .form-wrapper {
+        flex-direction: column;
+    }
+
+    .order {
+        padding: 2rem;
+        width: 40rem;
+        margin-top: 10rem;
+    }
+
+    label[for="files"], #phone, #materials {
+        width: 100%;
+    }
+}
+
+.order {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--blac) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+    margin-top: 5rem;
+}
+
+.radio-buttons {
+    display: flex;
+    gap: 1rem; /* Adds space between the radio buttons */
+}
+
+.checkboxes {
+    display: flex;
+    gap: 1rem; /* Adds space between the checkboxes */
+}
+
+.radio-buttons input[type="radio"] {
+    display: none;
+}
+
+.radio-buttons label {
+    position: relative;
+    padding-left: 25px;
+}
+
+.radio-buttons label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.radio-buttons input[type="radio"]:checked + label::before {
+    background-color: var(--main-color);
+}
+
+#phone {
+    width: 100%; /* Full width */
+    padding: 0.5rem; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Make sure padding and border are included in the total width */
+    margin-top: 6px; /* Some space at the top */
+    margin-bottom: 16px; /* Some space at the bottom */
+    resize: vertical; /* Allow the user to vertically resize the input box (but not horizontally) */
+}
+
+#files {
+    display: none;
+}
+
+label[for="files"] {
+    padding: 0.5rem;
+    background-color: var(--main-color);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 125px; /* Adjust this value to your liking */
+    display: inline-block; /* Needed to apply width */
+    text-align: center; /* Center the text */
+}
+
+#materials {
+    width: 100%; /* Full width */
+    padding: 0.5rem; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Make sure padding and border are included in the total width */
+    margin-top: 6px; /* Some space at the top */
+    margin-bottom: 16px; /* Some space at the bottom */
+    appearance: none; /* Remove default appearance */
+    background-color: #fff; /* Background color */
+}
+
+/*faq page */
+
+#faq-item1{
+    margin-top: 100px;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0 1rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 10rem; /* Adjust this value based on your content */
+}
+
+.faq-section {
+    width: 80%;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+.faq-item {
+    background: transparent;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+    
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 2rem;
+    font-size: 1.2rem;
+    background: var(--main-color);
+    color: #eee;
+    transition: 0.4s;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0 1rem;
+    color: #eee;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 10rem; /* Adjust this value based on your content */
+}
+
+.faq-question {
+    /* existing styles */
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    top: 38%;
+    transform: translateY(-50%);
+    border: solid whitesmoke;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(-45deg);
+    transition: transform 0.3s;
+    
+}
+
+.faq-item.active .arrow {
+    transform: rotate(45deg);
 }
