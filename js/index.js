@@ -67,3 +67,37 @@ document.querySelectorAll('.faq-question').forEach(item => {
         event.target.parentNode.classList.toggle('active');
     })
 });
+
+
+//Order Form File Upload
+// Select the file input element
+var fileInput = document.getElementById('files');
+
+// Select the file display area
+var fileDisplayArea = document.getElementById('fileDisplayArea');
+
+// Add an 'change' event listener to the file input element
+fileInput.addEventListener('change', function(e) {
+    // Get the selected files from the event target
+    var files = e.target.files;
+
+    // Initialize an array to store the file names
+    var fileNames = [];
+
+    // Loop through the selected files and get their names
+    for (var i = 0; i < files.length; i++) {
+        fileNames.push(files[i].name);
+    }
+
+    // Display the file names on the console
+    console.log(fileNames.join(', '));
+
+    // Display the file names on the form
+    if (fileDisplayArea) {
+        fileDisplayArea.innerText = fileNames.join(', ');
+    }
+});
+
+
+
+
