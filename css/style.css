@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@500&family=Open+Sans:wght@500&display=swap');
+
 
 :root{
-   --main-color: #d3ad7f;
-   --black: #13131a;
+   --main-color: #c6965c;
+   --black: #141a13;
    --bg: #010103;
-   --border: .1rem solid rgba(255, 255, 255, .3);
+   --border: .1rem solid ;
    --border-2: .1rem transparent;
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family:  'Lato', 'Roboto', sans-serif;
     margin:0; padding: 0;
     box-sizing: border-box;
     outline: none; border: none;
@@ -53,6 +55,7 @@ section{
     padding-bottom: 3.5rem;
     font-size: 4rem;
 }
+
 
 .sub-heading{
     text-align: center;
@@ -105,7 +108,7 @@ section{
 }
 
 .header .logo img{
-    height: 5rem;
+    height: 8rem;
 }
 
 .header .navbar a{
@@ -115,9 +118,13 @@ section{
 }
 
 .header .navbar a:hover{
-    color:var(--main-color);
-    border-bottom: .1rem solid var(--main-color);
-    padding-bottom: .5rem;
+    color: #f0f0f0;
+    border: .2rem solid rgba(24, 24, 24, 0.425);
+    background-color: rgba(25, 25, 25, 0.425);
+    font-size: 1.5rem;
+    padding: .3rem;
+    border-radius: 10px;
+    transition: background-color .3s ease-in-out  border .3s ease-in-out;
 }
 
 .header .icons div{
@@ -149,6 +156,7 @@ section{
 
 .header .search-form.active{
     transform: scaleY(1);
+    border-radius: 10px;
 }
 
 .header .search-form input{
@@ -158,6 +166,7 @@ section{
     color: var(--black);
     padding: 1rem;
     text-transform: none;
+    border-radius: 10px;
 }
 
 .header .search-form label{
@@ -275,7 +284,7 @@ section{
 
 .home .content p{
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: medium;
     line-height: 1.8;
     padding: 1rem 0;
     color: #eee;
@@ -349,6 +358,7 @@ section{
     align-items: center;
     background:var(--black);
     flex-wrap: wrap;
+    border-radius: 10px;
 }
 
 .about .row .image{
@@ -357,6 +367,7 @@ section{
 
 .about .row .image img{
     width: 50%;
+    border-radius: 10px 10px 0 0;
 }
 
 .about .row .content{
@@ -406,7 +417,16 @@ section{
 .menu .box-container .box{
     padding:5rem;
     text-align: center;
-    border:var(--border);
+    border: .1rem solid #fff;
+    border-radius: 20px;
+}
+
+.menu .box-container .box:hover{
+    border: .1rem solid var(--main-color);
+}
+
+.menu .box-container .box h3:hover{
+    color: var(--main-color);
 }
 
 .menu .box-container .box-type{
@@ -480,12 +500,14 @@ section{
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 /* This will change the size of the slides */
 .glide__slide {
     width: 300px;
     height: 700px;
+    border-radius: 15px;
 }
 
 /* This will change the background color of the active slide */
@@ -579,6 +601,7 @@ section{
 /* This will add a circle around the arrows when hovering over them */
 .glide__arrow:hover {
     background-color: rgba(0, 0, 0, 0.425); /* Change this to the color you want */
+    color: var(--main-color);
     border-radius: 50%;
     transition: background-color 0.3s ease; /* This will animate the color change */
 }
@@ -646,6 +669,8 @@ form input[type="submit"]:hover {
     color: var(--main-color);
     padding: 20px;
     font-size: 30px;
+    text-align: right;
+    margin-right: 30px; 
 }
 
 /* Footer Code */ 
@@ -743,8 +768,8 @@ form input[type="submit"]:hover {
     background: var(--blac) no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 1rem;
-    margin-top: 5rem;
+    padding: 2rem;
+    margin-top: 10rem;
 }
 
 .radio-buttons {
@@ -902,4 +927,23 @@ label[for="files"] {
 
 .faq-item.active .arrow {
     transform: rotate(45deg);
+}
+
+
+#specs {
+    max-width: 460px;
+}
+
+#quantity {
+    border-radius: 5px;
+}
+
+#fileDisplayArea {
+    color: white;
+    /* Add your positioning properties here. For example: */
+    position: relative;
+    text-align: left;
+    margin-bottom: 40px;
+    top: 0px; /* Adjust this value as needed */
+    left: 10px; /* Adjust this value as needed */
 }
