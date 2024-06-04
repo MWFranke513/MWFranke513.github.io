@@ -26,7 +26,7 @@
                 <a href="index.html">home</a>
                 <a href="#about">about</a>
                 <a href="#menu">services</a>
-                <a href="#products">products</a>
+                <a href="products.html">products</a>
                 <a href="order.html">order</a>
                 <a href="#review">gallery</a>
                 <a href="#contact">contact</a>
@@ -54,70 +54,80 @@
 
     <!-- order section starts -->
 <section class="order" id="order">
+
     
     <form action="/submit_order" method="post" enctype="multipart/form-data">
-        <label for="name">Name:</label><br>
+
+        <h2 class="contact-header">Contact Info</h2>
+
+        <label for="name">Name:<span> * </span></label><br>
         <input type="text" id="name" name="name" required><br>
         
-        <label for="email">Email:</label><br>
+        <label for="email">Email:<span> * </span></label><br>
         <input type="email" id="email" name="email" required><br>
 
-        <label for="phone">Phone Number:</label><br>
+        <label for="phone">Phone Number: (optional)</label><br>
         <input type="tel" id="phone" name="phone_number" placeholder="555-555-5555" pattern="\d{3}-\d{3}-\d{4}" maxlength="12" onkeyup="this.value = this.value.replace(/[^0-9-]/g, '');"><br><br><br>
 
-<label for="files">Upload Files:</label><br>
+<h2 class="contact-header">File Details</h2>
+
+<label for="files">Upload Files:<span> * </span></label><br>
 <input type="file" id="files" name="files[]" accept=".stl,.obj,.fbx,.dae,.3ds,.x3d,.blend" multiple required><br>
 <div id="fileDisplayArea"></div>
 
-<label for="source">Did this File come from a site like Thingiverse/Yeggi/Thangs/Printables etc.?</label>
+<label for="source">Did this File come from a site like Thingiverse/Yeggi/Thangs/Printables etc.?<span> * </span></label>
+<h4 class="terms-link"><a href="terms.html">Why do we ask our customers this?</a></h4>
 <div class="radio-buttons">
-    <input type="radio" id="chkYes" name="file-source" value="chkYes" required>
+    <input type="radio" id="chkYes" name="file-source" value="chkYes" onClick="show2();" required>
     <label for="chkYes">Yes</label><br>
     <input type="radio" id="chkNo" name="file-source" value="chkNo" required>
     <label for="chkNo">No</label>
 
-    <div id="dvText" style="display:none">
+    <div id="div1" style="display: none">
         <label for="link">Please paste the link to where the file was downloaded here:</label>
         <input type="text" id="dvText">
     </div>
 
     <script>
-        function ShowHideDiv() {
-    var chkYes = document.getElementById("chkYes");
-    var dvText = document.getElementById("dvText");
-    dvText.style.display = chkYes.checked ? "block" : "none";
+    function show1(){
+  document.getElementById('div1').style.display ='none';
 }
+function show2(){
+  document.getElementById('div1').style.display = 'block';
+}
+
     </script>
 </div>
 
 
 
 
-<label for="quantity">Quantity:</label><br>
+<label for="quantity">Part Quantity: <span>*</span></label><br>
 <input type="number" id="quantity" name="quantity" min="1" max="100" required><br><br>
 
-        <label for="material">Material:</label><br>
+        <label for="material">Material Preference:</label><br>
 <select id="materials" name="material" required>
     <option value="">Select a material</option>
-    <option value="material1">PLA</option>
-    <option value="material2">ABS</option>
+    <option value="material1">ABS (default)</option>
+    <option value="material2">ASA</option>
     <option value="material3">PETG (unavailable)</option>
+    <option value="material3">PLA (unavailable)</option>
     <!-- Add more options as needed -->
 </select><br>
 
-<label for="print-speed">Print Speed:</label><br>
+<label for="print-speed">Delivery Preference:</label><br>
 <div class="radio-buttons">
     <input type="radio" id="quality" name="print-speed" value="quality" required>
-    <label for="quality">Quality</label>
+    <label for="quality">Shipping</label>
 
     <input type="radio" id="normal" name="print-speed" value="normal">
-    <label for="normal">Normal</label>
+    <label for="normal">Local Pickup</label>
 
     <input type="radio" id="fast" name="print-speed" value="fast">
-    <label for="fast">Fast</label>
+    <label for="fast">Local Dropoff</label>
 </div><br>
 
-<label for="settings-adjusted">Are there any settings you want adjusted?</label><br>
+<label for="settings-adjusted">Are there specific dimenstions for this part (in mm)?</label><br>
     <div class="radio-buttons">
         <input type="radio" id="yes" name="settings-adjusted" value="yes">
         <label for="yes">Yes</label>
@@ -126,13 +136,15 @@
         <label for="no">No</label>
     </div><br>
         
-        <label for="specs">Comments:</label><br>
+        <label for="specs">Additional Instructions or Questions:</label><br>
         <textarea id="specs" name="specs" required></textarea><br>
         
 
         
         <input type="submit" value="Submit">
     </form>
+
+    <img src="images/pauldrons-start.jpg" class="form-image">
 
 </section>
 
@@ -143,26 +155,32 @@
 
     <section class="footer">
 
-        <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-linkedin"></a>
-            <a href="#" class="fab fa-youtube"></a>
-        </div>
+
+
+        <h2 class="navf">Navigation</h2>
 
         <div class="links">
-            <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#menu">services</a>
-            <a href="#products">products</a>
-            <a href="order.html">order</a>
-            <a href="#review">gallery</a>
-            <a href="#contact">contact</a>
-            <a href="faq.html">FAQ</a>
+            <a href="#home">  home </a>
+            <a href="#about">  about </a>
+            <a href="#menu">  services </a>
+            <a href="#products">  products </a>
+            <a href="order">  order </a>
+            <a href="#review">  gallery </a>
+            <a href="#contact">  contact </a>
         </div>
 
-        <div class="credit">MVP Prints <span>© 2024 | All Rights Reserved |</span></div>
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="www.linkedin.com/in/matthew-franke-a295a6221" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-youtube"></a>
+            <a href="#" class="fab fa-github"></a>
+        </div>
+
+        
+
+        <div class="credit">MVP Prints <span>© 2024 | All Rights Reserved |</span> Payments Through <mg src="images/white-square.svg" class="white-square-logo"></div>
+        <div class="madeBy"> See our <a href="terms.html">Terms of Serivce</a>| Made By <span>Matthew Franke</span> | </div>
 
     </section>
 
