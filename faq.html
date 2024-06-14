@@ -1,190 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatiable" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MVP 3D Prints</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP 3D Prints</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <!-- header section starts -->
-        <header class="header">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <img src="images/MVP-Icon.svg" alt="MVP LOGO" />
+      </a>
 
-            <a href="index.html" class="logo">
-                <img src="images/MVP-Icon.svg" alt="MVP LOGO">
-            </a>
+      <nav class="navbar">
+        <a href="index.html">home</a>
+        <a href="#about">about</a>
+        <a href="index.html">services</a>
+        <a href="products.html">products</a>
+        <a href="order.html">order</a>
+        <a href="index.html">gallery</a>
+        <a href="index.html/contact">contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
 
-            <nav class="navbar">
-                <a href="index.html">home</a>
-                <a href="#about">about</a>
-                <a href="index.html">services</a>
-                <a href="#products">products</a>
-                <a href="order.html">order</a>
-                <a href="index.html">gallery</a>
-                <a href="#index.html">contact</a>
-                <a href="faq.html">FAQ</a>
-            </nav>
+      <div class="icons">
+        <a href="order.html" class="btn header-btn">FREE QUOTES</a>
+        <div class="fas fa-bars" id="menu-btn"></div>
+      </div>
 
-            <div class="icons">
-                <div class="fas fa-search" id="search-btn"></div>
-                <div class="fas fa-bars" id="menu-btn"></div>
-            </div>
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box" class="fas fa-search"></label>
+      </div>
 
-            <div class="search-form">
-                <input type="search" id="search-box" placeholder="search here...">
-                <label for="search-box" class="fas fa-search"></label>
-            </div>
-
-            <div class="cart-items-container">
-                <div class="cart-item">
-
-                </div>
-            </div>
-
-        </header>
+      <div class="cart-items-container">
+        <div class="cart-item"></div>
+      </div>
+    </header>
     <!-- header section ends -->
 
-   <!-- faq section starts -->
+    <!-- faq section starts -->
 
-<section class="faq" id="faq">
-
- <div class="faq-section">
+    <section class="faq" id="faq">
+      <div class="faq-section">
         <div class="faq-item" id="faq-item1">
-            <button class="faq-question">How much does it cost to 3D print a model?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Prices will vary depending on the model, though currently you can expect to pay for the amount of material used in grams plus $2 an hour for each hour the printer is running. This covers both cost of matieral and maintenance for the printer. If you are ordering outside of the area we are located in, expect to pay shipping costs as well.</p>
-            </div>
-        </div>
-             <div class="faq-item" id="faq-item">
-            <button class="faq-question">Why do I have to provide a link to where I found the 3D model I want to print?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>MVP asks that if you are wanting to print a model you found from a public site such as Thingiverse, that you provide a link to the page where you downloaded the STL. This is so we can check the models copyright license which will determine whether we can print the part or not. If it turns out that the model doesn't have the proper copyright, don't worry! You can always reach out to the designer and ask their permission to have it printed through a service.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">What is the maximum print size your 3D printers can handle?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>The largest printer MVP has running is the Creality K1 Max, which tops out at 300mm squared in all dimensions (X,Y,&Z). Soon we should have a creality CR-10 running in conjunction with the K1 Max which is 300mm x 300mm x 400mm. Larger Prints are possible with these printers, but the models will need to be cut into smaller parts that will fit on the build plate.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">Do you offer shipping services for 3D printed items?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>As of right now we do offer shipping but only locally. All ordered prints that are being shipped will be printed in ABS filament. This is to prevent warping and damage to your part during shipment.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">Do you offer color options for 3D printing?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Currently we do not offer color selections, though we stick with the same colors fairly often. These include black and white, but feel free to ask if we have any other colors currently in stock.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">What materials do you offer for 3D printing?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Currently we offer parts printed in PLA, ABS, and PETG. The K1 Max is capable of handling more extreme filaments such as Nylon, Polycarbonate, or PA-CF. If you wish to have a part printed out of one of these more engineering grade filaments, it will cost significantly more as we don't keep these in stock at the moment.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question"><span class="arrow"></span>Do I have to provide my own 3D model, or do you offer design services as well?</button>
-            <div class="faq-answer">
-                <p>Yes you do, in fact, we encourage you to provide your own personal 3D Model or design! With designing on the other hand, we are unable to provide that at this time due to time constraints.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">What is the typical turnaround time for a 3D printing project?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Bare minimum, you can always expect a response to your order or inquiry within 48 Hours. Turnaround will largely depend on the size and complexity of your part and if there are any other orders ahead of yours. We'll do our best to let you know when you can expect your finished part!</p>
-            </div>
-        </div>
-         <div class="faq-item">
-             <button class="faq-question">What kind of quality can I expect from my finished part?<span class="arrow"></span>span></button>
-             <div class="faq-answer">
-                 <p>You can expect your part to have relatively smooth layer lines, free of sharp corners or edges. Your part will also be largly free of blobs, seams or other print artifacts as well.</p>
-             </div>
-         </div>
-        <div class="faq-item">
-            <button class="faq-question">Do you offer resin printing for things like minis?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Not at this time, though we hope to in the near future!</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">Do you offer bulk discounts?<span class="arrow"></span></button>
-            <div class="faq-answer">
-                <p>Not at the moment, though this is an idea that we're toying with, we just haven't figured it out yet.</p>
-            </div>
-        </div>
+          <button class="faq-question">How much does it cost to 3D print a model?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Prices will vary depending on the model, though currently you can expect to pay for the amount of material used in grams plus $2 an hour for each hour the printer is running. This covers both cost of matieral and maintenance for the printer. If you are ordering outside of the area we are located in, expect to pay shipping costs as well.</p>
+          </div>
+      </div>
+           <div class="faq-item" id="faq-item">
+          <button class="faq-question">Why do I have to provide a link to where I found the 3D model I want to print?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>MVP asks that if you are wanting to print a model you found from a public site such as Thingiverse, that you provide a link to the page where you downloaded the STL. This is so we can check the models copyright license which will determine whether we can print the part or not. If it turns out that the model doesn't have the proper copyright, don't worry! You can always reach out to the designer and ask their permission to have it printed through a service.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">What is the maximum print size your 3D printers can handle?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>The largest printer MVP has running is the Creality K1 Max, which tops out at 300mm squared in all dimensions (X,Y,&Z). Soon we should have a creality CR-10 running in conjunction with the K1 Max which is 300mm x 300mm x 400mm. Larger Prints are possible with these printers, but the models will need to be cut into smaller parts that will fit on the build plate.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">Do you offer shipping services for 3D printed items?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>As of right now we do offer shipping but only locally. All ordered prints that are being shipped will be printed in ABS filament. This is to prevent warping and damage to your part during shipment.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">Do you offer color options for 3D printing?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Currently we do not offer color selections, though we stick with the same colors fairly often. These include black and white, but feel free to ask if we have any other colors currently in stock.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">What materials do you offer for 3D printing?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Currently we offer parts printed in PLA, ABS, and PETG. The K1 Max is capable of handling more extreme filaments such as Nylon, Polycarbonate, or PA-CF. If you wish to have a part printed out of one of these more engineering grade filaments, it will cost significantly more as we don't keep these in stock at the moment.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question"><span class="arrow"></span>Do I have to provide my own 3D model, or do you offer design services as well?</button>
+          <div class="faq-answer">
+              <p>Yes you do, in fact, we encourage you to provide your own personal 3D Model or design! With designing on the other hand, we are unable to provide that at this time due to time constraints.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">What is the typical turnaround time for a 3D printing project?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Bare minimum, you can always expect a response to your order or inquiry within 48 Hours. Turnaround will largely depend on the size and complexity of your part and if there are any other orders ahead of yours. We'll do our best to let you know when you can expect your finished part!</p>
+          </div>
+      </div>
+       <div class="faq-item">
+           <button class="faq-question">What kind of quality can I expect from my finished part?<span class="arrow"></span></button>
+           <div class="faq-answer">
+               <p>You can expect your part to have relatively smooth layer lines, free of sharp corners or edges. Your part will also be largly free of blobs, seams or other print artifacts as well.</p>
+           </div>
+       </div>
+      <div class="faq-item">
+          <button class="faq-question">Do you offer resin printing for things like minis?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Not at this time, though we hope to in the near future!</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <button class="faq-question">Do you offer bulk discounts?<span class="arrow"></span></button>
+          <div class="faq-answer">
+              <p>Not at the moment, though this is an idea that we're toying with, we just haven't figured it out yet.</p>
         <!-- Add more FAQ items as needed -->
-    </div>
-    </div>
+      </div>
+    </section>
 
-</section>
+    <!-- faq section ends -->
+    <!-- contact section starts -->
 
-   <!-- faq section ends -->
+    <section class="contact" id="contact">
+      <h1 class="heading">Don't see your <span>Question?</span></h1>
 
+      <div class="content">
+        <div class="form-wrapper">
+          <img
+            src="images/send-email.svg"
+            alt="email icon"
+            class="email-icon"
+          />
+
+          <form action="/submit_contact" method="post">
+            <h1 class="contact-h3">Send it to us!</h1>
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" name="name" placeholder="Full Name" required /><br />
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" placeholder="example@email.com" required /><br />
+            <label for="message">Message:</label><br />
+            <textarea id="message" name="message" placeholder="Your awesome message goes here" required></textarea><br />
+            <h2 style="color: #fff; padding: 10px; float: right">
+              (expect a response within 1-2 hours during normal business hours)
+            </h2>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section ends -->
 
     <!-- footer section starts -->
 
-        <section class="footer">
+    <section class="footer">
+      <h2 class="navf">Navigation</h2>
 
+      <div class="links">
+        <a href="#home"> home </a>
+        <a href="#about"> about </a>
+        <a href="#menu"> services </a>
+        <a href="#products"> products </a>
+        <a href="order"> order </a>
+        <a href="#review"> gallery </a>
+        <a href="#contact"> contact </a>
+      </div>
 
+      <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a
+          href="www.linkedin.com/in/matthew-franke-a295a6221"
+          class="fab fa-linkedin"
+        ></a>
+        <a href="#" class="fab fa-youtube"></a>
+        <a href="#" class="fab fa-github"></a>
+      </div>
 
-        <h2 class="navf">Navigation</h2>
-
-        <div class="links">
-            <a href="#home">  home </a>
-            <a href="#about">  about </a>
-            <a href="#menu">  services </a>
-            <a href="#products">  products </a>
-            <a href="order">  order </a>
-            <a href="#review">  gallery </a>
-            <a href="#contact">  contact </a>
-        </div>
-
-        <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="www.linkedin.com/in/matthew-franke-a295a6221" class="fab fa-linkedin"></a>
-            <a href="#" class="fab fa-youtube"></a>
-            <a href="#" class="fab fa-github"></a>
-        </div>
-
-        
-
-        <div class="credit">MVP Prints <span>© 2024 | All Rights Reserved |</span> Payments Through <mg src="images/white-square.svg" class="white-square-logo"></div>
-        <div class="madeBy"> See our <a href="terms.html">Terms of Serivce</a>| Made By <span>Matthew Franke</span> | </div>
-
+      <div class="credit">
+        MVP Prints <span>© 2024 | All Rights Reserved |</span> Payments Through
+        <img src="images/white-square.svg" class="white-square-logo" />
+      </div>
+      <div class="madeBy">
+        See our <a href="terms.html">Terms of Serivce</a>| Made By
+        <span>Matthew Franke</span> |
+      </div>
     </section>
 
     <!-- footer section ends -->
 
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
-        (function(){
-            emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
-        })();
+      (function () {
+        emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
+      })();
     </script>
 
     <script>
-        document.querySelectorAll('.faq-question').forEach(item => {
-    item.addEventListener('click', event => {
-        event.target.parentNode.classList.toggle('active');
-    })
-});
+      document.querySelectorAll(".faq-question").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          event.target.parentNode.classList.toggle("active");
+        });
+      });
     </script>
-        <script src="js/index.js"></script>
-
-    </body>
-    </html>
+    <script src="js/index.js"></script>
+  </body>
+</html>
