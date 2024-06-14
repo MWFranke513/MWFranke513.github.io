@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP 3D Prints</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Option 1: Include in HTML -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- header section starts -->
+    <header class="header">
+      <a href="index.html" class="logo">
+        <img src="images/MVP-Icon.svg" alt="MVP LOGO" />
+      </a>
+
+      <nav class="navbar">
+        <a href="index.html">home</a>
+        <a href="#about">about</a>
+        <a href="index.html">services</a>
+        <a href="products.html">products</a>
+        <a href="order.html">order</a>
+        <a href="index.html">gallery</a>
+        <a href="index.html/contact">contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+
+      <div class="icons">
+        <a href="order.html" class="btn header-btn">FREE QUOTES</a>
+        <div class="bi bi-list" id="menu-btn"></div>
+      </div>
+
+      <div class="search-form">
+        <input
+          type="search"
+          id="search-box"
+          placeholder="what are you looking for?"
+        />
+        <label for="search-box" class="bi bi-search"></label>
+      </div>
+
+      <div class="cart-items-container">
+        <div class="cart-item"></div>
+      </div>
+    </header>
+    <!-- header section ends -->
+
+    <!-- products section starts -->
+    <section class="products">
+      <div class="container">
+        <h2 class="title">our products</h2>
+      </div>
+      <div class="row">
+        <div class="card">
+          <img
+            src="images/fidget-cube.webp"
+            alt="image of product"
+            class="card-img"
+          />
+          <h1 class="product-name">Infinity Fidget Cube</h1>
+          <p class="price">$4.00 Ea</p>
+          <p class="shipping">Free Shipping</p>
+          <p class="attribution">
+            File by:
+            <a href="https://www.thingiverse.com/austinvojta/designs"
+              >austinvojta</a
+            >
+          </p>
+          <p class="description">
+            Endlessly flip and fold the cube's eight interconnected blocks,
+            creating a calming sensation and mesmerizing pattern.
+          </p>
+          <button class="order-btn">Order Now</button>
+        </div>
+
+        <div class="card">
+          <img
+            src="images/headphoneholderMakerBot.webp"
+            alt="image of product"
+            class="card-img"
+          />
+          <h1 class="product-name">Headphone Holder</h1>
+          <p class="price">$15.00 Ea</p>
+          <p class="shipping">Free Shipping</p>
+          <p class="attribution">
+            File by:
+            <a href="https://www.thingiverse.com/makerbot/designs">MakerBot</a>
+          </p>
+          <p class="description">
+            Keep your desk or workspace looking organized by putting your
+            headphones on a dedicated mount rather than laying on your desk.
+          </p>
+          <button class="order-btn">Order Now</button>
+        </div>
+
+        <div class="card">
+          <img
+            src="images/dndtraypintres3dp.jpg"
+            alt="image of product"
+            class="card-img"
+          />
+          <h1 class="product-name">D&D Branded Dice Tray</h1>
+          <p class="price">$4.00 Ea</p>
+          <p class="shipping">Free Shipping</p>
+          <p class="attribution">
+            File by:
+            <a href="https://www.thingiverse.com/austinvojta/designs"
+              >austinvojta</a
+            >
+          </p>
+          <p class="description">
+            Come prepared to your next tabletop RPG session with your dice,
+            mini, and a pen all safely enclosed in this well thought out
+            container.
+          </p>
+          <button class="order-btn">Order Now</button>
+        </div>
+
+        <div class="card">
+          <img
+            src="images/usb-holder2.webp"
+            alt="image of product"
+            class="card-img"
+          />
+          <h1 class="product-name">USB & SD Card Holder</h1>
+          <p class="price">$6.00 Ea</p>
+          <p class="shipping">Free Shipping</p>
+          <p class="attribution">
+            File by:
+            <a href="https://www.thingiverse.com/lalo_solo/designs"
+              >Lalo_Salo</a
+            >
+          </p>
+          <p class="description">
+            Keep track of all your thumb drives and SD cards by keeping them all
+            in one place with a specially designed organizer.
+          </p>
+          <button class="order-btn">Order Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- products section ends -->
+    <!-- footer section starts -->
+
+    <section class="footer">
+      <h2 class="navf">Navigation</h2>
+
+      <div class="links">
+        <a href="#home"> home </a>
+        <a href="#about"> about </a>
+        <a href="#menu"> services </a>
+        <a href="#products"> products </a>
+        <a href="order"> order </a>
+        <a href="#review"> gallery </a>
+        <a href="#contact"> contact </a>
+      </div>
+
+      <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a
+          href="www.linkedin.com/in/matthew-franke-a295a6221"
+          class="fab fa-linkedin"
+        ></a>
+        <a href="#" class="fab fa-youtube"></a>
+        <a href="#" class="fab fa-github"></a>
+      </div>
+
+      <div class="credit">
+        MVP Prints <span>© 2024 | All Rights Reserved |</span> Payments Through
+        <img src="images/white-square.svg" class="white-square-logo" />
+      </div>
+      <div class="madeBy">
+        See our <a href="terms.html">Terms of Serivce</a>| Made By
+        <span>Matthew Franke</span> |
+      </div>
+    </section>
+
+    <!-- footer section ends -->
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
+      })();
+    </script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
