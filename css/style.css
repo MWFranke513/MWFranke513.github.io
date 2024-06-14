@@ -5,6 +5,8 @@
   --main-color: #c6965c;
   --black: #141a13;
   --bg: #010103;
+  --bg2: #191714;
+  --secondary: #252320;
   --border: 0.1rem solid;
   --border-2: 0.1rem transparent;
 }
@@ -42,7 +44,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-  background: var(--bg);
+  background: var(--bg2);
 }
 
 section {
@@ -101,8 +103,13 @@ section {
   transform: scale(1.01);
 }
 
+.header-btn {
+  margin-top: 0rem;
+  margin-left: 1.5rem;
+}
+
 .header {
-  background: var(--bg);
+  background: var(--bg2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -131,8 +138,8 @@ section {
 }
 
 .header .navbar a:hover {
-  color: #f0f0f0;
-  border: 0.2rem solid rgba(24, 24, 24, 0.425);
+  color: var(--main-color);
+  border: 0.2rem solid var(--main-color);
   background-color: rgba(25, 25, 25, 0.425);
   font-size: 1.6rem;
   padding: 0.35rem;
@@ -178,7 +185,7 @@ section {
   height: 100%;
   width: 100%;
   font-size: 1.6rem;
-  color: var(--black);
+  color: var(--secondary);
   padding: 1rem;
   text-transform: none;
   border-radius: 10px;
@@ -188,7 +195,7 @@ section {
   cursor: pointer;
   font-size: 2.2rem;
   margin-right: 1.5rem;
-  color: var(--black);
+  color: var(--secomdary);
 }
 
 .header .search-form label:hover {
@@ -229,7 +236,7 @@ section {
     position: absolute;
     top: 100%;
     right: -100%;
-    background: #fff;
+    background: var(--secondary);
     width: 30rem;
     height: calc(100vh - 9.5rem);
     justify-content: flex-start;
@@ -244,7 +251,7 @@ section {
   }
 
   .header .navbar a {
-    color: var(--black);
+    color: #fff;
     display: block;
     margin: 1.5rem;
     padding: 0.5rem;
@@ -333,14 +340,6 @@ section {
   margin: 0 auto; /* Centers the content */
 }
 
-.owner {
-  order: 2;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 2rem; /* Adds space above the .owner div */
-  padding: 1rem; /* Adds space around the text */
-}
-
 .owner img {
   margin-left: auto;
 }
@@ -356,25 +355,35 @@ section {
 .owner .small-text {
   font-size: 0.8rem; /* Adjust as needed */
   color: #888; /* Adjust as needed */
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .owner {
   order: 2;
   display: flex;
   flex-direction: column; /* Change this */
-  align-items: flex-end; /* Add this */
-  margin-top: 2rem; /* Adds space above the .owner div */
+  align-items: flex-start; /* Add this */
+  margin-top: 0rem; /* Adds space above the .owner div */
   padding: 1rem; /* Adds space around the text */
 }
 
 .owner-tag {
   color: #d3ad7f;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.owner-description {
+  max-width: 750px;
 }
 
 .about .row {
   display: flex;
   align-items: center;
-  background: var(--black);
+  background: var(--secondary);
   flex-wrap: wrap;
   border-radius: 10px;
 }
@@ -382,7 +391,7 @@ section {
 .quote .row {
   display: flex;
   align-items: center;
-  background-color: var(--black);
+  background-color: var(--secondary);
   flex-wrap: wrap;
   border-radius: 10px;
 }
@@ -455,13 +464,13 @@ section {
 .menu .box-container .box {
   padding: 5rem;
   text-align: center;
-  border: 0.1rem solid var(--border-2);
-  background-color: var(--black);
+  border: 0.25rem solid var(--border-2);
+  background-color: var(--secondary);
   border-radius: 20px;
 }
 
 .menu .box-container .box:hover {
-  border: 0.1rem solid var(--main-color);
+  border: 0.5rem solid var(--main-color);
 }
 
 .menu .box-container .box h3:hover {
@@ -528,7 +537,7 @@ section {
 /*Contact Form Code*/
 
 form {
-  background-color: var(--black); /* Change this to the color you want */
+  background-color: var(--secondary); /* Change this to the color you want */
   padding: 20px; /* Change this to the size you want */
   border-radius: 5px; /* Change this to the size you want */
   width: 100%;
@@ -597,7 +606,7 @@ form input[type="submit"]:hover {
 
 /* Footer Code */
 .footer {
-  background: var(--black);
+  background: var(--secondary);
   text-align: center;
 }
 
@@ -731,11 +740,15 @@ hr {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--blac) no-repeat;
+  background: url(../images/printing.gif) no-repeat;
   background-size: cover;
   background-position: center;
   padding: 2rem;
   margin-top: 10rem;
+}
+
+.order form {
+  max-width: 1000px;
 }
 
 .radio-buttons {
@@ -883,7 +896,12 @@ label[for="files"] {
   cursor: pointer;
   padding: 2rem;
   font-size: 1.2rem;
-  background: var(--main-color);
+  background-image: linear-gradient(
+    to left,
+    #c7a172 0%,
+    #c6965c 51%,
+    #a17137 100%
+  );
   color: #eee;
   transition: 0.4s;
   border-radius: 20px;
@@ -1062,7 +1080,7 @@ label span {
 }
 
 .card {
-  background-color: var(--black);
+  background-color: var(--secondary);
   border-radius: 10px;
   padding: 0px;
   margin: 20px;
@@ -1085,7 +1103,8 @@ label span {
 .card img {
   width: 100%;
   height: 250px;
-
+  max-height: 250px;
+  max-width: 300px;
   margin-bottom: 20px;
   object-fit: cover;
   border-top-right-radius: 10px;
@@ -1223,4 +1242,12 @@ label span {
 }
 .splide__pagination__page.is-active {
   background: #fff; /* Active bullet color */
+}
+
+.splide__arrow--next {
+  right: -50px;
+}
+
+.splide__arrow--prev {
+  left: -30px;
 }
