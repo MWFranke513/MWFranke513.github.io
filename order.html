@@ -58,138 +58,145 @@
     <!-- order section starts -->
     <section class="order" id="order">
       <form action="/submit_order" method="post" enctype="multipart/form-data">
-        <h2 class="contact-header">Contact Info</h2>
-
-        <label for="name">Name:<span> * </span></label><br />
-        <input type="text" id="name" name="name" required /><br />
-
-        <label for="email">Email:<span> * </span></label><br />
-        <input type="email" id="email" name="email" required /><br />
-
-        <label for="phone">Phone Number: (optional)</label><br />
-        <input
-          type="tel"
-          id="phone"
-          name="phone_number"
-          placeholder="555-555-5555"
-          pattern="\d{3}-\d{3}-\d{4}"
-          maxlength="12"
-          onkeyup="this.value = this.value.replace(/[^0-9-]/g, '');"
-        /><br /><br /><br />
-
-        <h2 class="contact-header">File Details</h2>
-
-        <label for="files">Upload Files:<span> * </span></label><br />
-        <input
-          type="file"
-          id="files"
-          name="files[]"
-          accept=".stl,.obj,.fbx,.dae,.3ds,.x3d,.blend"
-          multiple
-          required
-        /><br />
-        <div id="fileDisplayArea"></div>
-
-        <label for="source"
-          >Did this File come from a site like
-          Thingiverse/Yeggi/Thangs/Printables etc.?<span> * </span></label
-        >
-        <h4 class="terms-link">
-          <a href="terms.html">Why do we ask our customers this?</a>
-        </h4>
-        <div class="radio-buttons">
-          <input
-            type="radio"
-            id="chkYes"
-            name="file-source"
-            value="chkYes"
-            onClick="show2();"
-            required
-          />
-          <label for="chkYes">Yes</label><br />
-          <input
-            type="radio"
-            id="chkNo"
-            name="file-source"
-            value="chkNo"
-            required
-          />
-          <label for="chkNo">No</label>
-
-          <div id="div1" style="display: none">
-            <label for="link"
-              >Please paste the link to where the file was downloaded
-              here:</label
-            >
-            <input type="text" id="dvText" />
+        
+        <!-- Contact Information Section -->
+        <div class="form-section">
+          <h2 class="contact-header"><i class="fas fa-user"></i>Contact Information</h2>
+          
+          <div class="form-group">
+            <label for="name">Full Name<span>*</span></label>
+            <input type="text" id="name" name="name" class="form-control" required>
           </div>
-
-          <script>
-            function show1() {
-              document.getElementById("div1").style.display = "none";
-            }
-            function show2() {
-              document.getElementById("div1").style.display = "block";
-            }
-          </script>
+          
+          <div class="form-group">
+            <label for="email">Email Address<span>*</span></label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone_number" class="form-control" placeholder="555-555-5555" 
+                   pattern="\d{3}-\d{3}-\d{4}" maxlength="12" 
+                   onkeyup="this.value = this.value.replace(/[^0-9-]/g, '');">
+            <div class="helper-text">Format: 555-555-5555</div>
+          </div>
         </div>
-
-        <label for="quantity">Part Quantity: <span>*</span></label
-        ><br />
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          min="1"
-          max="100"
-          required
-        /><br /><br />
-
-        <label for="material">Material Preference:</label><br />
-        <select id="materials" name="material" required>
-          <option value="">Select a material</option>
-          <option value="material1">ABS (default)</option>
-          <option value="material2">ASA</option>
-          <option value="material3">PETG (unavailable)</option>
-          <option value="material3">PLA (unavailable)</option>
-          <!-- Add more options as needed --></select
-        ><br />
-
-        <label for="print-speed">Delivery Preference:</label><br />
-        <div class="radio-buttons">
-          <input
-            type="radio"
-            id="quality"
-            name="print-speed"
-            value="quality"
-            required
-          />
-          <label for="quality">Shipping</label>
-
-          <input type="radio" id="normal" name="print-speed" value="normal" />
-          <label for="normal">Local Pickup</label>
-
-          <input type="radio" id="fast" name="print-speed" value="fast" />
-          <label for="fast">Local Dropoff</label>
+        
+        <!-- File Upload Section -->
+        <div class="form-section">
+          <h2 class="contact-header"><i class="fas fa-file-upload"></i>File Details</h2>
+          
+          <div class="form-group">
+            <label for="files">Upload 3D Model Files<span>*</span></label>
+            <div class="file-upload">
+              <input type="file" id="files" name="files[]" 
+                     accept=".stl,.obj,.fbx,.dae,.3ds,.x3d,.blend" multiple required>
+              <label for="files" class="file-upload-label">Choose Files</label>
+              <span class="file-name">No files selected</span>
+            </div>
+            <div class="helper-text">Accepted formats: STL, OBJ, FBX, DAE, 3DS, X3D, BLEND</div>
+            <div id="fileDisplayArea"></div>
+          </div>
+          
+          <div class="form-group">
+            <label>File Source<span>*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="chkYes" name="file-source" value="chkYes" onClick="showSourceField();" required>
+                <label for="chkYes">From 3D model site</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="chkNo" name="file-source" value="chkNo" onClick="hideSourceField();" required>
+                <label for="chkNo">Original/other source</label>
+              </div>
+            </div>
+            
+            <a href="terms.html" class="terms-link">Why do we ask this?</a>
+            
+            <div id="div1">
+              <label for="dvText">Please paste the link to the model:</label>
+              <input type="text" id="dvText" class="form-control" name="model_link" 
+                     placeholder="https://www.thingiverse.com/thing:12345">
+            </div>
+          </div>
         </div>
-        <br />
-
-        <label for="settings-adjusted"
-          >Are there specific dimenstions for this part (in mm)?</label
-        ><br />
-        <div class="radio-buttons">
-          <input type="radio" id="yes" name="settings-adjusted" value="yes" />
-          <label for="yes">Yes</label>
-
-          <input type="radio" id="no" name="settings-adjusted" value="no" />
-          <label for="no">No</label>
+        
+        <!-- Print Details Section -->
+        <div class="form-section">
+          <h2 class="contact-header"><i class="fas fa-print"></i>Print Specifications</h2>
+          
+          <div class="form-group">
+            <label for="quantity">Part Quantity<span>*</span></label>
+            <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="100" value="1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="materials">Material Preference</label>
+            <div class="select-wrapper">
+              <select id="materials" name="material" class="form-control" required>
+                <option value="" disabled selected>Select a material</option>
+                <option value="ABS">ABS (default)</option>
+                <option value="ASA">ASA</option>
+                <option value="PETG">PETG (unavailable)</option>
+                <option value="PLA">PLA (unavailable)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Delivery Preference<span>*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="shipping" name="delivery" value="shipping" required>
+                <label for="shipping"><i class="fas fa-shipping-fast"></i> Shipping</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="pickup" name="delivery" value="pickup">
+                <label for="pickup"><i class="fas fa-store"></i> Local Pickup</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="dropoff" name="delivery" value="dropoff">
+                <label for="dropoff"><i class="fas fa-hand-holding"></i> Local Dropoff</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Specific Dimensions Required?</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="dimensions-yes" name="custom-dimensions" value="yes" 
+                       onClick="showDimensionsField();">
+                <label for="dimensions-yes">Yes</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="dimensions-no" name="custom-dimensions" value="no" 
+                       onClick="hideDimensionsField();">
+                <label for="dimensions-no">No</label>
+              </div>
+            </div>
+            
+            <div id="dimensions-field" style="display: none; margin-top: 1rem;">
+              <label for="dimensions">Enter dimensions (in mm):</label>
+              <input type="text" id="dimensions" name="dimensions" class="form-control" 
+                     placeholder="e.g., 100mm x 50mm x 25mm">
+            </div>
+          </div>
         </div>
-        <br />
-
-        <label for="specs">Additional Instructions or Questions:</label><br />
-        <textarea id="specs" name="specs" required></textarea><br />
-
-        <input type="submit" value="Submit" />
+        
+        <!-- Additional Information Section -->
+        <div class="form-section">
+          <h2 class="contact-header"><i class="fas fa-info-circle"></i>Additional Information</h2>
+          
+          <div class="form-group">
+            <label for="specs">Additional Instructions or Questions</label>
+            <textarea id="specs" name="specs" class="form-control" 
+                      placeholder="Include any special requests, color preferences, or questions here..."></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Get Your Quote</button>
+        </div>
+        
       </form>
     </section>
 
@@ -240,34 +247,55 @@
       })();
     </script>
 
-    <script>
-      // Select the file input element
-      var fileInput = document.getElementById("files");
-
-      // Add an 'change' event listener to the file input element
-      fileInput.addEventListener("change", function (e) {
-        // Get the selected files from the event target
-        var files = e.target.files;
-
-        // Initialize an array to store the file names
-        var fileNames = [];
-
-        // Loop through the selected files and get their names
-        for (var i = 0; i < files.length; i++) {
-          fileNames.push(files[i].name);
-        }
-
-        // Display the file names on the console
-        console.log(fileNames.join(", "));
-
-        // Display the file names on the form
-        // You can create a new element to display the file names or use an existing one
-        var fileDisplayArea = document.getElementById("fileDisplayArea");
-        if (fileDisplayArea) {
-          fileDisplayArea.innerText = fileNames.join(", ");
-        }
-      });
-    </script>
+<script>
+  // File upload display
+  const fileInput = document.getElementById('files');
+  const fileDisplayArea = document.getElementById('fileDisplayArea');
+  const fileNameDisplay = document.querySelector('.file-name');
+  
+  fileInput.addEventListener('change', function(e) {
+    const files = e.target.files;
+    const fileNames = [];
+    
+    for (let i = 0; i < files.length; i++) {
+      fileNames.push(files[i].name);
+    }
+    
+    if (fileNames.length > 0) {
+      fileNameDisplay.textContent = fileNames.length > 1 ? 
+        `${fileNames.length} files selected` : fileNames[0];
+      
+      fileDisplayArea.textContent = fileNames.join(', ');
+      fileDisplayArea.classList.add('active');
+    } else {
+      fileNameDisplay.textContent = "No files selected";
+      fileDisplayArea.textContent = "";
+      fileDisplayArea.classList.remove('active');
+    }
+  });
+  
+  // Toggle source link field
+  function showSourceField() {
+    const sourceField = document.getElementById('div1');
+    sourceField.style.display = 'block';
+    sourceField.classList.add('active');
+  }
+  
+  function hideSourceField() {
+    const sourceField = document.getElementById('div1');
+    sourceField.style.display = 'none';
+    sourceField.classList.remove('active');
+  }
+  
+  // Toggle dimensions field
+  function showDimensionsField() {
+    document.getElementById('dimensions-field').style.display = 'block';
+  }
+  
+  function hideDimensionsField() {
+    document.getElementById('dimensions-field').style.display = 'none';
+  }
+</script>
     <script src="js/index.js"></script>
   </body>
 </html>
