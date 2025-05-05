@@ -1,104 +1,16 @@
+// Navbar functionality
 let navbar = document.querySelector('.navbar');
 
-document.querySelector('#menu-btn').onclick = () =>{
+document.querySelector('#menu-btn').onclick = () => {
     navbar.classList.toggle('active');
     searchForm.classList.remove('active');
 }
 
-// let searchForm = document.querySelector('.search-form');
-
-// document.querySelector('#search-btn').onclick = () =>{
-//     searchForm.classList.toggle('active');
-//     navbar.classList.remove('active');
-// }
-
 window.onscroll = () => {
     navbar.classList.remove('active');
-    // searchForm.classList.remove('active');
 }
 
-//Carousel Code
-
-new Glide('.glide').mount()
-
-new Glide('.glide', {
-    type: 'carousel',
-    startAt: 0,
-    perView: 1,
-    autoplay: 5000,
-    rewind: true
-}).mount()
-
-//Contact Form Code
-
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('message').value;
-
-    if (name === '' || email === '' || message === '') {
-        alert('All fields are required.');
-        return;
-    } else if (!email.includes('@')) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-
-    emailjs.send("service_n92wf8y", "template_juv1lmp", { // Replace with your EmailJS service ID and template ID
-        from_name: name,
-        from_email: email,
-        message: message
-    })
-    .then(function(response) {
-        console.log("SUCCESS!", response.status, response.text);
-        alert("Your message has been sent successfully!");
-    }, function(error) {
-        console.log("FAILED...", error);
-        alert("Failed to send your message. Please try again later.");
-    });
-});
-
-// FAQ Banners
-
-document.querySelectorAll('.faq-question').forEach(item => {
-    item.addEventListener('click', event => {
-        event.target.parentNode.classList.toggle('active');
-    })
-});
-
-
-//Order Form File Upload
-// Select the file input element
-var fileInput = document.getElementById('files');
-
-// Select the file display area
-var fileDisplayArea = document.getElementById('fileDisplayArea');
-
-// Add an 'change' event listener to the file input element
-fileInput.addEventListener('change', function(e) {
-    // Get the selected files from the event target
-    var files = e.target.files;
-
-    // Initialize an array to store the file names
-    var fileNames = [];
-
-    // Loop through the selected files and get their names
-    for (var i = 0; i < files.length; i++) {
-        fileNames.push(files[i].name);
-    }
-
-    // Display the file names on the console
-    console.log(fileNames.join(', '));
-
-    // Display the file names on the form
-    if (fileDisplayArea) {
-        fileDisplayArea.innerText = fileNames.join(', ');
-    }
-});
-
-
+// Main document ready handler
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM fully loaded - initializing product page');
   
@@ -120,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// Main product page initialization
 function initProductPage() {
   console.log('Starting product page initialization');
   
@@ -186,13 +99,6 @@ function setupFilteringAndSorting() {
       console.log('Sort select change event fired, value:', this.value);
       sortProducts(this.value);
     });
-    
-    // Manually trigger change to test
-    setTimeout(() => {
-      console.log('Testing sort by price-low');
-      sortSelect.value = 'price-low';
-      sortSelect.dispatchEvent(new Event('change'));
-    }, 1000);
   }
 
   function filterProducts(filterValue) {
@@ -259,6 +165,8 @@ function setupFilteringAndSorting() {
       productGrid.appendChild(product);
     });
   }
+}
+
 // Product interactions (add to cart, order now, etc.)
 function setupProductInteractions() {
   console.log('Setting up product interactions');
@@ -335,7 +243,7 @@ function setupProductInteractions() {
   }
 }
 
-// Lazy load images - FIXED to ensure images actually show
+// Lazy load images
 function setupLazyLoading() {
   console.log('Setting up lazy loading');
   
@@ -495,11 +403,38 @@ function showLoading() {
   if (!loadingOverlay) {
     loadingOverlay = document.createElement('div');
     loadingOverlay.className = 'loading-overlay';
+    loadingOverlay.style.position = 'fixed';
+    loadingOverlay.style.top = '0';
+    loadingOverlay.style.left = '0';
+    loadingOverlay.style.width = '100%';
+    loadingOverlay.style.height = '100%';
+    loadingOverlay.style.backgroundColor = 'rgba(0,0,0,0.7)';
+    loadingOverlay.style.display = 'flex';
+    loadingOverlay.style.justifyContent = 'center';
+    loadingOverlay.style.alignItems = 'center';
+    loadingOverlay.style.zIndex = '9999';
+    
     document.body.appendChild(loadingOverlay);
     
     const spinner = document.createElement('div');
     spinner.className = 'spinner';
+    spinner.style.width = '50px';
+    spinner.style.height = '50px';
+    spinner.style.border = '5px solid #f3f3f3';
+    spinner.style.borderTop = '5px solid var(--main-color, #3498db)';
+    spinner.style.borderRadius = '50%';
+    spinner.style.animation = 'spin 1s linear infinite';
     loadingOverlay.appendChild(spinner);
+    
+    // Add spinner animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
   }
   
   // Show loading overlay and scroll to top
@@ -518,36 +453,51 @@ function showLoading() {
 
 // Toast notification
 function showToast(message) {
-  let toast = document.querySelector('.toast');
+  console.log('Showing toast:', message);
+  
+  let toast = document.querySelector('.toast-notification');
   
   // Create toast if it doesn't exist
   if (!toast) {
     toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = 'toast-notification';
+    
+    // Style the toast
+    toast.style.position = 'fixed';
+    toast.style.bottom = '20px';
+    toast.style.right = '20px';
+    toast.style.backgroundColor = 'rgba(40, 40, 40, 0.9)';
+    toast.style.color = 'white';
+    toast.style.padding = '12px 20px';
+    toast.style.borderRadius = '4px';
+    toast.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+    toast.style.zIndex = '10000';
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
+    toast.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+    
     document.body.appendChild(toast);
+    console.log('Created new toast element');
   }
   
   // Set message and show toast
   toast.textContent = message;
-  toast.classList.remove('show');
   
-  // Force DOM reflow for animation
-  void toast.offsetWidth;
+  // Show toast with animation
+  setTimeout(() => {
+    toast.style.transform = 'translateY(0)';
+    toast.style.opacity = '1';
+  }, 10);
   
-  // Show toast
-  toast.classList.add('show');
-  
-// Test toast notification
-setTimeout(() => {
-  showToast('Test toast message - this should appear!');
-}, 1500);
-
   // Hide toast after delay
   setTimeout(() => {
-    toast.classList.remove('show');
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
   }, 3000);
-
-
-
- }
 }
+
+// Initialize test toast for debugging
+setTimeout(() => {
+  console.log('Testing toast notification system');
+  showToast('Test toast message - this should appear!');
+}, 2000);

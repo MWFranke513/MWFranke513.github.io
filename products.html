@@ -263,30 +263,20 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/ScrollToTop.js"></script>
-    <script src="js/index.js"></script>
     <script>
+      // Basic AOS initialization
       AOS.init({
         duration: 800,
         easing: 'ease-in-out',
         once: true
       });
-    </script>
-    <script>
-      // Simple initialization to confirm JavaScript is loading
-      console.log("Product page scripts are loading!");
       
-      // Initialize AOS independently to make sure it runs
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log("DOM loaded - initializing AOS");
-        if (typeof AOS !== 'undefined') {
-          AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-          });
-        }
-      });
+      // Log to confirm scripts are loading
+      console.log("Product page scripts are loading!");
     </script>
+    
+    <!-- Add your JS files AFTER jQuery and AOS -->
+    <script src="js/ScrollToTop.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
