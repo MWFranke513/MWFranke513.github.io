@@ -588,6 +588,7 @@ h6 {
   transition: var(--transition);
   font-size: 0.9rem;
   color: #e0e0e0;
+  user-select: none;
 }
 
 .filter-btn:hover {
@@ -628,6 +629,8 @@ h6 {
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
   border: 1px solid #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
 }
 
 .toast.show {
@@ -671,11 +674,17 @@ h6 {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 2000;
+  z-index: 10000;
   display: none;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+
+.quick-view-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .modal-content {
@@ -734,13 +743,28 @@ h6 {
   height: 250px;
   min-height: 250px;
   background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image-container::before {
+  content: "\f03e"; /* Font Awesome image icon */
+  font-family: "Font Awesome 5 Free";
+  font-size: 3rem;
+  color: #333;
+  position: absolute;
+  z-index: 0;
 }
 
 .product-img {
   width: 100%;
   height: 100%;
+  opacity: 1 !important;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .product-card:hover .product-img {
@@ -758,6 +782,7 @@ h6 {
   font-weight: 600;
   border-radius: 4px;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .new {
@@ -766,6 +791,10 @@ h6 {
 
 .sale {
   background-color: #e74c3c;
+}
+
+.debug-border {
+  border: 2px solid red !important;
 }
 
 .product-info {
@@ -970,7 +999,13 @@ h6 {
 /* Lazy loading effect */
 .lazy-load {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s ease;
+  min-height: 100px; /* Provide minimum height before image loads */
+  background-color: #2a2a2a; /* Placeholder color while loading */
+}
+
+.lazy-load:not(.loaded) {
+  opacity: 0;
 }
 
 .lazy-load.loaded {

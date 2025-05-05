@@ -272,5 +272,21 @@
         once: true
       });
     </script>
+    <script>
+      // Simple initialization to confirm JavaScript is loading
+      console.log("Product page scripts are loading!");
+      
+      // Initialize AOS independently to make sure it runs
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log("DOM loaded - initializing AOS");
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+          });
+        }
+      });
+    </script>
   </body>
 </html>
