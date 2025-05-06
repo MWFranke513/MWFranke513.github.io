@@ -1646,6 +1646,79 @@ input[type="number"]::-webkit-outer-spin-button {
   left: -1.6em;
 }
 
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .splide {
+    max-width: 320px;
+  }
+
+  .splide__slide.is-active {
+    transform: scale(1.1);
+  }
+
+  .splide__slide:not(.is-active) {
+    transform: scale(0.85);
+  }
+
+  .splide__arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  .splide__arrow--next {
+    right: -2em;
+  }
+
+  .splide__arrow--prev {
+    left: -1.2em;
+  }
+
+  .splide__pagination {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .splide__pagination__page {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .splide {
+    max-width: 100%;
+  }
+
+  .splide__slide.is-active {
+    transform: scale(1.05);
+  }
+
+  .splide__slide:not(.is-active) {
+    transform: scale(0.9);
+  }
+
+  .splide__arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .splide__arrow--next {
+    right: -1.5em;
+  }
+
+  .splide__arrow--prev {
+    left: -1em;
+  }
+
+  .splide__pagination {
+    padding: 0.5rem 1rem;
+  }
+
+  .splide__pagination__page {
+    width: 6px;
+    height: 6px;
+  }
+}
+
 /* Footer - Improved Version */
 .footer {
   background: var(--secondary);
@@ -1881,7 +1954,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .order {
     padding: 2rem;
-    width: 40rem;
     margin-top: 10rem;
   }
 
