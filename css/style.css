@@ -1,6 +1,8 @@
 /* ========== BASE STYLES & VARIABLES ========== */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@500&family=Open+Sans:wght@500&display=swap");
+@import url("https://use.typekit.net/snq0ybm.css");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap');
 
 :root {
   --main-color: #c6965c;
@@ -24,7 +26,8 @@
 }
 
 * {
-  font-family: "Lato", "Roboto", sans-serif;
+  font-family: "Manrope", "Lato", "Roboto", sans-serif;
+  font-weight: 500;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -62,8 +65,13 @@ section {
   padding: 2rem 7%;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: "industry", lato, sans-serif;
+}
+
 h6 {
   color: transparent;
+  font-family: "industry", lato, sans-serif;
 }
 
 /* ========== UTILITY CLASSES ========== */
@@ -1111,7 +1119,7 @@ h6 {
 }
 
 .terms p span {
-  color: red;
+  color: #CD1C18;
 }
 
 .terms p a {

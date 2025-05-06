@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Your Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #191714;
+      color: #fff;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #252320;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      color: #c6965c;
+      margin-top: 0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .order-summary {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    .order-summary h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    .item-list {
+      margin-bottom: 20px;
+    }
+    
+    .checkout-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .item-details {
+      flex-grow: 1;
+    }
+    
+    .item-name {
+      font-weight: bold;
+    }
+    
+    .item-price {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .item-quantity {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .item-total {
+      font-weight: bold;
+    }
+    
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 2px solid #eee;
+    }
+    
+    .payment-form {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    .payment-form h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    button {
+      background-color: #c6965c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+    
+    button:hover {
+      background-color: #a17137;
+    }
+    
+    .square-payment-form {
+      margin-top: 20px;
+    }
+    
+    #card-container {
+      min-height: 90px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    
+    #payment-status-container {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout</h1>
+    
+    <div class="checkout-grid">
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div id="item-list" class="item-list">
+          <!-- Items will be loaded here -->
+        </div>
+        <div class="order-total">
+          <span>Total:</span>
+          <span id="order-total-amount">$0.00</span>
+        </div>
+      </div>
+      
+      <div class="payment-form">
+        <h2>Payment Details</h2>
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <!-- Square Payment Form -->
+          <div class="square-payment-form">
+            <div id="card-container"></div>
+            <button type="submit" id="pay-button">Pay Now</button>
+          </div>
+          
+          <div id="payment-status-container"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Square Web Payments SDK -->
+  <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      // Get cart data from localStorage or URL parameters
+      let cartItems = [];
+      
+      // Check if cart data was passed via POST (using sessionStorage as intermediary)
+      const cartData = sessionStorage.getItem('checkoutCartData');
+      if (cartData) {
+        try {
+          cartItems = JSON.parse(cartData);
+          sessionStorage.removeItem('checkoutCartData'); // Clear after use
+        } catch (e) {
+          console.error('Error parsing cart data:', e);
+        }
+      } else {
+        // Fallback to localStorage
+        const storedCart = localStorage.getItem('cartItems');
+        if (storedCart) {
+          try {
+            cartItems = JSON.parse(storedCart);
+          } catch (e) {
+            console.error('Error parsing cart data from localStorage:', e);
+          }
+        }
+      }
+      
+      // Render order summary
+      renderOrderSummary(cartItems);
+      
+      // Initialize Square payment form
+      await initializeSquarePayment(cartItems);
+    });
+    
+    // Render the order summary
+    function renderOrderSummary(items) {
+      const itemListEl = document.getElementById('item-list');
+      itemListEl.innerHTML = '';
+      
+      if (items.length === 0) {
+        itemListEl.innerHTML = '<p>Your cart is empty</p>';
+        document.getElementById('order-total-amount').textContent = '$0.00';
+        return;
+      }
+      
+      let total = 0;
+      
+      items.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        const itemEl = document.createElement('div');
+        itemEl.className = 'checkout-item';
+        itemEl.innerHTML = `
+          <div class="item-details">
+            <div class="item-name">${item.name}</div>
+            <div class="item-price">$${item.price.toFixed(2)} × <span class="item-quantity">${item.quantity}</span></div>
+          </div>
+          <div class="item-total">$${itemTotal.toFixed(2)}</div>
+        `;
+        
+        itemListEl.appendChild(itemEl);
+      });
+      
+      document.getElementById('order-total-amount').textContent = `$${total.toFixed(2)}`;
+    }
+    
+    // Initialize Square Payment form
+    async function initializeSquarePayment(items) {
+      if (items.length === 0) return;
+      
+      // Calculate order total
+      const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      try {
+        // Square Payments JS initialization
+        const payments = Square.payments('YOUR_SQUARE_APPLICATION_ID', 'YOUR_LOCATION_ID');
+        const card = await payments.card();
+        await card.attach('#card-container');
+        
+        // Handle form submission
+        const form = document.getElementById('checkout-form');
+        form.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          
+          try {
+            // Get customer details
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Show loading state
+            const payButton = document.getElementById('pay-button');
+            payButton.disabled = true;
+            payButton.textContent = 'Processing...';
+            
+            // Get a payment token from Square
+            const tokenResult = await card.tokenize();
+            if (tokenResult.status === 'OK') {
+              // Send payment token to your server
+              const paymentData = {
+                sourceId: tokenResult.token,
+                amount: total,
+                currency: 'USD',
+                items: items,
+                customer: {
+                  name: name,
+                  email: email,
+                  phone: phone
+                }
+              };
+              
+              // In a real implementation, you would send this data to your server endpoint
+              // For demo purposes, we'll just simulate a successful payment
+              console.log('Payment data to send to server:', paymentData);
+              
+              // Simulate server response
+              setTimeout(() => {
+                // On successful payment
+                showPaymentResult(true, 'Payment successful! Your order has been placed.');
+                
+                // Clear cart
+                localStorage.removeItem('cartItems');
+                
+                // Redirect to confirmation page after a delay
+                setTimeout(() => {
+                  window.location.href = '/confirmation.html';
+                }, 2000);
+              }, 2000);
+            } else {
+              showPaymentResult(false, 'Payment failed: ' + tokenResult.errors[0].message);
+              payButton.disabled = false;
+              payButton.textContent = 'Pay Now';
+            }
+          } catch (e) {
+            showPaymentResult(false, 'Payment error: ' + e.message);
+            payButton.disabled = false;
+            payButton.textContent = 'Pay Now';
+          }
+        });
+      } catch (e) {
+        console.error('Square payment initialization error:', e);
+        showPaymentResult(false, 'Failed to initialize payment form. Please try again later.');
+      }
+    }
+    
+    // Show payment result message
+    function showPaymentResult(success, message) {
+      const statusContainer = document.getElementById('payment-status-container');
+      statusContainer.className = success ? 'success' : 'error';
+      statusContainer.textContent = message;
+      statusContainer.style.display = 'block';
+    }
+  </script>
+  
+  <!-- Script to handle form data transfer from POST -->
+  <script>
+    // This script handles the transition of cart data from POST to sessionStorage
+    window.addEventListener('DOMContentLoaded', function() {
+      // Check if form was submitted via POST
+      if (document.referrer && document.referrer.includes(window.location.hostname)) {
+        // Get form data from URL parameters if available
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('cartData')) {
+          sessionStorage.setItem('checkoutCartData', urlParams.get('cartData'));
+        }
+      }
+    });
+  </script>
+</body>
+</html>
