@@ -9,7 +9,7 @@
         hoverIconColor: '#1a1a1a',
         scrollThreshold: 300,
         size: 50,
-        position: { bottom: 30, right: 30 }
+        position: { bottom: 90, right: 30 } // Adjusted bottom position to be above shopping cart
     };
 
     // Create the button
@@ -27,7 +27,7 @@
         button.style.cssText = `
             position: fixed;
             bottom: ${config.position.bottom}px;
-            right: ${config.position.right}px;
+            right: 20px;
             width: ${config.size}px;
             height: ${config.size}px;
             background-color: ${config.backgroundColor};
@@ -41,11 +41,11 @@
             opacity: 1;
             visibility: visible;
             transition: all 0.3s ease;
-            z-index: 9999;
+            z-index: 9998; // Set slightly lower than typical cart z-index
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         `;
 
-        // Hover styles
+        // Rest of the code remains the same...
         const style = document.createElement('style');
         style.textContent = `
             #scrollToTopBtn:hover {
@@ -61,7 +61,6 @@
         document.head.appendChild(style);
         document.body.appendChild(button);
 
-        // Scroll functionality
         function toggleVisibility() {
             if (window.pageYOffset > config.scrollThreshold) {
                 button.style.opacity = '1';
@@ -79,11 +78,9 @@
         window.addEventListener('scroll', toggleVisibility);
         button.addEventListener('click', scrollToTop);
 
-        // Initial check
         toggleVisibility();
     }
 
-    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => initScrollToTop());
     } else {
