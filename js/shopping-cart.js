@@ -618,7 +618,11 @@ function connectProductButtons() {
           return;
         }
         
-        const productId = card.dataset.category; // Using category as ID
+        // Use a more unique identifier - combination of category and name if available
+        const productId = card.dataset.id || 
+                         (card.dataset.category && card.dataset.name ? 
+                          `${card.dataset.category}-${card.dataset.name}` : 
+                          `product-${Date.now()}`);
         const productName = card.dataset.name || card.querySelector('.product-name')?.textContent;
         const productPrice = parseFloat(card.dataset.price);
         
