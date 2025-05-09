@@ -1854,7 +1854,8 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Responsive Media Queries */
 @media (max-width: 768px) {
   .splide {
-    max-width: 320px;
+    max-width: 500px;
+    overflow: hidden;
   }
 
   .splide__slide.is-active {
