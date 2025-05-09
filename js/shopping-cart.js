@@ -168,7 +168,8 @@ class ShoppingCart {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: white;
+        background-color: var(--bg2);
+        color: #fff;
         border-radius: 8px;
         width: 90%;
         max-width: 400px;
@@ -232,13 +233,18 @@ class ShoppingCart {
       }
 
       .quantity-btn {
-        background: #eee;
+        background: var(--accent-color);
+        color: #fff;
         border: none;
         width: 25px;
         height: 25px;
         border-radius: 4px;
         font-weight: bold;
         cursor: pointer;
+      }
+
+      .quantity-btn:hover {
+        background-color: #c6965c;
       }
 
       .item-quantity {
