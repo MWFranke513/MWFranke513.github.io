@@ -668,17 +668,22 @@ function connectProductButtons() {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM content loaded, initializing shopping cart...');
   
-  // Create cart instance only once
+  // Create cart instance or reinitialize it
   if (!window.shoppingCart) {
     window.shoppingCart = new ShoppingCart();
-    
-    // Connect product buttons after a short delay to ensure cart is ready
-    setTimeout(() => {
-      const connected = connectProductButtons();
-      if (!connected) {
-        console.log('Retrying button connection...');
-        setTimeout(connectProductButtons, 500); // Try once more after 500ms
-      }
-    }, 100);
+  } else {
+    // Force recreation of cart elements to ensure they exist on this page
+    window.shoppingCart.createCartElements();
+    window.shoppingCart.addEventListeners();
+    window.shoppingCart.updateCartBadge();
   }
+  
+  // Connect product buttons after a short delay to ensure cart is ready
+  setTimeout(() => {
+    const connected = connectProductButtons();
+    if (!connected) {
+      console.log('Retrying button connection...');
+      setTimeout(connectProductButtons, 500); // Try once more after 500ms
+    }
+  }, 100);
 });
