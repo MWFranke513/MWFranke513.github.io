@@ -1,35 +1,40 @@
 // Navbar functionality
-let navbar = document.querySelector('.navbar');
-
-document.querySelector('#menu-btn').onclick = () => {
-    navbar.classList.toggle('active');
-    searchForm.classList.remove('active');
-}
-
-window.onscroll = () => {
-    navbar.classList.remove('active');
-}
-
-// Main document ready handler
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM fully loaded - initializing product page');
+  const menuBtn = document.querySelector('#menu-btn');
+  const navbar = document.querySelector('.navbar');
   
-  try {
-    // Make sure the navbar toggle works
-    let navbar = document.querySelector('.navbar');
-    const menuBtn = document.querySelector('#menu-btn');
-    
-    if (menuBtn) {
-      menuBtn.onclick = () => {
-        navbar.classList.toggle('active');
+  if (menuBtn) {
+    // Remove the inline onClick handler from HTML and use this instead
+    menuBtn.addEventListener('click', function() {
+      // Toggle the icon
+      const icon = this.querySelector('i');
+      icon.classList.toggle('bi-x');
+      icon.classList.toggle('bi-list');
+      
+      // Toggle the navbar
+      navbar.classList.toggle('active');
+      
+      // If you have a searchForm, close it when menu opens
+      const searchForm = document.querySelector('.search-form');
+      if (searchForm) {
+        searchForm.classList.remove('active');
       }
-    }
-    
-    // Initialize product page features
-    initProductPage();
-  } catch (error) {
-    console.error('Initialization error:', error);
+    });
   }
+  
+  // Close the navbar on scroll
+  window.addEventListener('scroll', function() {
+    navbar.classList.remove('active');
+    // Also reset the icon when navbar closes
+    const icon = document.querySelector('#menu-btn i');
+    if (icon && icon.classList.contains('bi-x')) {
+      icon.classList.remove('bi-x');
+      icon.classList.add('bi-list');
+    }
+  });
+  
+  // Initialize product page features
+  initProductPage();
 });
 
 // Main product page initialization
