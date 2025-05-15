@@ -1,3 +1,30 @@
+/**
+ * ScrollToTop.js - A self-contained solution for adding a scroll-to-top button to web pages
+ * 
+ * This IIFE (Immediately Invoked Function Expression) creates and manages a customizable
+ * scroll-to-top button that appears when users scroll down the page beyond a threshold.
+ * 
+ * @module ScrollToTop
+ * 
+ * Features:
+ * - Fully customizable appearance (colors, size, position)
+ * - Smooth scrolling animation
+ * - Automatically toggles visibility based on scroll position
+ * - Hover effects and transitions
+ * - Properly positioned to avoid conflicts with other fixed elements (like shopping carts)
+ * 
+ * Default Configuration:
+ * - backgroundColor: 'rgba(26, 26, 26, 0.8)' - Semi-transparent dark background
+ * - borderColor: '#d4b883' - Gold accent border color
+ * - iconColor: '#d4b883' - Gold arrow icon color
+ * - hoverBackgroundColor: '#d4b883' - Gold background on hover
+ * - hoverIconColor: '#1a1a1a' - Dark icon on hover
+ * - scrollThreshold: 300 - Pixels to scroll before showing button
+ * - size: 50 - Button diameter in pixels
+ * - position: { bottom: 90, right: 30 } - Positioned above typical cart elements
+ * 
+ * The button dynamically injects all necessary styles and SVG icon without external dependencies.
+ */
 // ScrollToTop.js - Complete self-contained solution
 (function() {
     // Default configuration

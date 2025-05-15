@@ -1,3 +1,86 @@
+/**
+ * @fileoverview Main JavaScript file handling site navigation and product page functionality.
+ * The file is responsible for handling navbar toggling, product filtering and sorting,
+ * product interactions, lazy loading of images, and quick view modal functionality.
+ * 
+ * @requires AOS Optional AOS animation library for enhanced visual effects
+ * 
+ * @author MVP Prints
+ * @version 1.0.0
+ */
+
+/**
+ * Main initialization function for the product page.
+ * Sets up all product-related functionality if a product grid is present.
+ * 
+ * @function initProductPage
+ * @returns {void}
+ */
+
+/**
+ * Sets up product filtering and sorting functionality.
+ * Handles filter button clicks and sort select changes.
+ * 
+ * @function setupFilteringAndSorting
+ * @returns {void}
+ */
+
+/**
+ * Filters products based on category.
+ * 
+ * @function filterProducts
+ * @param {string} filterValue - The category to filter by or 'all' for all products
+ * @returns {void}
+ */
+
+/**
+ * Sorts visible products by price or name.
+ * 
+ * @function sortProducts
+ * @param {string} sortType - The sort method ('price-low', 'price-high', 'name')
+ * @returns {void}
+ */
+
+/**
+ * Sets up product interaction handlers including add to cart buttons, 
+ * order now buttons, and pagination links.
+ * 
+ * @function setupProductInteractions
+ * @returns {void}
+ */
+
+/**
+ * Sets up lazy loading for product images.
+ * Loads images only when needed and handles loading errors.
+ * 
+ * @function setupLazyLoading
+ * @returns {void}
+ */
+
+/**
+ * Sets up quick view functionality for product images.
+ * Creates a modal dialog when product images are clicked.
+ * 
+ * @function setupQuickView
+ * @returns {void}
+ */
+
+/**
+ * Shows a loading overlay with spinner animation.
+ * Used to indicate page transitions or data loading.
+ * 
+ * @function showLoading
+ * @returns {void}
+ */
+
+/**
+ * Shows a toast notification message.
+ * Creates and animates a toast notification in the bottom right corner.
+ * 
+ * @function showToast
+ * @param {string} message - The message to show in the toast notification
+ * @returns {void}
+ */
 // Navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.querySelector('#menu-btn');
