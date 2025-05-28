@@ -1,4 +1,184 @@
 /* ========== BASE STYLES & VARIABLES ========== */
+
+/* Accessibility/UX improvements for font and button sizes in media queries */
+
+/* 991px and below */
+@media (max-width: 991px) {
+  html {
+    font-size: 58%; /* Slightly larger for better readability */
+  }
+  .heading {
+    font-size: 3.2rem;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.7rem;
+    padding: 1.2rem 3rem;
+    min-height: 48px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1.2rem;
+    min-height: 48px;
+    padding: 1.2rem 1.5rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 1.1rem;
+    min-height: 44px;
+    padding: 10px 18px;
+  }
+}
+
+/* 768px and below */
+@media (max-width: 768px) {
+  html {
+    font-size: 56%;
+  }
+  .heading {
+    font-size: 2.7rem;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.5rem;
+    padding: 1.1rem 2.5rem;
+    min-height: 44px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1.1rem;
+    min-height: 44px;
+    padding: 1.1rem 1.2rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 1rem;
+    min-height: 40px;
+    padding: 9px 14px;
+  }
+  .faq-answer {
+    font-size: 1.6rem;
+  }
+  .service-check span {
+    font-size: 1.5rem;
+  }
+  .product-name {
+    font-size: 1.1rem;
+  }
+  .page-link {
+    font-size: 1.1rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+/* 600px and below */
+@media (max-width: 600px) {
+  html {
+    font-size: 54%;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    min-height: 40px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1rem;
+    min-height: 40px;
+    padding: 1rem 1rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.95rem;
+    min-height: 38px;
+    padding: 8px 10px;
+  }
+}
+
+/* 480px and below */
+@media (max-width: 480px) {
+  html {
+    font-size: 52%;
+  }
+  .heading {
+    font-size: 2.2rem;
+  }
+  .btn,
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.3rem;
+    padding: 0.9rem 1.5rem;
+    min-height: 38px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 0.95rem;
+    min-height: 38px;
+    padding: 0.9rem 0.8rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.9rem;
+    min-height: 36px;
+    padding: 7px 7px;
+  }
+  .page-link {
+    font-size: 1rem;
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* 450px and below */
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+  .btn,
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    min-height: 36px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 0.9rem;
+    min-height: 36px;
+    padding: 0.8rem 0.7rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.85rem;
+    min-height: 34px;
+    padding: 6px 5px;
+  }
+  .page-link {
+    font-size: 0.95rem;
+    min-width: 34px;
+    min-height: 34px;
+  }
+}
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@500&family=Open+Sans:wght@500&display=swap");
 @import url("https://use.typekit.net/snq0ybm.css");
