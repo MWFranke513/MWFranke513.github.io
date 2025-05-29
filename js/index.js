@@ -259,34 +259,55 @@ function setupFilteringAndSorting() {
 function setupProductInteractions() {
   console.log('Setting up product interactions');
   
-  // Add to cart buttons
-  const cartBtns = document.querySelectorAll('.cart-btn');
-  if (cartBtns.length > 0) {
-    console.log(`Found ${cartBtns.length} cart buttons`);
-    
-    cartBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const card = this.closest('.product-card');
-        const productName = card.querySelector('.product-name')?.textContent || 'Product';
-        
-        // Visual feedback
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-check"></i> Added';
-        this.style.backgroundColor = '#2ecc71';
-        this.style.color = 'white';
-        
-        // Show toast notification
-        showToast(`${productName} added to cart!`);
-        
-        // Reset button after animation
-        setTimeout(() => {
-          this.innerHTML = originalText;
-          this.style.backgroundColor = '';
-          this.style.color = '';
-        }, 2000);
-      });
-    });
+  // Remove any existing cart button listeners to prevent duplicates
+  if (window.cartButtonHandler) {
+    document.removeEventListener('click', window.cartButtonHandler);
   }
+  
+  // Create the cart button handler function
+  window.cartButtonHandler = function(e) {
+    if (e.target.classList.contains('cart-btn') || e.target.closest('.cart-btn')) {
+      e.preventDefault();
+      const btn = e.target.classList.contains('cart-btn') ? e.target : e.target.closest('.cart-btn');
+      const card = btn.closest('.product-card');
+      const productName = card.querySelector('.product-name')?.textContent || 'Product';
+      
+      console.log('Cart button clicked for:', productName);
+      
+      // Prevent multiple clicks during animation
+      if (btn.disabled) return;
+      btn.disabled = true;
+      
+      // Visual feedback
+      const originalText = btn.innerHTML;
+      const originalClass = btn.className;
+
+      // Remove any inline styles before applying new ones
+      btn.style.removeProperty('background-color');
+      btn.style.removeProperty('color');
+
+      // Use setProperty to ensure inline style is applied
+      btn.innerHTML = '<i class="fas fa-check"></i> Added';
+      btn.classList.add('added-to-cart-feedback');
+      btn.style.setProperty('background-color', '#2ecc71', 'important');
+      btn.style.setProperty('color', 'white', 'important');
+      
+      // Show toast notifications
+      showToast(`${productName} added to cart!`);
+      
+      // Reset button after animation
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.className = originalClass;
+        btn.style.removeProperty('background-color');
+        btn.style.removeProperty('color');
+        btn.disabled = false;
+      }, 2000);
+    }
+  };
+
+  // Use event delegation for cart buttons to handle dynamic content
+  document.addEventListener('click', window.cartButtonHandler);
   
   // Order now buttons
   const orderBtns = document.querySelectorAll('.order-btn');
@@ -330,6 +351,51 @@ function setupProductInteractions() {
     });
   }
 }
+  // Use event delegation for cart buttons to handle dynamic content
+  document.addEventListener('click', window.cartButtonHandler);
+  
+  // Order now buttons
+  const orderBtns = document.querySelectorAll('.order-btn');
+  if (orderBtns.length > 0) {
+    console.log(`Found ${orderBtns.length} order buttons`);
+    
+    orderBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = this.closest('.product-card');
+        const productName = card.querySelector('.product-name')?.textContent || 'Product';
+        
+        showToast(`Ordering ${productName}...`);
+        
+        // Navigate to order page
+        setTimeout(() => {
+          window.location.href = 'order.html';
+        }, 1000);
+      });
+    });
+  }
+  
+  // Pagination links
+  const pageLinks = document.querySelectorAll('.page-link');
+  if (pageLinks.length > 0) {
+    console.log(`Found ${pageLinks.length} pagination links`);
+    
+    pageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Handle active state
+        pageLinks.forEach(pl => pl.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Show loading effect
+        showLoading();
+        
+        // In a real implementation, load next page data here
+        // For demo, just simulate a page load
+      });
+    });
+  }
+
 
 // Lazy load images
 function setupLazyLoading() {
@@ -459,7 +525,13 @@ function setupQuickView() {
       // Setup action buttons
       const modalCartBtn = modalContent.querySelector('.quick-view-cart');
       modalCartBtn.addEventListener('click', () => {
-        showToast(`${productName} added to cart!`);
+        // Find the original cart button in the product card and trigger its click event
+        const originalCartBtn = card.querySelector('.cart-btn');
+        if (originalCartBtn) {
+          originalCartBtn.click();
+        } else {
+          showToast(`${productName} added to cart!`);
+        }
         quickViewModal.style.display = 'none';
       });
       
@@ -585,7 +657,7 @@ function showToast(message) {
 }
 
 // Initialize test toast for debugging
-setTimeout(() => {
-  console.log('Testing toast notification system');
-  showToast('Test toast message - this should appear!');
-}, 2000);
+// setTimeout(() => {
+//   console.log('Testing toast notification system');
+//   showToast('Test toast message - this should appear!');
+// }, 2000);

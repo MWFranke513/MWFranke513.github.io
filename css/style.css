@@ -1,184 +1,5 @@
 /* ========== BASE STYLES & VARIABLES ========== */
 
-/* Accessibility/UX improvements for font and button sizes in media queries */
-
-/* 991px and below */
-@media (max-width: 991px) {
-  html {
-    font-size: 58%; /* Slightly larger for better readability */
-  }
-  .heading {
-    font-size: 3.2rem;
-  }
-
-  .submit-btn,
-  .order-btn,
-  .cart-btn,
-  .form-submit {
-    font-size: 1.7rem;
-    padding: 1.2rem 3rem;
-    min-height: 48px;
-  }
-  .form-control,
-  .form-input,
-  select.form-control {
-    font-size: 1.2rem;
-    min-height: 48px;
-    padding: 1.2rem 1.5rem;
-  }
-  .filter-btn,
-  .sort-select {
-    font-size: 1.1rem;
-    min-height: 44px;
-    padding: 10px 18px;
-  }
-}
-
-/* 768px and below */
-@media (max-width: 768px) {
-  html {
-    font-size: 56%;
-  }
-  .heading {
-    font-size: 2.7rem;
-  }
-
-  .submit-btn,
-  .order-btn,
-  .cart-btn,
-  .form-submit {
-    font-size: 1.5rem;
-    padding: 1.1rem 2.5rem;
-    min-height: 44px;
-  }
-  .form-control,
-  .form-input,
-  select.form-control {
-    font-size: 1.1rem;
-    min-height: 44px;
-    padding: 1.1rem 1.2rem;
-  }
-  .filter-btn,
-  .sort-select {
-    font-size: 1rem;
-    min-height: 40px;
-    padding: 9px 14px;
-  }
-  .faq-answer {
-    font-size: 1.6rem;
-  }
-  .service-check span {
-    font-size: 1.5rem;
-  }
-  .product-name {
-    font-size: 1.1rem;
-  }
-  .page-link {
-    font-size: 1.1rem;
-    min-width: 40px;
-    min-height: 40px;
-  }
-}
-
-/* 600px and below */
-@media (max-width: 600px) {
-  html {
-    font-size: 54%;
-  }
-
-  .submit-btn,
-  .order-btn,
-  .cart-btn,
-  .form-submit {
-    font-size: 1.4rem;
-    padding: 1rem 2rem;
-    min-height: 40px;
-  }
-  .form-control,
-  .form-input,
-  select.form-control {
-    font-size: 1rem;
-    min-height: 40px;
-    padding: 1rem 1rem;
-  }
-  .filter-btn,
-  .sort-select {
-    font-size: 0.95rem;
-    min-height: 38px;
-    padding: 8px 10px;
-  }
-}
-
-/* 480px and below */
-@media (max-width: 480px) {
-  html {
-    font-size: 52%;
-  }
-  .heading {
-    font-size: 2.2rem;
-  }
-  .btn,
-  .submit-btn,
-  .order-btn,
-  .cart-btn,
-  .form-submit {
-    font-size: 1.3rem;
-    padding: 0.9rem 1.5rem;
-    min-height: 38px;
-  }
-  .form-control,
-  .form-input,
-  select.form-control {
-    font-size: 0.95rem;
-    min-height: 38px;
-    padding: 0.9rem 0.8rem;
-  }
-  .filter-btn,
-  .sort-select {
-    font-size: 0.9rem;
-    min-height: 36px;
-    padding: 7px 7px;
-  }
-  .page-link {
-    font-size: 1rem;
-    min-width: 36px;
-    min-height: 36px;
-  }
-}
-
-/* 450px and below */
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-  .btn,
-  .submit-btn,
-  .order-btn,
-  .cart-btn,
-  .form-submit {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.2rem;
-    min-height: 36px;
-  }
-  .form-control,
-  .form-input,
-  select.form-control {
-    font-size: 0.9rem;
-    min-height: 36px;
-    padding: 0.8rem 0.7rem;
-  }
-  .filter-btn,
-  .sort-select {
-    font-size: 0.85rem;
-    min-height: 34px;
-    padding: 6px 5px;
-  }
-  .page-link {
-    font-size: 0.95rem;
-    min-width: 34px;
-    min-height: 34px;
-  }
-}
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@500&family=Open+Sans:wght@500&display=swap");
 @import url("https://use.typekit.net/snq0ybm.css");
@@ -262,6 +83,10 @@ body {
   background: #0f0e09;
 }
 
+p {
+  color:#acacac !important;
+}
+
 section {
   padding: 2rem 7%;
 }
@@ -295,6 +120,7 @@ h6 {
 .heading span, 
 .sub-heading span {
   color: var(--main-color);
+  font-weight: bold;
 }
 
 .btn {
@@ -354,6 +180,8 @@ h6 {
   color: #fff;
   padding: 0.4rem;
   text-transform: capitalize;
+  font-family: "industry", lato, sans-serif;
+  font-weight: lighter !important;
 }
 
 .header .navbar a:hover {
@@ -506,6 +334,7 @@ h6 {
         .heading span {
           color: var(--main-color);
           position: relative;
+          font-weight: bold;
         }
 
         .heading span::after {
@@ -689,7 +518,7 @@ h6 {
         }
 
         .story-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
           font-weight: 700;
           margin-bottom: 1.5rem;
           color: var(--light-text);
@@ -697,6 +526,7 @@ h6 {
 
         .story-title span {
           color: var(--main-color);
+          font-weight: bold;
         }
 
         .story-text {
@@ -876,10 +706,10 @@ h6 {
             padding: 2.5rem;
           }
           .mvp-title {
-            font-size: 2.2rem;
+            font-size: 3rem;
           }
           .story-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
           }
         }
 
@@ -893,22 +723,29 @@ h6 {
           }
           
           .gallery-grid {
-            grid-template-columns: 1fr;
             gap: 1rem;
           }
           
           .image-gallery {
-            height: 300px;
+            display: flex;
+            height: 32vh;
+            flex-direction: row;
+            margin: auto;
+          }
+
+          .image-gallery img {
+            display: flex;
+            flex-direction: row;
           }
 
           .heading {
             font-size: 2.5rem;
           }
           .mvp-title {
-            font-size: 1.7rem;
+            font-size: 3rem;
           }
           .story-title {
-            font-size: 1.4rem;
+            font-size: 2.5rem;
           }
           .mvp-description,
           .story-text,
@@ -944,10 +781,10 @@ h6 {
             font-size: 2rem;
           }
           .mvp-title {
-            font-size: 2rem;
+            font-size: 3rem;
           }
           .story-title {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
           }
           .mvp-description,
           .story-text,
@@ -1108,6 +945,7 @@ h6 {
 .heading span {
   color: var(--main-color);
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .orange-underline {
@@ -1300,8 +1138,14 @@ h6 {
 
 .title {
   text-align: center;
-  font-size: 2.5rem;
-  color: var(--main-color); /* Using your main color for titles */
+  font-size: 3.2rem;
+  background: linear-gradient( 135deg, var(--main-color) 0%, var(--accent-color) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-bottom: 10px;
   text-transform: capitalize;
   position: relative;
@@ -1320,7 +1164,7 @@ h6 {
 
 .subtitle {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 14px;
   color: #aaa; /* Lighter gray for subtitles */
   margin-bottom: 40px;
 }
@@ -1340,11 +1184,18 @@ h6 {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  margin: auto;
 }
 
+.filter-group .heading {
+  margin-right: 6rem;
+  margin-top: 8rem;
+  margin-left: 0;
+}
 .filter-label {
   font-weight: 600;
   color: var(--main-color);
+  font-size: 14px;
 }
 
 .filter-buttons {
@@ -1354,15 +1205,16 @@ h6 {
 }
 
 .filter-btn {
-  padding: 8px 15px;
-  background-color: var(--bg3); /* Dark button background */
+  padding: 12px 12px;
+  background-color: var(--bg3);
   border: 1px solid #333;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
-  font-size: 0.9rem;
+  font-size: 12px;
   color: #e0e0e0;
   user-select: none;
+  min-height: 38px;
 }
 
 .filter-btn:hover {
@@ -1377,13 +1229,15 @@ h6 {
 }
 
 .sort-select {
-  padding: 8px 15px;
+  padding: 12px 12px;
   border: 1px solid #333;
   border-radius: var(--border-radius);
   background-color: var(--bg2);
   color: #e0e0e0;
   cursor: pointer;
   appearance: none;
+  font-size: 1.4rem;
+  min-height: 38px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
@@ -1406,6 +1260,7 @@ h6 {
   border: 1px solid #444;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   font-weight: 500;
+  font-size: 1.4rem;
 }
 
 .toast-notification {
@@ -1421,6 +1276,7 @@ h6 {
   transform: translateY(100px);
   opacity: 0;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  font-size: 1.4rem;
 }
 
 .toast.show {
@@ -1488,6 +1344,7 @@ h6 {
   overflow: auto;
   border: 1px solid #333;
   color: #e0e0e0;
+  font-size: 1.6rem;
 }
 
 .close-btn {
@@ -1496,17 +1353,21 @@ h6 {
   right: 10px;
   background-color: transparent;
   border: none;
-  font-size: 24px;
+  font-size: 2.4rem;
   cursor: pointer;
   color: #e0e0e0;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 /* Product Grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
+  max-width: 1400px;
+  margin: auto;
 }
 
 /* Product Cards - Dark Theme */
@@ -1566,9 +1427,9 @@ h6 {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 5px 10px;
+  padding: 8px 12px;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 600;
   border-radius: 4px;
   text-transform: uppercase;
@@ -1595,21 +1456,21 @@ h6 {
 }
 
 .product-name {
-  font-size: 1.3rem;
+  font-size: 24px;
   font-weight: 600;
   color: #f0f0f0;
   margin: 0 0 10px;
 }
 
 .price {
-  font-size: 1.4rem;
+  font-size: 16px;
   font-weight: 700;
   color: var(--main-color);
   margin: 0 0 10px;
 }
 
 .ea {
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: normal;
   color: #aaa;
 }
@@ -1618,13 +1479,13 @@ h6 {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #2ecc71;
-  font-size: 0.9rem;
+  color: #2ecc71 !important;
+  font-size: 1.2rem;
   margin: 0 0 10px;
 }
 
 .attribution {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   color: #888;
   margin: 0 0 15px;
 }
@@ -1640,7 +1501,7 @@ h6 {
 }
 
 .description {
-  font-size: 0.95rem;
+  font-size: 12px;
   line-height: 1.5;
   color: #bbb;
   margin: 0 0 20px;
@@ -1654,16 +1515,22 @@ h6 {
 }
 
 .cart-btn, .order-btn {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  font-size: 16px;
+  min-height: 48px;
+}
+
+.order-btn {
+  font-weight: 600;
 }
 
 .cart-btn {
@@ -1705,8 +1572,8 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   background-color: var(--bg2);
   color: #f0f0f0;
@@ -1714,12 +1581,14 @@ h6 {
   transition: var(--transition);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border: 1px solid #333;
+  font-size: 1.4rem;
 }
 
 .page-link.next {
   width: auto;
   border-radius: 20px;
   padding: 0 15px;
+  min-width: 60px;
 }
 
 .page-link.active {
@@ -1733,7 +1602,88 @@ h6 {
   border-color: var(--accent-color);
 }
 
-/* Responsive adjustments */
+/* Media Queries for Products Section */
+@media (max-width: 991px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .filter-label {
+    font-size: 1.4rem;
+  }
+  
+  .filter-btn {
+    font-size: 1.4rem;
+    padding: 12px 12px;
+    min-height: 40px;
+  }
+  
+  .sort-select {
+    font-size: 1.4rem;
+    padding: 12px 12px;
+    min-height: 40px;
+  }
+  
+  .product-name {
+    font-size: 2.5rem;
+  }
+  
+  .price {
+    font-size: 2rem;
+  }
+  
+  .ea {
+    font-size: 1.5rem;
+  }
+  
+  .shipping {
+    font-size: 1.4rem;
+  }
+  
+  .attribution {
+    font-size: 1.4rem;
+  }
+  
+  .description {
+    font-size: 12px;
+  }
+  
+  .cart-btn, .order-btn {
+    font-size: 1.8rem;
+    padding: 12px 16px;
+    min-height: 48px;
+  }
+  
+  .page-link {
+    font-size: 1.3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .toast, .toast-notification {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content {
+    font-size: 1.5rem;
+  }
+  
+  .close-btn {
+    font-size: 2.2rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .product-badge {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+  }
+}
+
 @media (max-width: 768px) {
   .products {
     padding: 100px 15px 40px;
@@ -1741,6 +1691,26 @@ h6 {
   
   .title {
     font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .filter-label {
+    font-size: 1.3rem;
+  }
+  
+  .filter-btn {
+    font-size: 1.3rem;
+    padding: 11px 15px;
+    min-height: 44px;
+  }
+  
+  .sort-select {
+    font-size: 1.3rem;
+    padding: 11px 15px;
+    min-height: 44px;
   }
   
   .filter-container {
@@ -1757,6 +1727,36 @@ h6 {
     gap: 20px;
   }
   
+  .product-name {
+    font-size: 2rem;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+  }
+  
+  .ea {
+    font-size: 1.2rem;
+  }
+  
+  .shipping {
+    font-size: 1.2rem;
+  }
+  
+  .attribution {
+    font-size: 1.2rem;
+  }
+  
+  .description {
+    font-size: 12px;
+  }
+  
+  .cart-btn, .order-btn {
+    font-size: 1.8rem;
+    padding: 11px 15px;
+    min-height: 44px;
+  }
+  
   .button-group {
     flex-direction: column;
   }
@@ -1764,9 +1764,139 @@ h6 {
   .cart-btn, .order-btn {
     width: 100%;
   }
+  
+  .page-link {
+    font-size: 1.2rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .toast, .toast-notification {
+    font-size: 1.2rem;
+  }
+  
+  .modal-content {
+    font-size: 1.4rem;
+  }
+  
+  .close-btn {
+    font-size: 2rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .product-badge {
+    font-size: 1rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .filter-label {
+    font-size: 1.2rem;
+  }
+  
+  .filter-btn {
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    min-height: 40px;
+  }
+  
+  .sort-select {
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    min-height: 40px;
+  }
+  
+  .product-name {
+    font-size: 1.5rem;
+  }
+  
+  .price {
+    font-size: 1.7rem;
+  }
+  
+  .ea {
+    font-size: 1.1rem;
+  }
+  
+  .shipping {
+    font-size: 1.1rem;
+  }
+  
+  .attribution {
+    font-size: 1rem;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+  }
+  
+  .cart-btn, .order-btn {
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    min-height: 40px;
+  }
+  
+  .page-link {
+    font-size: 1.1rem;
+    min-width: 38px;
+    min-height: 38px;
+  }
+  
+  .toast, .toast-notification {
+    font-size: 1.1rem;
+  }
+  
+  .modal-content {
+    font-size: 1.3rem;
+  }
+  
+  .close-btn {
+    font-size: 1.8rem;
+    min-width: 38px;
+    min-height: 38px;
+  }
+  
+  .product-badge {
+    font-size: 1rem;
+    padding: 5px 7px;
+  }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 1.6rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .filter-label {
+    font-size: 1.1rem;
+  }
+  
+  .filter-btn {
+    font-size: 1.1rem;
+    padding: 9px 12px;
+    min-height: 38px;
+  }
+  
+  .sort-select {
+    font-size: 1.1rem;
+    padding: 9px 12px;
+    min-height: 38px;
+  }
+  
   .product-grid {
     grid-template-columns: 1fr;
   }
@@ -1779,12 +1909,151 @@ h6 {
   .filter-btn {
     flex: 1;
     text-align: center;
-    font-size: 0.8rem;
-    padding: 8px 10px;
+    font-size: 1rem;
+    padding: 9px 10px;
+    min-height: 38px;
   }
   
   .sort-select {
     width: 100%;
+    font-size: 1rem;
+    min-height: 38px;
+  }
+  
+  .product-name {
+    font-size: 1.4rem;
+  }
+  
+  .price {
+    font-size: 1.6rem;
+  }
+  
+  .ea {
+    font-size: 1rem;
+  }
+  
+  .shipping {
+    font-size: 1rem;
+  }
+  
+  .attribution {
+    font-size: 1rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .cart-btn, .order-btn {
+    font-size: 1.1rem;
+    padding: 9px 12px;
+    min-height: 38px;
+  }
+  
+  .page-link {
+    font-size: 1rem;
+    min-width: 36px;
+    min-height: 36px;
+  }
+  
+  .toast, .toast-notification {
+    font-size: 1rem;
+  }
+  
+  .modal-content {
+    font-size: 1.2rem;
+  }
+  
+  .close-btn {
+    font-size: 1.6rem;
+    min-width: 36px;
+    min-height: 36px;
+  }
+  
+  .product-badge {
+    font-size: 1rem;
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 450px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .filter-label {
+    font-size: 1rem;
+  }
+  
+  .filter-btn {
+    font-size: 1rem;
+    padding: 8px 10px;
+    min-height: 36px;
+  }
+  
+  .sort-select {
+    font-size: 1rem;
+    padding: 8px 10px;
+    min-height: 36px;
+  }
+  
+  .product-name {
+    font-size: 1.3rem;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+  }
+  
+  .ea {
+    font-size: 1rem;
+  }
+  
+  .shipping {
+    font-size: 1rem;
+  }
+  
+  .attribution {
+    font-size: 1rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .cart-btn, .order-btn {
+    font-size: 1rem;
+    padding: 8px 10px;
+    min-height: 36px;
+  }
+  
+  .page-link {
+    font-size: 1rem;
+    min-width: 34px;
+    min-height: 34px;
+  }
+  
+  .toast, .toast-notification {
+    font-size: 1rem;
+  }
+  
+  .modal-content {
+    font-size: 1.1rem;
+  }
+  
+  .close-btn {
+    font-size: 1.5rem;
+    min-width: 34px;
+    min-height: 34px;
+  }
+  
+  .product-badge {
+    font-size: 1rem;
+    padding: 4px 5px;
   }
 }
 
@@ -1929,6 +2198,7 @@ h6 {
   background: linear-gradient(135deg, #0f0e09 0%, var(--bg) 100%);
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 .contact::before {
@@ -2079,7 +2349,7 @@ h6 {
   margin-bottom: 0.5rem;
   color:  #fff;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 
 .form-input {
@@ -2087,7 +2357,7 @@ h6 {
   padding: 1rem 1.2rem;
   border: 2px solid var(--text-color);
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 12px;
   transition: all 0.3s ease;
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -2117,7 +2387,7 @@ h6 {
   border: none;
   padding: 1rem 2rem;
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
   width: 100%;
@@ -2163,6 +2433,10 @@ h6 {
 @media (max-width: 768px) {
   .contact {
       padding: 3rem 1rem;
+  }
+
+  .contact p {
+      font-size: 12px;
   }
 
   .contact-container {
@@ -2264,6 +2538,11 @@ h6 {
 
   .contact .content .form-wrapper form {
     margin-top: 6rem;
+    font-size: 12px;
+  }
+
+  .contact p {
+    font-size: 12px;
   }
 }
 
@@ -2941,5 +3220,186 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+}
+
+
+/* Accessibility/UX improvements for font and button sizes in media queries */
+
+/* 991px and below */
+@media (max-width: 991px) {
+  html {
+    font-size: 58%; /* Slightly larger for better readability */
+  }
+  .heading {
+    font-size: 3.2rem;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.7rem;
+    padding: 1.2rem 3rem;
+    min-height: 48px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1.2rem;
+    min-height: 48px;
+    padding: 1.2rem 1.5rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 14px;
+    min-height: 44px;
+    padding: 10px 18px;
+  }
+}
+
+/* 768px and below */
+@media (max-width: 768px) {
+  html {
+    font-size: 56%;
+  }
+  .heading {
+    font-size: 2.7rem;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.5rem;
+    padding: 1.1rem 2.5rem;
+    min-height: 44px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1.1rem;
+    min-height: 44px;
+    padding: 1.1rem 1.2rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 1rem;
+    min-height: 40px;
+    padding: 9px 14px;
+  }
+  .faq-answer {
+    font-size: 1.6rem;
+  }
+  .service-check span {
+    font-size: 1.5rem;
+  }
+  .product-name {
+    font-size: 1.1rem;
+  }
+  .page-link {
+    font-size: 1.1rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+/* 600px and below */
+@media (max-width: 600px) {
+  html {
+    font-size: 54%;
+  }
+
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    min-height: 40px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 1rem;
+    min-height: 40px;
+    padding: 1rem 1rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.95rem;
+    min-height: 38px;
+    padding: 8px 10px;
+  }
+}
+
+/* 480px and below */
+@media (max-width: 480px) {
+  html {
+    font-size: 52%;
+  }
+  .heading {
+    font-size: 2.2rem;
+  }
+  .btn,
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.3rem;
+    padding: 0.9rem 1.5rem;
+    min-height: 38px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 0.95rem;
+    min-height: 38px;
+    padding: 0.9rem 0.8rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.9rem;
+    min-height: 36px;
+    padding: 7px 7px;
+  }
+  .page-link {
+    font-size: 1rem;
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* 450px and below */
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+  .btn,
+  .submit-btn,
+  .order-btn,
+  .cart-btn,
+  .form-submit {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    min-height: 36px;
+  }
+  .form-control,
+  .form-input,
+  select.form-control {
+    font-size: 0.9rem;
+    min-height: 36px;
+    padding: 0.8rem 0.7rem;
+  }
+  .filter-btn,
+  .sort-select {
+    font-size: 0.85rem;
+    min-height: 34px;
+    padding: 6px 5px;
+  }
+  .page-link {
+    font-size: 0.95rem;
+    min-width: 34px;
+    min-height: 34px;
   }
 }
