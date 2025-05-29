@@ -81,6 +81,54 @@
  * @param {string} message - The message to show in the toast notification
  * @returns {void}
  */
+
+
+
+/**
+ * Sets up navigation handlers for anchor links that need to redirect to homepage first.
+ * Handles cases where user clicks on #about, #contact, etc. from non-homepage pages.
+ * 
+ * @function setupNavigationHandlers
+ * @returns {void}
+ */
+document.addEventListener('DOMContentLoaded', function setupNavigationHandlers() {
+  console.log('Setting up navigation handlers for anchor links');
+  
+  // Get all anchor links in header and footer that start with #
+  const navLinks = document.querySelectorAll('nav a[href^="#"], header a[href^="#"], footer a[href^="#"]');
+  
+  if (navLinks.length === 0) {
+    console.log('No anchor navigation links found in header or footer');
+    return;
+  }
+  
+  console.log(`Found ${navLinks.length} anchor navigation links in header/footer`);
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      console.log('Navigation link clicked:', href);
+      
+      // Check if we're currently on the homepage
+      const currentPage = window.location.pathname;
+      const isHomepage = currentPage === '/' || 
+                        currentPage === '/index.html' || 
+                        currentPage.endsWith('/index.html') ||
+                        currentPage === '' ||
+                        currentPage.split('/').pop() === 'index.html';
+      
+      if (!isHomepage) {
+        // We're not on homepage, redirect to index.html with the anchor
+        console.log('Not on homepage, redirecting to index.html with anchor:', href);
+        e.preventDefault();
+        window.location.href = `index.html${href}`;
+      }
+      // If we are on homepage, let the default anchor behavior work
+    });
+  });
+});
+
 // Navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.querySelector('#menu-btn');
