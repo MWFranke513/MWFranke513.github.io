@@ -661,3 +661,77 @@ function showToast(message) {
 //   console.log('Testing toast notification system');
 //   showToast('Test toast message - this should appear!');
 // }, 2000);
+
+
+class RippleEffect {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    // Add event listeners to all product cards
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+      // Ensure the card has proper overflow handling for ripples
+      card.style.overflow = 'hidden';
+      card.addEventListener('mouseenter', (e) => this.createRipple(e));
+      // Also remove ripples when mouse leaves to prevent lingering effects
+      card.addEventListener('mouseleave', (e) => this.removeExistingRipples(card));
+    });
+  }
+
+  createRipple(event) {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    
+    // Calculate mouse position relative to the card
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // Remove any existing ripples first
+    this.removeExistingRipples(card);
+
+    // Create only one ripple ring
+    this.createRippleRing(card, x, y, 'ripple-1', 0);
+  }
+
+  createRippleRing(card, x, y, className, delay = 0) {
+    setTimeout(() => {
+      const ripple = document.createElement('div');
+      ripple.className = `ripple ${className}`;
+      
+      // Position the ripple at mouse coordinates
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      ripple.style.transform = 'translate(-50%, -50%)';
+      
+      card.appendChild(ripple);
+
+      // Remove the ripple after animation completes (reduced to match shorter animation)
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 1500); // Reduced from 1800 to 1500 to match new animation duration
+    }, delay);
+  }
+
+  removeExistingRipples(card) {
+    const existingRipples = card.querySelectorAll('.ripple, .glow-ripple');
+    existingRipples.forEach(ripple => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    });
+  }
+}
+
+// Initialize the ripple effect when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new RippleEffect();
+});
+
+// For dynamic content, you can also call this function
+function initializeRippleEffect() {
+  new RippleEffect();
+}

@@ -182,6 +182,7 @@ h6 {
   text-transform: capitalize;
   font-family: "industry", lato, sans-serif;
   font-weight: lighter !important;
+  position: relative; /* Make sure this is here for proper positioning context */
 }
 
 .header .navbar a:hover {
@@ -192,7 +193,7 @@ h6 {
 .header .navbar a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0; /* Changed from -5px to 0 */
   left: 0;
   width: 0;
   height: 2px;
@@ -1374,19 +1375,91 @@ h6 {
 .product-card {
   background-color: var(--bg2);
   border-radius: var(--border-radius);
-  overflow: hidden;
+  overflow: hidden; /* This ensures ripples stay within card boundaries */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
   height: 100%;
   border: 1px solid #333;
+  position: relative; /* Ensure positioning context for ripples */
 }
 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
+
+/* Ripple effect styles */
+.product-card .ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0; /* Stay behind images */
+  opacity: 0;
+  /* Ensure the ripple doesn't extend outside its container */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.product-card .ripple-1 {
+  border: 1px solid var(--main-color);
+  box-shadow: 0 0 20px rgba(198, 150, 92, 0.15), /* Reduced opacity even more */
+              inset 0 0 20px rgba(198, 150, 92, 0.08); /* Reduced opacity even more */
+  animation: ripple-expand 1.5s ease-out; /* Shortened duration from 1.8s to 1.5s */
+}
+
+@keyframes ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    border-width: 2px; /* Start with thicker border */
+  }
+  30% {
+    opacity: 0.25; /* Fade much faster */
+    border-width: 1px; /* Reduce border thickness as it grows */
+  }
+  60% {
+    opacity: 0.1; /* Almost invisible by 60% */
+    border-width: 0.5px; /* Very thin border */
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+    border-width: 0px; /* No border at the end */
+  }
+}
+
+/* Alternative glow ripple effect */
+.product-card .glow-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(198, 150, 92, 0.15) 0%, /* Reduced opacity from 0.3 to 0.15 */
+    rgba(198, 150, 92, 0.05) 50%, /* Reduced opacity from 0.1 to 0.05 */
+    transparent 70%);
+  pointer-events: none;
+  z-index: 0; /* Changed from 1 to 0 */
+  animation: glow-ripple-expand 1.5s ease-out; /* Increased duration */
+}
+
+@keyframes glow-ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    width: 500px; /* Increased from 300px to 500px */
+    height: 500px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 
 .product-image-container {
   position: relative;
@@ -1397,6 +1470,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .product-image-container::before {
@@ -1415,12 +1489,10 @@ h6 {
   object-fit: cover;
   transition: transform 0.3s ease;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
-.product-card:hover .product-img {
-  transform: scale(1.05);
-}
+
 
 /* Product Badges */
 .product-badge {
@@ -1453,6 +1525,8 @@ h6 {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .product-name {
