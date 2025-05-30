@@ -783,3 +783,117 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeRippleEffect() {
   new RippleEffect();
 }
+
+
+/**
+ * Sets up active navigation state indicators.
+ * Adds visual indicators (underline and color change) to navigation items
+ * that correspond to the current page.
+ * 
+ * @function setupActiveNavigation
+ * @returns {void}
+ */
+function setupActiveNavigation() {
+  console.log('Setting up active navigation indicators');
+  
+  // Get current page info
+  const currentPath = window.location.pathname;
+  const currentPage = currentPath.split('/').pop() || 'index.html';
+  const currentHash = window.location.hash;
+  
+  console.log('Current page:', currentPage, 'Hash:', currentHash);
+  
+  // Get all navigation links in header and footer, but exclude logos and quote buttons
+  const navLinks = document.querySelectorAll('nav a:not(.logo):not(.quote-btn), header a:not(.logo):not(.quote-btn), footer a:not(.logo):not(.quote-btn)');
+  
+  if (navLinks.length === 0) {
+    console.log('No navigation links found');
+    return;
+  }
+  
+  console.log(`Found ${navLinks.length} navigation links`);
+  
+  // Remove existing active states
+  navLinks.forEach(link => {
+    link.classList.remove('nav-active');
+    link.style.removeProperty('border-bottom');
+    link.style.removeProperty('color');
+  });
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    
+    // Skip if this is a logo link, quote button, or other special elements
+    if (link.classList.contains('logo') || 
+        link.classList.contains('quote-btn') ||
+        link.querySelector('img') || 
+        link.querySelector('.logo') ||
+        link.textContent.toLowerCase().includes('logo') ||
+        link.textContent.toLowerCase().includes('quote') ||
+        link.id === 'logo') {
+      return;
+    }
+    
+    let isActive = false;
+    
+    // Check for exact page matches
+    if (href === currentPage) {
+      isActive = true;
+    }
+    // Check for index/home page variations
+    else if ((currentPage === 'index.html' || currentPage === '') && 
+             (href === '/' || href === 'index.html' || href === './index.html')) {
+      isActive = true;
+    }
+    // Check for anchor links on current page
+    else if (href.startsWith('#') && currentHash === href) {
+      isActive = true;
+    }
+    // Check for relative paths
+    else if (href.includes('/') && href.endsWith(currentPage)) {
+      isActive = true;
+    }
+    // Check if link text matches page name (without extension)
+    else {
+      const linkText = link.textContent.toLowerCase().trim();
+      const pageNameOnly = currentPage.replace('.html', '').toLowerCase();
+      if (linkText === pageNameOnly) {
+        isActive = true;
+      }
+    }
+    
+    if (isActive) {
+      console.log('Setting active state for:', link.textContent, 'href:', href);
+      
+      // Add active class
+      link.classList.add('nav-active');
+      
+      // Apply active styling
+      link.style.borderBottom = '2px solid var(--main-color, #f39c12)';
+      link.style.color = 'var(--main-color, #f39c12)';
+      link.style.fontWeight = 'bold';
+    }
+  });
+  
+  // Add CSS for smooth transitions if not already present
+  if (!document.querySelector('#nav-active-styles')) {
+    const style = document.createElement('style');
+    style.id = 'nav-active-styles';
+    style.textContent = `
+      nav a:not(.logo):not(.quote-btn), header a:not(.logo):not(.quote-btn), footer a:not(.logo):not(.quote-btn) {
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+      }
+      .nav-active {
+        position: relative;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+// Initialize active navigation on page load
+document.addEventListener('DOMContentLoaded', setupActiveNavigation);
+
+// Also update active state when hash changes (for anchor links)
+window.addEventListener('hashchange', setupActiveNavigation);
