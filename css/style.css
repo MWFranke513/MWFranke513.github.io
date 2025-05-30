@@ -268,6 +268,70 @@ h6 {
   color: var(--main-color);
 }
 
+
+/* Add this to your CSS file - Mobile Navbar Styles */
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block !important;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 7%;
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background: var(--bg2);
+    width: 30rem;
+    height: calc(100vh - 9.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+  }
+
+  .header .navbar.active {
+    right: 0;
+  }
+
+  .header .navbar a {
+    color: #fff;
+    display: block;
+    margin: 0;
+    padding: 1.5rem 2rem;
+    font-size: 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+  }
+
+  .header .navbar a:hover {
+    background: rgba(198, 150, 92, 0.1);
+  }
+
+  .header .icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Ensure search form doesn't interfere */
+  .header .search-form {
+    width: 90%;
+    right: 5%;
+  }
+}
+
 /* ========== PAGE SECTIONS ========== */
 
 /* Home Section */
@@ -3559,7 +3623,7 @@ input[type="number"]::-webkit-outer-spin-button {
           overflow: hidden;
             }
 
-            .footer::before {
+        .footer::before {
           content: '';
           position: absolute;
           top: 0;
@@ -3846,151 +3910,312 @@ input[type="number"]::-webkit-outer-spin-button {
           font-weight: 500;
             }
 
-            /* Responsive Design */
-            @media (max-width: 968px) {
-          .footer-content {
-              grid-template-columns: 1fr;
-              gap: 2.5rem;
-              text-align: center;
-          }
+/* Responsive Design - Improved Mobile Footer */
+@media (max-width: 968px) {
+  .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+  }
+  
+  .nav-links {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+  }
+  
+  .social-links {
+      justify-content: center;
+      gap: 1rem;
+  }
+  
+  .footer-logo {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+  }
+  
+  .footer-tagline {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+  }
+  
+  .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+  }
+  
+  .nav-links a {
+      font-size: 1.1rem;
+      padding: 0.4rem 0.2rem;
+  }
+  
+  .contact-item {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+  }
+  
+  .footer-legal a {
+      font-size: 0.95rem;
+  }
+  
+  .privacy-link {
+      font-size: 0.95rem;
+  }
+  
+  .footer-copyright {
+      font-size: 0.95rem;
+  }
+  
+  .made-by {
+      font-size: 0.95rem;
+  }
+}
 
-          .nav-links {
-              grid-template-columns: repeat(3, 1fr);
-          }
+@media (max-width: 768px) {
+  .footer {
+      padding: 2.5rem 1rem 1rem;
+  }
+  
+  .footer-header {
+      margin-bottom: 2rem;
+  }
+  
+  .footer-content {
+      gap: 1.8rem;
+  }
+  
+  .nav-links {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem 0.4rem;
+  }
+  
+  .nav-links a {
+      font-size: 1rem;
+      padding: 0.3rem 0.1rem;
+  }
+  
+  .social-links {
+      gap: 0.8rem;
+  }
+  
+  .social-links a {
+      width: 36px;
+      height: 36px;
+      font-size: 1.1rem;
+  }
+  
+  .footer-bottom {
+      margin-top: 1.5rem;
+      gap: 1rem;
+  }
+  
+  .footer-legal {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+  }
+  
+  .footer-legal a {
+      font-size: 0.9rem;
+  }
+  
+  .privacy-choices {
+      margin: 0.8rem 0;
+  }
+  
+  .privacy-link {
+      font-size: 0.9rem;
+  }
+  
+  .copyright-main {
+      flex-direction: column;
+      gap: 0.4rem;
+      align-items: center;
+  }
+  
+  .copyright-main span,
+  .copyright-main a {
+      font-size: 0.85rem;
+  }
+  
+  .helcim-logo {
+      width: 16px;
+      height: 16px;
+  }
+  
+  .footer-logo {
+      font-size: 2rem;
+  }
+  
+  .footer-tagline {
+      font-size: 1rem;
+  }
+  
+  .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+  }
+  
+  .contact-item {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+  }
+  
+  .contact-item i {
+      font-size: 1rem;
+      margin-right: 0.5rem;
+  }
+  
+  .made-by {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+  }
+}
 
-          .social-links {
-              justify-content: center;
-          }
+@media (max-width: 480px) {
+  .footer {
+      padding: 2rem 0.8rem 0.8rem;
+  }
+  
+  .footer-header {
+      margin-bottom: 1.5rem;
+  }
+  
+  .footer-content {
+      gap: 1.5rem;
+  }
+  
+  .footer-logo {
+      font-size: 1.8rem;
+  }
+  
+  .footer-tagline {
+      font-size: 0.95rem;
+      line-height: 1.3;
+  }
+  
+  .footer-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+  }
+  
+  .nav-links {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+  }
+  
+  .nav-links a {
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+  }
+  
+  .social-links {
+      gap: 0.7rem;
+  }
+  
+  .social-links a {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+  }
+  
+  .contact-item {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .contact-item i {
+      font-size: 0.9rem;
+      margin-right: 0.4rem;
+      min-width: 16px;
+  }
+  
+  .footer-bottom {
+      margin-top: 1.2rem;
+      gap: 0.8rem;
+  }
+  
+  .footer-legal {
+      gap: 0.5rem;
+  }
+  
+  .footer-legal a {
+      font-size: 0.85rem;
+  }
+  
+  .privacy-choices {
+      margin: 0.6rem 0;
+  }
+  
+  .privacy-link {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+  }
+  
+  .privacy-icon {
+      width: 12px;
+      height: 12px;
+  }
+  
+  .copyright-main span,
+  .copyright-main a {
+      font-size: 0.8rem;
+      line-height: 1.3;
+  }
+  
+  .helcim-logo {
+      width: 14px;
+      height: 14px;
+  }
+  
+  .made-by {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+  }
+}
 
-          .footer-logo {
-              font-size: 2.5rem;
-          }
-
-          .footer-tagline {
-              font-size: 1.3rem;
-          }
-
-          .footer-section h3 {
-              font-size: 1.5rem;
-          }
-
-          .nav-links a {
-              font-size: 1.3rem;
-          }
-
-          .contact-item {
-              font-size: 1.2rem;
-          }
-
-          .footer-legal a {
-              font-size: 1.1rem;
-          }
-
-          .privacy-link {
-              font-size: 1.1rem;
-          }
-
-          .footer-copyright {
-              font-size: 1.1rem;
-          }
-
-          .made-by {
-              font-size: 1.1rem;
-          }
-            }
-
-            @media (max-width: 768px) {
-          .footer {
-              padding: 3rem 1.5rem 1.5rem;
-          }
-
-          .nav-links {
-              grid-template-columns: repeat(2, 1fr);
-          }
-
-          .footer-legal {
-              flex-direction: column;
-              align-items: center;
-              gap: 0.8rem;
-          }
-
-          .copyright-main {
-              flex-direction: column;
-              gap: 0.3rem;
-          }
-
-          .footer-logo {
-              font-size: 2.2rem;
-          }
-
-          .footer-tagline {
-              font-size: 1.2rem;
-          }
-
-          .footer-section h3 {
-              font-size: 1.4rem;
-          }
-
-          .nav-links a {
-              font-size: 1.2rem;
-          }
-
-          .contact-item {
-              font-size: 1.2rem;
-          }
-
-          .contact-item i {
-              font-size: 1.3rem;
-          }
-            }
-
-            @media (max-width: 480px) {
-          .footer-logo {
-              font-size: 2rem;
-          }
-
-          .footer-tagline {
-              font-size: 1.2rem;
-          }
-
-          .footer-section h3 {
-              font-size: 1.3rem;
-          }
-
-          .nav-links {
-              grid-template-columns: 1fr;
-          }
-
-          .nav-links a {
-              font-size: 1.2rem;
-          }
-
-          .social-links a {
-              width: 40px;
-              height: 40px;
-              font-size: 1.3rem;
-          }
-
-          .contact-item {
-              font-size: 1.2rem;
-          }
-
-          .footer-legal a {
-              font-size: 1.2rem;
-          }
-
-          .privacy-link {
-              font-size: 1.2rem;
-          }
-
-          .footer-copyright {
-              font-size: 1.2rem;
-          }
-
-          .made-by {
-              font-size: 1.2rem;
-          }
-            }
+/* Additional improvements for very small screens */
+@media (max-width: 360px) {
+  .footer {
+      padding: 1.5rem 0.6rem 0.6rem;
+  }
+  
+  .footer-logo {
+      font-size: 1.6rem;
+  }
+  
+  .footer-tagline {
+      font-size: 0.9rem;
+  }
+  
+  .footer-section h3 {
+      font-size: 1rem;
+  }
+  
+  .nav-links a {
+      font-size: 0.9rem;
+  }
+  
+  .contact-item {
+      font-size: 0.85rem;
+  }
+  
+  .footer-legal a,
+  .privacy-link {
+      font-size: 0.8rem;
+  }
+  
+  .copyright-main span,
+  .copyright-main a,
+  .made-by {
+      font-size: 0.75rem;
+  }
+}
 
 /* Accessibility/UX improvements for font and button sizes in media queries */
 
