@@ -1128,7 +1128,8 @@ h6 {
 /* Products Section - Dark Theme */
 .products {
   padding: 120px 20px 60px;
-  color: #e0e0e0; /* Light text */
+  color: #e0e0e0;
+  background-color: #121212;
 }
 
 .container {
@@ -1250,7 +1251,7 @@ h6 {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: rgba(30, 30, 30, 0.9);
+  background-color: rgba(30, 30, 30, 0.95);
   color: white;
   padding: 12px 20px;
   border-radius: 4px;
@@ -1364,7 +1365,7 @@ h6 {
 /* Product Grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
   max-width: 1400px;
@@ -1460,7 +1461,6 @@ h6 {
   }
 }
 
-
 .product-image-container {
   position: relative;
   overflow: hidden;
@@ -1492,7 +1492,31 @@ h6 {
   z-index: 3;
 }
 
+/* Share Button */
+.share-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  color: #e0e0e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 4;
+  font-size: 14px;
+}
 
+.share-btn:hover {
+  background-color: var(--main-color);
+  color: white;
+  transform: scale(1.1);
+}
 
 /* Product Badges */
 .product-badge {
@@ -1514,6 +1538,43 @@ h6 {
 
 .sale {
   background-color: #e74c3c;
+}
+
+/* Stock Status */
+.stock-status {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stock-status.in-stock {
+  background-color: rgba(46, 204, 113, 0.9);
+  color: white;
+}
+
+.stock-status.low-stock {
+  background-color: rgba(241, 196, 15, 0.9);
+  color: white;
+}
+
+.stock-status.out-of-stock {
+  background-color: rgba(231, 76, 60, 0.9);
+  color: white;
+}
+
+.stock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
 }
 
 .debug-border {
@@ -1572,6 +1633,67 @@ h6 {
 
 .attribution a:hover {
   text-decoration: underline;
+}
+
+/* Product Content Layout */
+.product-content {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+/* Quantity Counter */
+.quantity-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg3);
+  border-radius: var(--border-radius);
+  padding: 8px;
+  border: 1px solid #444;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+.quantity-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  color: #e0e0e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  transition: var(--transition);
+  border-radius: 4px;
+}
+
+.quantity-btn:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-btn:disabled:hover {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+.quantity-display {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--main-color);
+  padding: 8px 0;
+  min-width: 24px;
+  text-align: center;
 }
 
 .description {
@@ -1797,8 +1919,23 @@ h6 {
   }
   
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+  }
+  
+  .product-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quantity-control {
+    flex-direction: row;
+    align-self: flex-start;
+    min-width: auto;
+  }
+
+  .quantity-display {
+    padding: 0 12px;
   }
   
   .product-name {
@@ -2146,6 +2283,7 @@ h6 {
 .lazy-load.loaded {
   opacity: 1;
 }
+
 /* FAQ Section */
 .faq .heading {
   padding-bottom: 1rem;
