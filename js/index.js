@@ -129,6 +129,70 @@ document.addEventListener('DOMContentLoaded', function setupNavigationHandlers()
   });
 });
 
+
+// Footer dropdown functionality for mobile
+document.addEventListener('DOMContentLoaded', function() {
+  // Only initialize footer dropdowns on mobile screens
+  function initFooterDropdowns() {
+      if (window.innerWidth <= 768) {
+          const footerSections = document.querySelectorAll('.footer-section');
+          
+          footerSections.forEach(section => {
+              const header = section.querySelector('h3');
+              
+              if (header) {
+                  // Remove any existing click listeners
+                  header.removeEventListener('click', toggleDropdown);
+                  
+                  // Add click listener
+                  header.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      toggleDropdown.call(this, section);
+                  });
+              }
+          });
+      }
+  }
+  
+  // Toggle dropdown function
+  function toggleDropdown(section) {
+      const isActive = section.classList.contains('active');
+      
+      // Close all other dropdowns
+      document.querySelectorAll('.footer-section').forEach(otherSection => {
+          if (otherSection !== section) {
+              otherSection.classList.remove('active');
+          }
+      });
+      
+      // Toggle current dropdown
+      if (isActive) {
+          section.classList.remove('active');
+      } else {
+          section.classList.add('active');
+      }
+  }
+  
+  // Initialize on page load
+  initFooterDropdowns();
+  
+  // Re-initialize on window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+          // Remove active states when switching to desktop
+          if (window.innerWidth > 768) {
+              document.querySelectorAll('.footer-section').forEach(section => {
+                  section.classList.remove('active');
+              });
+          } else {
+              initFooterDropdowns();
+          }
+      }, 250);
+  });
+});
+
 // Navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.querySelector('#menu-btn');
