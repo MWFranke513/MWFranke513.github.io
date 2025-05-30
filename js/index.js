@@ -876,12 +876,14 @@ function setupActiveNavigation() {
     }
   });
   
-  // Add CSS for smooth transitions if not already present
+  // Add CSS for smooth transitions if not already present, excluding quote buttons
   if (!document.querySelector('#nav-active-styles')) {
     const style = document.createElement('style');
     style.id = 'nav-active-styles';
     style.textContent = `
-      nav a:not(.logo):not(.quote-btn), header a:not(.logo):not(.quote-btn), footer a:not(.logo):not(.quote-btn) {
+      nav a:not(.logo):not(.quote-btn):not([class*="btn"]), 
+      header a:not(.logo):not(.quote-btn):not([class*="btn"]), 
+      footer a:not(.logo):not(.quote-btn):not([class*="btn"]) {
         transition: color 0.3s ease, border-bottom 0.3s ease;
       }
       .nav-active {
