@@ -666,7 +666,7 @@ h6 {
             /* Attribution */
             .featured-attribution {
           color: #acacac;
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           margin-bottom: 2rem;
           line-height: 1.4;
             }
@@ -738,7 +738,7 @@ h6 {
           }
 
           .featured-products .heading {
-              font-size: 2.8rem;
+              font-size: 3.2rem;
           }
 
           .section-subtitle {
@@ -755,7 +755,7 @@ h6 {
           }
 
           .featured-product-name {
-              font-size: 1.6rem;
+              font-size: 24px;
           }
 
           /* Responsive adjustments for stock status positioning */
@@ -781,7 +781,7 @@ h6 {
           }
 
           .featured-products .heading {
-              font-size: 2.4rem;
+              font-size: 3.2rem;
           }
 
           .featured-product-badge {
@@ -1176,13 +1176,13 @@ h6 {
             padding: 1.1rem 1.7rem;
           }
           .stat-number {
-            font-size: 2.1rem;
+            font-size: 2.5rem;
           }
           .profile-name {
             font-size: 1.3rem;
           }
           .profile-title {
-            font-size: 1.1rem;
+            font-size: 2rem;
           }
         }
 
@@ -1215,13 +1215,13 @@ h6 {
             padding: 1rem 1.2rem;
           }
           .stat-number {
-            font-size: 1.2rem;
+            font-size: 2.1rem;
           }
           .profile-name {
             font-size: 1.1rem;
           }
           .profile-title {
-            font-size: 1rem;
+            font-size: 2rem;
           }
 
           .about p {
@@ -2258,47 +2258,47 @@ h6 {
 /* Media Queries for Products Section */
 @media (max-width: 991px) {
   .title {
-    font-size: 2rem;
+    font-size: 28px;
   }
   
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 14px;
   }
   
   .filter-label {
-    font-size: 1.4rem;
+    font-size: 14px;
   }
   
   .filter-btn {
-    font-size: 1.4rem;
+    font-size: 14px;
     padding: 12px 12px;
     min-height: 40px;
   }
   
   .sort-select {
-    font-size: 1.4rem;
+    font-size: 14px;
     padding: 12px 12px;
     min-height: 40px;
   }
   
   .product-name {
-    font-size: 2.5rem;
+    font-size: 24px;
   }
   
   .price {
-    font-size: 2rem;
+    font-size: 18px;
   }
   
   .ea {
-    font-size: 1.5rem;
+    font-size: 12px;
   }
   
   .shipping {
-    font-size: 1.4rem;
+    font-size: 14px;
   }
   
   .attribution {
-    font-size: 1.4rem;
+    font-size: 13px;
   }
   
   .description {
@@ -2306,33 +2306,33 @@ h6 {
   }
   
   .cart-btn, .order-btn {
-    font-size: 1.8rem;
+    font-size: 16px;
     padding: 12px 16px;
     min-height: 48px;
   }
   
   .page-link {
-    font-size: 1.3rem;
+    font-size: 14px;
     min-width: 44px;
     min-height: 44px;
   }
   
   .toast, .toast-notification {
-    font-size: 1.3rem;
+    font-size: 14px;
   }
   
   .modal-content {
-    font-size: 1.5rem;
+    font-size: 16px;
   }
   
   .close-btn {
-    font-size: 2.2rem;
+    font-size: 24px;
     min-width: 44px;
     min-height: 44px;
   }
   
   .product-badge {
-    font-size: 1.1rem;
+    font-size: 12px;
     padding: 6px 10px;
   }
 }
@@ -2343,25 +2343,25 @@ h6 {
   }
   
   .title {
-    font-size: 2rem;
+    font-size: 26px;
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 14px;
   }
   
   .filter-label {
-    font-size: 1.3rem;
+    font-size: 14px;
   }
   
   .filter-btn {
-    font-size: 1.3rem;
+    font-size: 13px;
     padding: 11px 15px;
     min-height: 44px;
   }
   
   .sort-select {
-    font-size: 1.3rem;
+    font-size: 13px;
     padding: 11px 15px;
     min-height: 44px;
   }
@@ -2396,23 +2396,23 @@ h6 {
   }
   
   .product-name {
-    font-size: 2rem;
+    font-size: 24px;
   }
   
   .price {
-    font-size: 1.8rem;
+    font-size: 17px;
   }
   
   .ea {
-    font-size: 1.2rem;
+    font-size: 12px;
   }
   
   .shipping {
-    font-size: 1.2rem;
+    font-size: 13px;
   }
   
   .attribution {
-    font-size: 1.2rem;
+    font-size: 13px;
   }
   
   .description {
@@ -2420,7 +2420,7 @@ h6 {
   }
   
   .cart-btn, .order-btn {
-    font-size: 1.8rem;
+    font-size: 15px;
     padding: 11px 15px;
     min-height: 44px;
   }
@@ -2434,133 +2434,133 @@ h6 {
   }
   
   .page-link {
-    font-size: 1.2rem;
+    font-size: 12px;
     min-width: 40px;
     min-height: 40px;
   }
   
   .toast, .toast-notification {
-    font-size: 1.2rem;
+    font-size: 13px;
   }
   
   .modal-content {
-    font-size: 1.4rem;
+    font-size: 15px;
   }
   
   .close-btn {
-    font-size: 2rem;
+    font-size: 22px;
     min-width: 40px;
     min-height: 40px;
   }
   
   .product-badge {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 6px 8px;
   }
 }
 
 @media (max-width: 600px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 24px;
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 13px;
   }
   
   .filter-label {
-    font-size: 1.2rem;
+    font-size: 13px;
   }
   
   .filter-btn {
-    font-size: 1.2rem;
+    font-size: 12px;
     padding: 10px 14px;
     min-height: 40px;
   }
   
   .sort-select {
-    font-size: 1.2rem;
+    font-size: 12px;
     padding: 10px 14px;
     min-height: 40px;
   }
   
   .product-name {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
   
   .price {
-    font-size: 1.7rem;
+    font-size: 16px;
   }
   
   .ea {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .shipping {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .attribution {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .description {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .cart-btn, .order-btn {
-    font-size: 1.2rem;
+    font-size: 14px;
     padding: 10px 14px;
     min-height: 40px;
   }
   
   .page-link {
-    font-size: 1.1rem;
+    font-size: 12px;
     min-width: 38px;
     min-height: 38px;
   }
   
   .toast, .toast-notification {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .modal-content {
-    font-size: 1.3rem;
+    font-size: 14px;
   }
   
   .close-btn {
-    font-size: 1.8rem;
+    font-size: 20px;
     min-width: 38px;
     min-height: 38px;
   }
   
   .product-badge {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 5px 7px;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.6rem;
+    font-size: 22px;
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 13px;
   }
   
   .filter-label {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .filter-btn {
-    font-size: 1.1rem;
+    font-size: 12px;
     padding: 9px 12px;
     min-height: 38px;
   }
   
   .sort-select {
-    font-size: 1.1rem;
+    font-size: 12px;
     padding: 9px 12px;
     min-height: 38px;
   }
@@ -2577,150 +2577,150 @@ h6 {
   .filter-btn {
     flex: 1;
     text-align: center;
-    font-size: 1rem;
+    font-size: 12px;
     padding: 9px 10px;
     min-height: 38px;
   }
   
   .sort-select {
     width: 100%;
-    font-size: 1rem;
+    font-size: 12px;
     min-height: 38px;
   }
   
   .product-name {
-    font-size: 1.4rem;
+    font-size: 24px;
   }
   
   .price {
-    font-size: 1.6rem;
+    font-size: 15px;
   }
   
   .ea {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .shipping {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .attribution {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .description {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .cart-btn, .order-btn {
-    font-size: 1.1rem;
+    font-size: 13px;
     padding: 9px 12px;
     min-height: 38px;
   }
   
   .page-link {
-    font-size: 1rem;
+    font-size: 12px;
     min-width: 36px;
     min-height: 36px;
   }
   
   .toast, .toast-notification {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .modal-content {
-    font-size: 1.2rem;
+    font-size: 13px;
   }
   
   .close-btn {
-    font-size: 1.6rem;
+    font-size: 18px;
     min-width: 36px;
     min-height: 36px;
   }
   
   .product-badge {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 4px 6px;
   }
 }
 
 @media (max-width: 450px) {
   .title {
-    font-size: 1.5rem;
+    font-size: 20px;
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .filter-label {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .filter-btn {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 8px 10px;
     min-height: 36px;
   }
   
   .sort-select {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 8px 10px;
     min-height: 36px;
   }
   
   .product-name {
-    font-size: 1.3rem;
+    font-size: 24px;
   }
   
   .price {
-    font-size: 1.5rem;
+    font-size: 14px;
   }
   
   .ea {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .shipping {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .attribution {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .description {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .cart-btn, .order-btn {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 8px 10px;
     min-height: 36px;
   }
   
   .page-link {
-    font-size: 1rem;
+    font-size: 12px;
     min-width: 34px;
     min-height: 34px;
   }
   
   .toast, .toast-notification {
-    font-size: 1rem;
+    font-size: 12px;
   }
   
   .modal-content {
-    font-size: 1.1rem;
+    font-size: 12px;
   }
   
   .close-btn {
-    font-size: 1.5rem;
+    font-size: 16px;
     min-width: 34px;
     min-height: 34px;
   }
   
   .product-badge {
-    font-size: 1rem;
+    font-size: 12px;
     padding: 4px 5px;
   }
 }
@@ -3584,8 +3584,8 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Responsive design */
 @media (max-width: 768px) {
   .carousel-slide {
-      width: 200px;
-      height: 300px;
+      width: 300px;
+      height: 400px;
   }
   
   @keyframes scroll {
@@ -3600,8 +3600,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 480px) {
   .carousel-slide {
-      width: 160px;
-      height: 240px;
+      width: 250px;
+      height: 350px;
   }
   
   @keyframes scroll {
@@ -3939,7 +3939,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-section h3 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 1.2rem;
   }
   
@@ -3954,7 +3954,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-legal a {
-      font-size: 1.2rem;
+      font-size: 12px;
   }
   
   .privacy-link {
@@ -4150,7 +4150,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-legal a {
-      font-size: 1.3rem;
+      font-size: 11px;
       padding: 0.8rem 1.2rem;
       background: rgba(198, 150, 92, 0.1);
       border-radius: 8px;
@@ -4224,7 +4224,8 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .social-section h3 {
-      font-size: 1.3rem !important;
+      font-size: 12px !important;
+      margin: 0 0 22px 0 !important;
   }
   
   .nav-links a {
@@ -4263,10 +4264,14 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-legal a {
-      font-size: 1.1rem;
+      font-size: 10px;
       padding: 0.6rem 0.8rem;
       flex: 1 1 auto;
       min-width: 0;
+  }
+
+  .footer-section h3 {
+    font-size: 12px;
   }
   
   .privacy-choices {
@@ -4321,6 +4326,10 @@ input[type="number"]::-webkit-outer-spin-button {
   
   .social-section h3 {
       font-size: 1.2rem !important;
+  }
+
+  .footer-section h3 {
+    font-size: 12px;
   }
   
   .nav-links a {
@@ -4418,13 +4427,13 @@ input[type="number"]::-webkit-outer-spin-button {
   .form-control,
   .form-input,
   select.form-control {
-    font-size: 1.1rem;
+    font-size: 12px;
     min-height: 44px;
     padding: 1.1rem 1.2rem;
   }
   .filter-btn,
   .sort-select {
-    font-size: 1rem;
+    font-size: 12px;
     min-height: 40px;
     padding: 9px 14px;
   }
@@ -4434,11 +4443,8 @@ input[type="number"]::-webkit-outer-spin-button {
   .service-check span {
     font-size: 1.5rem;
   }
-  .product-name {
-    font-size: 1.1rem;
-  }
   .page-link {
-    font-size: 1.1rem;
+    font-size: 12px;
     min-width: 40px;
     min-height: 40px;
   }
@@ -4461,13 +4467,13 @@ input[type="number"]::-webkit-outer-spin-button {
   .form-control,
   .form-input,
   select.form-control {
-    font-size: 1rem;
+    font-size: 12px;
     min-height: 40px;
     padding: 1rem 1rem;
   }
   .filter-btn,
   .sort-select {
-    font-size: 0.95rem;
+    font-size: 12px;
     min-height: 38px;
     padding: 8px 10px;
   }
@@ -4479,32 +4485,32 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 52%;
   }
   .heading {
-    font-size: 2.2rem;
+    font-size: 3.2rem;
   }
   .btn,
   .submit-btn,
   .order-btn,
   .cart-btn,
   .form-submit {
-    font-size: 1.3rem;
-    padding: 0.9rem 1.5rem;
+    font-size: 1.5rem;
+    padding: 1.2rem 1.5rem;
     min-height: 38px;
   }
   .form-control,
   .form-input,
   select.form-control {
-    font-size: 0.95rem;
+    font-size: 12px;
     min-height: 38px;
     padding: 0.9rem 0.8rem;
   }
   .filter-btn,
   .sort-select {
-    font-size: 0.9rem;
+    font-size: 12px;
     min-height: 36px;
     padding: 7px 7px;
   }
   .page-link {
-    font-size: 1rem;
+    font-size: 12px;
     min-width: 36px;
     min-height: 36px;
   }
@@ -4520,14 +4526,14 @@ input[type="number"]::-webkit-outer-spin-button {
   .order-btn,
   .cart-btn,
   .form-submit {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.2rem;
+    font-size: 1.5rem;
+    padding: 1.2rem 1.5rem;
     min-height: 36px;
   }
   .form-control,
   .form-input,
   select.form-control {
-    font-size: 0.9rem;
+    font-size: 12px;
     min-height: 36px;
     padding: 0.8rem 0.7rem;
   }
@@ -4538,7 +4544,7 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 6px 5px;
   }
   .page-link {
-    font-size: 0.95rem;
+    font-size: 12px;
     min-width: 34px;
     min-height: 34px;
   }
