@@ -109,6 +109,10 @@ h6 {
   margin-top: 10rem;
 }
 
+.with-subtitle {
+  padding-bottom: 12px !important;
+}
+
 .sub-heading {
   text-align: center;
   color: #fff;
@@ -424,7 +428,7 @@ h6 {
         /* Section subtitle */
         .section-subtitle {
           text-align: center;
-          font-size: 1.25rem;
+          font-size: 12px;
           color: var(--light-text);
           margin-bottom: 5rem;
           max-width: 600px;
@@ -505,7 +509,7 @@ h6 {
             text-align: center;
             margin-bottom: 4rem;
             color: var(--light-text);
-            font-size: 1.6rem;
+            font-size: 12px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -743,7 +747,7 @@ h6 {
 
           .section-subtitle {
               font-size: 1.4rem;
-              margin-bottom: 3rem;
+              margin-bottom: 5rem;
           }
 
           .featured-product-image-container {
@@ -897,7 +901,8 @@ h6 {
           align-items: center;
           gap: 0.75rem;
           padding: 1.2rem 2.2rem;
-          background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+          background-image: linear-gradient(to right, var(--main-color) 0%, var(--light-accent) 51%, var(--accent-color) 100%);
+          background-size: 200% auto;
           color: var(--light-text);
           text-decoration: none;
           border-radius: 12px;
@@ -913,7 +918,7 @@ h6 {
         .cta-button:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(198, 150, 92, 0.4);
-          background: linear-gradient(135deg, var(--accent-color) 0%, var(--main-color) 100%);
+          background-position: right center;
         }
 
         /* Owner Section - Completely Redesigned */
@@ -1156,6 +1161,7 @@ h6 {
 
           .heading {
             font-size: 2.5rem;
+            /* padding-bottom: 3.2vw; */
           }
           .mvp-title {
             font-size: 3rem;
@@ -1375,7 +1381,7 @@ h6 {
 }
 
 .services-description {
-  font-size: 1.8rem;
+  font-size: 12px;
   color: #ccc;
   max-width: 800px;
   margin: 0 auto 2rem;
@@ -2837,6 +2843,10 @@ h6 {
   color: var(--main-color);
 }
 
+.terms .heading {
+  margin-top: 16rem;
+}
+
 .terms p {
   color: white;
   font-size: 1.5rem;
@@ -3593,7 +3603,7 @@ input[type="number"]::-webkit-outer-spin-button {
           transform: translateX(0);
       }
       100% {
-          transform: translateX(calc(-200px * 7 - 2rem * 7));
+          transform: translateX(calc(-300px * 7 - 2rem * 7));
       }
   }
 }
@@ -3609,7 +3619,7 @@ input[type="number"]::-webkit-outer-spin-button {
           transform: translateX(0);
       }
       100% {
-          transform: translateX(calc(-160px * 7 - 2rem * 7));
+          transform: translateX(calc(-250px * 7 - 2rem * 7));
       }
   }
 }
@@ -3995,7 +4005,7 @@ input[type="number"]::-webkit-outer-spin-button {
       justify-content: center;
       gap: 0.5rem;
       padding: 1rem;
-      background: rgba(198, 150, 92, 0.1);
+      border-bottom: 1px solid rgba(198, 150, 92, 0.2);
       border-radius: 8px;
       transition: all 0.3s ease;
       margin-bottom: 0;
@@ -4168,7 +4178,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .copyright-main {
-      flex-direction: column;
+      flex-direction: row;
       gap: 0.8rem;
       align-items: center;
   }

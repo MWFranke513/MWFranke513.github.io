@@ -30,9 +30,9 @@
     // Default configuration
     const defaults = {
         backgroundColor: 'rgba(26, 26, 26, 0.8)',
-        borderColor: '#d4b883',
-        iconColor: '#d4b883',
-        hoverBackgroundColor: '#d4b883',
+        borderColor: '#c6965c',
+        iconColor: '#e0bb8e',
+        hoverBackgroundColor: 'rgba(69, 69, 69, 0.8)',
         hoverIconColor: '#1a1a1a',
         scrollThreshold: 300,
         size: 50,
@@ -45,8 +45,8 @@
         const button = document.createElement('div');
         button.id = 'scrollToTopBtn';
         button.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="m18 15-6-6-6 6"/>
             </svg>
         `;
 
@@ -81,8 +81,8 @@
                 transform: translateY(-3px);
             }
             #scrollToTopBtn svg {
-                width: ${config.size * 0.4}px;
-                height: ${config.size * 0.4}px;
+                width: ${config.size * 0.5}px;
+                height: ${config.size * 0.5}px;
             }
         `;
         document.head.appendChild(style);

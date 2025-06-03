@@ -47,14 +47,14 @@
         }
         .cookie-text h3 {
             margin: 0 0 8px 0;
-            font-size: 1.1rem;
+            font-size: 16px;
             font-weight: 600;
             color: var(--main-color, #c6965c);
         }
         .cookie-text p {
             margin: 0 0 12px 0;
             line-height: 1.5;
-            font-size: 0.95rem;
+            font-size: 12px;
             color: var(--light-text, #f5f5f5);
         }
         .cookie-text a {
@@ -84,7 +84,7 @@
             border-radius: var(--border-radius, 8px);
             cursor: pointer;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 12px;
             transition: var(--transition, all 0.3s ease);
             min-width: 100px;
             position: relative;
@@ -122,7 +122,6 @@
             background: var(--bg3, #1d1a16);
             color: var(--main-color, #c6965c);
             border: 1px solid var(--main-color, #c6965c);
-            font-size: 0.85rem;
             padding: 8px 16px;
         }
         .cookie-btn.customize:hover:not(:disabled) {

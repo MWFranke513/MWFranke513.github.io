@@ -141,14 +141,42 @@ document.addEventListener('DOMContentLoaded', function() {
               const header = section.querySelector('h3');
               
               if (header) {
-                  // Remove any existing click listeners
+                  // Remove any existing listeners
                   header.removeEventListener('click', toggleDropdown);
+                  header.removeEventListener('touchstart', handleTouchStart);
+                  header.removeEventListener('touchend', handleTouchEnd);
                   
-                  // Add click listener
+                  // Add click listener for desktop/mouse
                   header.addEventListener('click', function(e) {
                       e.preventDefault();
                       toggleDropdown.call(this, section);
                   });
+                  
+                  // Add touch listeners for mobile devices
+                  let touchStartTime = 0;
+                  
+                  function handleTouchStart(e) {
+                      touchStartTime = Date.now();
+                  }
+                  
+                  function handleTouchEnd(e) {
+                      e.preventDefault();
+                      const touchDuration = Date.now() - touchStartTime;
+                      
+                      // Only trigger if it's a quick tap (not a long press or scroll)
+                      if (touchDuration < 500) {
+                          toggleDropdown.call(this, section);
+                      }
+                  }
+                  
+                  header.addEventListener('touchstart', handleTouchStart, { passive: true });
+                  header.addEventListener('touchend', handleTouchEnd);
+                  
+                  // Add visual feedback for touch
+                  header.style.cursor = 'pointer';
+                  header.style.userSelect = 'none';
+                  header.style.webkitUserSelect = 'none';
+                  header.style.webkitTouchCallout = 'none';
               }
           });
       }
@@ -486,6 +514,93 @@ function setupProductInteractions() {
     });
   }
   
+
+  // Add this function to your js/index.js file
+
+/**
+ * Changes the quantity of a product in the quantity control
+ * @param {HTMLElement} button - The quantity button that was clicked
+ * @param {number} change - The amount to change (1 or -1)
+ */
+function changeQuantity(button, change) {
+  const quantityControl = button.closest('.quantity-control');
+  const quantityDisplay = quantityControl.querySelector('.quantity-display');
+  const productCard = button.closest('.product-card');
+  
+  // Check if product is out of stock
+  const isOutOfStock = productCard.querySelector('.stock-status.out-of-stock');
+  if (isOutOfStock) {
+      return; // Don't allow quantity changes for out of stock items
+  }
+  
+  let currentQuantity = parseInt(quantityDisplay.textContent);
+  let newQuantity = currentQuantity + change;
+  
+  // Ensure quantity doesn't go below 1 or above a reasonable limit
+  if (newQuantity < 1) {
+      newQuantity = 1;
+  } else if (newQuantity > 99) {
+      newQuantity = 99;
+  }
+  
+  // Update the display
+  quantityDisplay.textContent = newQuantity;
+  
+  // Optional: Add visual feedback
+  quantityDisplay.style.transform = 'scale(1.1)';
+  setTimeout(() => {
+      quantityDisplay.style.transform = 'scale(1)';
+  }, 150);
+  
+  // Update any cart-related data if needed
+  updateQuantityControls(productCard, newQuantity);
+}
+
+/**
+* Updates the quantity controls styling and state
+* @param {HTMLElement} productCard - The product card element
+* @param {number} quantity - The current quantity
+*/
+function updateQuantityControls(productCard, quantity) {
+  const quantityButtons = productCard.querySelectorAll('.quantity-btn');
+  const minusButton = quantityButtons[1]; // Second button is minus
+  const plusButton = quantityButtons[0]; // First button is plus
+  
+  // Disable minus button if quantity is 1
+  if (quantity <= 1) {
+      minusButton.style.opacity = '0.5';
+      minusButton.style.cursor = 'not-allowed';
+  } else {
+      minusButton.style.opacity = '1';
+      minusButton.style.cursor = 'pointer';
+  }
+  
+  // Disable plus button if quantity is at max
+  if (quantity >= 99) {
+      plusButton.style.opacity = '0.5';
+      plusButton.style.cursor = 'not-allowed';
+  } else {
+      plusButton.style.opacity = '1';
+      plusButton.style.cursor = 'pointer';
+  }
+}
+
+// Initialize quantity controls when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all quantity controls
+  const productCards = document.querySelectorAll('.product-card');
+  productCards.forEach(card => {
+      const quantityDisplay = card.querySelector('.quantity-display');
+      if (quantityDisplay) {
+          const currentQuantity = parseInt(quantityDisplay.textContent);
+          updateQuantityControls(card, currentQuantity);
+      }
+  });
+  
+  // Your existing code...
+});
+
+
   // Pagination links
   const pageLinks = document.querySelectorAll('.page-link');
   if (pageLinks.length > 0) {

@@ -195,7 +195,7 @@ class ShoppingCart {
       .close-cart {
         background: none;
         border: none;
-        font-size: 24px;
+        font-size: 28px;
         cursor: pointer;
         color: #666;
       }
@@ -220,6 +220,7 @@ class ShoppingCart {
 
       .cart-item-title {
         font-weight: bold;
+        font-size: 14px;
       }
 
       .cart-item-price, .cart-item-quantity {
@@ -249,6 +250,7 @@ class ShoppingCart {
 
       .item-quantity {
         margin: 0 10px;
+        font-size: 14px;
       }
 
       .remove-item {
@@ -269,28 +271,47 @@ class ShoppingCart {
         justify-content: space-between;
         font-weight: bold;
         margin-bottom: 15px;
+        font-size: 14px;
       }
 
       .checkout-button {
-        background-color: #a17137;
+        background-image: linear-gradient(to right, var(--main-color) 0%, var(--light-accent) 51%, var(--accent-color) 100%);
         color: white;
+        box-shadow: 0 4px 15px rgba(198, 150, 92, 0.3);
         border: none;
         border-radius: 4px;
         padding: 10px;
         width: 100%;
         font-weight: bold;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: var(--transition);
       }
 
       .checkout-button:hover {
-        background-color: #c6965c;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(198, 150, 92, 0.4);
+        background-position: right center;
       }
 
       .empty-cart-message {
         text-align: center;
         padding: 20px;
         color: #666;
+        font-size: 12px;
+      }
+
+      .cart-item-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      .cart-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
       }
     `;
 
@@ -366,63 +387,69 @@ class ShoppingCart {
     }
   }
 
-  renderCartItems() {
-    const cartItemsEl = document.getElementById('cart-items');
-    if (!cartItemsEl) {
-      console.error('Cart items container not found');
-      return;
-    }
-    
-    cartItemsEl.innerHTML = '';
-
-    if (this.items.length === 0) {
-      cartItemsEl.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
-      return;
-    }
-
-    this.items.forEach((item, index) => {
-      const itemEl = document.createElement('div');
-      itemEl.className = 'cart-item';
-      itemEl.innerHTML = `
-        <div class="cart-item-details">
-          <div class="cart-item-title">${item.name}</div>
-          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-        </div>
-        <div class="cart-item-actions">
-          <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
-          <span class="item-quantity">${item.quantity}</span>
-          <button class="quantity-btn increase-btn" data-index="${index}">+</button>
-          <button class="remove-item" data-index="${index}">✕</button>
-        </div>
-      `;
-      cartItemsEl.appendChild(itemEl);
-    });
-
-    // Add event listeners for quantity buttons and remove buttons
-    document.querySelectorAll('.decrease-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = parseInt(e.target.getAttribute('data-index'));
-        this.decreaseQuantity(index);
-      });
-    });
-
-    document.querySelectorAll('.increase-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = parseInt(e.target.getAttribute('data-index'));
-        this.increaseQuantity(index);
-      });
-    });
-
-    document.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = parseInt(e.target.getAttribute('data-index'));
-        this.removeItem(index);
-      });
-    });
-
-    // Update total
-    this.updateCartTotal();
+// Update the renderCartItems method to include image display
+renderCartItems() {
+  const cartItemsEl = document.getElementById('cart-items');
+  if (!cartItemsEl) {
+    console.error('Cart items container not found');
+    return;
   }
+  
+  cartItemsEl.innerHTML = '';
+
+  if (this.items.length === 0) {
+    cartItemsEl.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+    return;
+  }
+
+  this.items.forEach((item, index) => {
+    const itemEl = document.createElement('div');
+    itemEl.className = 'cart-item';
+    itemEl.innerHTML = `
+      <div class="cart-item-image">
+        <img src="${item.image || 'images/placeholder.jpg'}" alt="${item.name}" onerror="this.src='images/placeholder.jpg'">
+      </div>
+      <div class="cart-item-details">
+        <div class="cart-item-title">${item.name}</div>
+        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+      </div>
+      <div class="cart-item-actions">
+        <div class="quantity-controls">
+          <button class="quantity-btn increase-btn" data-index="${index}">+</button>
+          <span class="item-quantity">${item.quantity}</span>
+          <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
+        </div>
+        <button class="remove-item" data-index="${index}">✕</button>
+      </div>
+    `;
+    cartItemsEl.appendChild(itemEl);
+  });
+
+  // Add event listeners for quantity buttons and remove buttons
+  document.querySelectorAll('.decrease-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const index = parseInt(e.target.getAttribute('data-index'));
+      this.decreaseQuantity(index);
+    });
+  });
+
+  document.querySelectorAll('.increase-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const index = parseInt(e.target.getAttribute('data-index'));
+      this.increaseQuantity(index);
+    });
+  });
+
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const index = parseInt(e.target.getAttribute('data-index'));
+      this.removeItem(index);
+    });
+  });
+
+  // Update total
+  this.updateCartTotal();
+}
 
   addToCart(product) {
     // Log the product being added
@@ -434,20 +461,24 @@ class ShoppingCart {
       return;
     }
     
-    // product should have: id, name, price
+    // Use quantity from product or default to 1
+    const quantity = product.quantity || 1;
+    
+    // product should have: id, name, price, quantity
     const existingItem = this.items.find(item => item.id === product.id);
     
     if (existingItem) {
-      existingItem.quantity += 1;
-      console.log('Increased quantity for existing item:', existingItem.name);
+      existingItem.quantity += quantity; // Add the selected quantity
+      console.log(`Increased quantity by ${quantity} for existing item:`, existingItem.name);
     } else {
       this.items.push({
         id: product.id,
         name: product.name,
         price: product.price,
-        quantity: 1
+        quantity: quantity, // Use the selected quantity
+        image: product.image || 'images/placeholder.jpg'
       });
-      console.log('Added new item to cart:', product.name);
+      console.log(`Added new item to cart with quantity ${quantity}:`, product.name);
     }
 
     this.saveCart();
@@ -456,24 +487,30 @@ class ShoppingCart {
       this.renderCartItems();
     }
     
-    // Show a brief notification
-    this.showAddedToCartNotification(product.name);
+    // Show a brief notification with quantity
+    this.showAddedToCartNotification(product.name, quantity);
   }
 
-  showAddedToCartNotification(productName) {
+  showAddedToCartNotification(productName, quantity = 1) {
     // Create notification element
     const notification = document.createElement('div');
     notification.className = 'cart-notification';
-    notification.innerHTML = `<span>${productName} added to cart!</span>`;
     
-    // Add styles
+    // Show different message based on quantity
+    const message = quantity === 1 ? 
+      `${productName} added to cart!` : 
+      `${quantity}x ${productName} added to cart!`;
+      
+    notification.innerHTML = `<span>${message}</span>`;
+    
+    // Add styles (keep existing styles)
     const notificationStyle = document.createElement('style');
     notificationStyle.textContent = `
       .cart-notification {
         position: fixed;
         bottom: 80px;
         right: 20px;
-        background-color: #4a86e8;
+        background-color: #333333;
         color: white;
         padding: 10px 15px;
         border-radius: 4px;
@@ -610,19 +647,16 @@ function connectProductButtons() {
     console.log(`Found ${cartBtns.length} cart buttons to connect`);
     
     cartBtns.forEach(btn => {
-      // Remove any existing event listeners to prevent duplicates
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-      
-      newBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent any default action
-        e.stopPropagation(); // Stop event bubbling
-        
+      btn.addEventListener('click', function() {
         const card = this.closest('.product-card');
         if (!card) {
           console.error('Product card not found for button:', this);
           return;
         }
+        
+        // Get the quantity from the quantity control
+        const quantityDisplay = card.querySelector('.quantity-display');
+        const quantity = quantityDisplay ? parseInt(quantityDisplay.textContent) : 1;
         
         // Use a more unique identifier - combination of category and name if available
         const productId = card.dataset.id || 
@@ -632,26 +666,48 @@ function connectProductButtons() {
         const productName = card.dataset.name || card.querySelector('.product-name')?.textContent;
         const productPrice = parseFloat(card.dataset.price);
         
-        console.log('Button clicked with product data:', {
-          id: productId,
-          name: productName,
-          price: productPrice
-        });
+        // Fix: Get the image properly from the product card
+        let productImage = 'images/placeholder.jpg'; // Default fallback
+        
+        // Try to get image from the product card
+        const imgElement = card.querySelector('.product-img') || 
+                          card.querySelector('.product-image-container img') || 
+                          card.querySelector('img');
+        
+        if (imgElement && imgElement.src) {
+          productImage = imgElement.src;
+          console.log('Found product image:', productImage);
+        } else {
+          console.warn('No image found for product:', productName);
+          // Try to construct image path based on product name
+          if (productName) {
+            const imageName = productName.toLowerCase()
+              .replace(/[^a-z0-9]/g, '-')
+              .replace(/-+/g, '-')
+              .replace(/^-|-$/g, '');
+            productImage = `images/${imageName}.webp`;
+            console.log('Generated image path:', productImage);
+          }
+        }
         
         if (productName && !isNaN(productPrice)) {
-          console.log(`Adding to cart: ${productName} - $${productPrice}`);
+          console.log(`Adding to cart: ${productName} - $${productPrice} x${quantity}`);
+          console.log('Product image being added:', productImage);
           
-          // Add to shopping cart
+          // Add to shopping cart with quantity and image
           window.shoppingCart.addToCart({
             id: productId,
             name: productName,
-            price: productPrice
+            price: productPrice,
+            quantity: quantity,
+            image: productImage
           });
         } else {
           console.error('Invalid product data:', {
             id: productId,
             name: productName,
-            price: productPrice
+            price: productPrice,
+            quantity: quantity
           });
         }
       });
