@@ -432,8 +432,8 @@ function setupProductInteractions() {
       btn.style.setProperty('background-color', '#2ecc71', 'important');
       btn.style.setProperty('color', 'white', 'important');
       
-      // Show toast notifications
-      showToast(`${productName} added to cart!`);
+      // // Show toast notifications
+      // showToast(`${productName} added to cart!`);
       
       // Reset button after animation
       setTimeout(() => {
@@ -459,7 +459,7 @@ function setupProductInteractions() {
         const card = this.closest('.product-card');
         const productName = card.querySelector('.product-name')?.textContent || 'Product';
         
-        showToast(`Ordering ${productName}...`);
+        // showToast(`Ordering ${productName}...`);
         
         // Navigate to order page
         setTimeout(() => {
@@ -504,7 +504,7 @@ function setupProductInteractions() {
         const card = this.closest('.product-card');
         const productName = card.querySelector('.product-name')?.textContent || 'Product';
         
-        showToast(`Ordering ${productName}...`);
+        // showToast(`Ordering ${productName}...`);
         
         // Navigate to order page
         setTimeout(() => {

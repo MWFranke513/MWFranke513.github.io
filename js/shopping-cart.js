@@ -592,6 +592,7 @@ renderCartItems() {
     } else {
       console.error('Cart badge element not found');
     }
+    this.updateCartTotal();
   }
 
   updateCartTotal() {
