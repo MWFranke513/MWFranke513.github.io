@@ -508,13 +508,14 @@ renderCartItems() {
     notificationStyle.textContent = `
       .cart-notification {
         position: fixed;
+        font-size: 12px;
         bottom: 80px;
         right: 20px;
-        background-color: #333333;
+        background-color:rgba(51, 51, 51, 0.88);
         color: white;
         padding: 10px 15px;
         border-radius: 4px;
-        z-index: 1001;
+        z-index: 99999;
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.3s, transform 0.3s;

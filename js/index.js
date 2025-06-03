@@ -839,49 +839,49 @@ function showLoading() {
 }
 
 // Toast notification
-function showToast(message) {
-  console.log('Showing toast:', message);
+// function showToast(message) {
+//   console.log('Showing toast:', message);
   
-  let toast = document.querySelector('.toast-notification');
+//   let toast = document.querySelector('.toast-notification');
   
-  // Create toast if it doesn't exist
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.className = 'toast-notification';
+//   // Create toast if it doesn't exist
+//   if (!toast) {
+//     toast = document.createElement('div');
+//     toast.className = 'toast-notification';
     
-    // Style the toast
-    toast.style.position = 'fixed';
-    toast.style.bottom = '20px';
-    toast.style.right = '20px';
-    toast.style.backgroundColor = 'rgba(40, 40, 40, 0.9)';
-    toast.style.color = 'white';
-    toast.style.padding = '12px 20px';
-    toast.style.borderRadius = '4px';
-    toast.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-    toast.style.zIndex = '10000';
-    toast.style.transform = 'translateY(100px)';
-    toast.style.opacity = '0';
-    toast.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+//     // Style the toast
+//     toast.style.position = 'fixed';
+//     toast.style.bottom = '20px';
+//     toast.style.right = '20px';
+//     toast.style.backgroundColor = 'rgba(40, 40, 40, 0.9)';
+//     toast.style.color = 'white';
+//     toast.style.padding = '12px 20px';
+//     toast.style.borderRadius = '4px';
+//     toast.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+//     toast.style.zIndex = '10000';
+//     toast.style.transform = 'translateY(100px)';
+//     toast.style.opacity = '0';
+//     toast.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
     
-    document.body.appendChild(toast);
-    console.log('Created new toast element');
-  }
+//     document.body.appendChild(toast);
+//     console.log('Created new toast element');
+//   }
   
-  // Set message and show toast
-  toast.textContent = message;
+//   // Set message and show toast
+//   toast.textContent = message;
   
-  // Show toast with animation
-  setTimeout(() => {
-    toast.style.transform = 'translateY(0)';
-    toast.style.opacity = '1';
-  }, 10);
+//   // Show toast with animation
+//   setTimeout(() => {
+//     toast.style.transform = 'translateY(0)';
+//     toast.style.opacity = '1';
+//   }, 10);
   
-  // Hide toast after delay
-  setTimeout(() => {
-    toast.style.transform = 'translateY(100px)';
-    toast.style.opacity = '0';
-  }, 3000);
-}
+//   // Hide toast after delay
+//   setTimeout(() => {
+//     toast.style.transform = 'translateY(100px)';
+//     toast.style.opacity = '0';
+//   }, 3000);
+// }
 
 // Initialize test toast for debugging
 // setTimeout(() => {
