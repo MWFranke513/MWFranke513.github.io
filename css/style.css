@@ -2274,6 +2274,11 @@ h6 {
   .filter-label {
     font-size: 14px;
   }
+
+  .filter-group .heading {
+    margin-right: 55rem;
+
+  }
   
   .filter-btn {
     font-size: 14px;
@@ -2379,6 +2384,11 @@ h6 {
   
   .filter-group {
     width: 100%;
+  }
+
+  .filter-group .heading {
+    margin-right: 16rem;
+
   }
   
   .product-grid {
