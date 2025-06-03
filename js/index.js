@@ -1078,3 +1078,307 @@ document.addEventListener('DOMContentLoaded', setupActiveNavigation);
 
 // Also update active state when hash changes (for anchor links)
 window.addEventListener('hashchange', setupActiveNavigation);
+
+
+// Add this function to your js/index.js file
+
+/**
+ * Shares a product using the Web Share API or falls back to copying to clipboard
+ * @param {string} productName - The name of the product to share
+ * @param {string} productPrice - The price of the product to share
+ */
+function shareProduct(productName, productPrice) {
+  const shareData = {
+      title: `${productName} - MVP Prints`,
+      text: `Check out this ${productName} for ${productPrice} at MVP Prints!`,
+      url: window.location.href
+  };
+
+  // Check if the Web Share API is supported
+  if (navigator.share) {
+      navigator.share(shareData)
+          .then(() => {
+              console.log('Product shared successfully');
+              showShareNotification('Product shared successfully!');
+          })
+          .catch((err) => {
+              console.log('Error sharing:', err);
+              fallbackShare(shareData);
+          });
+  } else {
+      // Fallback for browsers that don't support Web Share API
+      fallbackShare(shareData);
+  }
+}
+
+/**
+* Fallback share function that copies the share text to clipboard
+* @param {Object} shareData - Object containing title, text, and url
+*/
+function fallbackShare(shareData) {
+  const shareText = `${shareData.text}\n${shareData.url}`;
+  
+  // Try to copy to clipboard
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareText)
+          .then(() => {
+              showShareNotification('Product link copied to clipboard!');
+          })
+          .catch(() => {
+              // If clipboard fails, show a modal with the text to copy
+              showShareModal(shareText);
+          });
+  } else {
+      // If clipboard API not available, show a modal
+      showShareModal(shareText);
+  }
+}
+
+/**
+* Shows a notification when content is shared
+* @param {string} message - The message to display
+*/
+function showShareNotification(message) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = 'share-notification';
+  notification.innerHTML = `
+      <i class="fas fa-check-circle"></i>
+      <span>${message}</span>
+  `;
+  
+  // Add styles
+  const notificationStyle = document.createElement('style');
+  notificationStyle.textContent = `
+      .share-notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background-color: #28a745;
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          z-index: 1001;
+          opacity: 0;
+          transform: translateX(100%);
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 500;
+          max-width: 300px;
+      }
+      
+      .share-notification.show {
+          opacity: 1;
+          transform: translateX(0);
+      }
+      
+      .share-notification i {
+          font-size: 1.2em;
+      }
+  `;
+  
+  document.head.appendChild(notificationStyle);
+  document.body.appendChild(notification);
+  
+  // Show notification
+  setTimeout(() => {
+      notification.classList.add('show');
+  }, 10);
+  
+  // Hide and remove after 3 seconds
+  setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => {
+          if (document.body.contains(notification)) {
+              document.body.removeChild(notification);
+          }
+      }, 300);
+  }, 3000);
+}
+
+/**
+* Shows a modal with shareable text when clipboard API is not available
+* @param {string} shareText - The text to display for sharing
+*/
+function showShareModal(shareText) {
+  // Create modal
+  const modal = document.createElement('div');
+  modal.className = 'share-modal';
+  modal.innerHTML = `
+      <div class="share-modal-content">
+          <div class="share-modal-header">
+              <h3>Share Product</h3>
+              <button class="share-modal-close">&times;</button>
+          </div>
+          <div class="share-modal-body">
+              <p>Copy this link to share:</p>
+              <textarea readonly class="share-text">${shareText}</textarea>
+              <button class="copy-btn">Copy to Clipboard</button>
+          </div>
+      </div>
+  `;
+  
+  // Add modal styles
+  const modalStyle = document.createElement('style');
+  modalStyle.textContent = `
+      .share-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1002;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+      
+      .share-modal.show {
+          opacity: 1;
+      }
+      
+      .share-modal-content {
+          background: white;
+          border-radius: 12px;
+          padding: 0;
+          max-width: 500px;
+          width: 90%;
+          max-height: 80%;
+          overflow: hidden;
+          transform: scale(0.7);
+          transition: transform 0.3s ease;
+      }
+      
+      .share-modal.show .share-modal-content {
+          transform: scale(1);
+      }
+      
+      .share-modal-header {
+          padding: 20px;
+          border-bottom: 1px solid #eee;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .share-modal-header h3 {
+          margin: 0;
+          color: #333;
+      }
+      
+      .share-modal-close {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          color: #999;
+          padding: 0;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      .share-modal-close:hover {
+          background: #f0f0f0;
+          color: #333;
+      }
+      
+      .share-modal-body {
+          padding: 20px;
+      }
+      
+      .share-modal-body p {
+          margin: 0 0 15px 0;
+          color: #666;
+      }
+      
+      .share-text {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          resize: none;
+          font-family: inherit;
+          margin-bottom: 15px;
+      }
+      
+      .copy-btn {
+          background: var(--main-color, #c6957e);
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 500;
+      }
+      
+      .copy-btn:hover {
+          background: var(--main-color-dark, #b8876f);
+      }
+  `;
+  
+  document.head.appendChild(modalStyle);
+  document.body.appendChild(modal);
+  
+  // Show modal
+  setTimeout(() => {
+      modal.classList.add('show');
+  }, 10);
+  
+  // Handle modal interactions
+  const closeBtn = modal.querySelector('.share-modal-close');
+  const copyBtn = modal.querySelector('.copy-btn');
+  const shareTextArea = modal.querySelector('.share-text');
+  
+  // Close modal function
+  const closeModal = () => {
+      modal.classList.remove('show');
+      setTimeout(() => {
+          if (document.body.contains(modal)) {
+              document.body.removeChild(modal);
+          }
+      }, 300);
+  };
+  
+  // Close button
+  closeBtn.addEventListener('click', closeModal);
+  
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+          closeModal();
+      }
+  });
+  
+  // Copy button
+  copyBtn.addEventListener('click', () => {
+      shareTextArea.select();
+      shareTextArea.setSelectionRange(0, 99999); // For mobile devices
+      
+      try {
+          document.execCommand('copy');
+          copyBtn.textContent = 'Copied!';
+          copyBtn.style.background = '#28a745';
+          
+          setTimeout(() => {
+              copyBtn.textContent = 'Copy to Clipboard';
+              copyBtn.style.background = '';
+          }, 2000);
+      } catch (err) {
+          console.error('Failed to copy text: ', err);
+      }
+  });
+  
+  // Auto-select text
+  shareTextArea.select();
+}
