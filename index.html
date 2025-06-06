@@ -665,7 +665,7 @@
 
 <script>
     // Updated form handling for Netlify with custom success message
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.querySelector('form[name="contact"]').addEventListener('submit', function(e) {
         const submitBtn = this.querySelector('.form-submit');
         const successMsg = document.getElementById('successMessage');
         const originalText = submitBtn.innerHTML;
