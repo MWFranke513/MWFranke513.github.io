@@ -520,10 +520,15 @@
             <h2 class="form-title">Send Us a Message</h2>
             <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
             
-            <!-- Fixed Netlify Form -->
-            <form name="contact" id="contactForm" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/contact-success.html">
+            <!-- Fixed Netlify Form with Honeypot -->
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/contact-success.html">
+                <!-- Honeypot spam protection -->
+                <p style="display: none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+                
                 <!-- Hidden field for Netlify Forms -->
-                <input type="hidden" name="form-name" value="contact">
+                <input type="hidden" name="form-name" value="contact" />
                 
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -539,9 +544,6 @@
                     <label for="message">Your Message</label>
                     <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about your project or ask any questions you have..." required></textarea>
                 </div>
-                
-                <!-- Invisible reCAPTCHA -->
-                <div data-netlify-recaptcha="true"></div>
                 
                 <button type="submit" class="form-submit">
                     <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
