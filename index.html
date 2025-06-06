@@ -473,7 +473,7 @@
     <!-- quote section ends -->
 
     
-<!-- contact section starts -->
+<!-- Replace your entire contact section with this -->
 <section class="contact" id="contact">
     <h1 class="heading with-subtitle">Get in <span>Touch</span></h1>
     <p class="contact-subtitle">Ready to bring your ideas to life? Let's discuss your 3D printing project and get you a free quote.</p>
@@ -520,15 +520,12 @@
             <h2 class="form-title">Send Us a Message</h2>
             <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
             
-            <!-- Fixed Netlify Form with Honeypot -->
-            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/contact-success.html">
+            <!-- Clean Netlify Form -->
+            <form name="contact" method="POST" netlify netlify-honeypot="bot-field">
                 <!-- Honeypot spam protection -->
                 <p style="display: none;">
                     <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                 </p>
-                
-                <!-- Hidden field for Netlify Forms -->
-                <input type="hidden" name="form-name" value="contact" />
                 
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -558,7 +555,6 @@
         </div>
     </div>
 </section>
-<!-- contact section ends -->
 <!-- footer section starts -->
 <section class="footer">
     <div class="footer-container">
@@ -664,51 +660,70 @@
 
 
 <script>
-    // Updated form handling for Netlify with custom success message
-    document.querySelector('form[name="contact"]').addEventListener('submit', function(e) {
-        const submitBtn = this.querySelector('.form-submit');
-        const successMsg = document.getElementById('successMessage');
-        const originalText = submitBtn.innerHTML;
+    // Simplified form handling - NO interference with Netlify
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[name="contact"]');
         
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
-        submitBtn.disabled = true;
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('.form-submit');
+                
+                if (submitBtn) {
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
+                    submitBtn.disabled = true;
+                }
+                
+                // Let Netlify handle the rest - DO NOT prevent default
+            });
+        }
         
-        // Let Netlify handle the form submission naturally
-        // Don't prevent default - let it submit to Netlify
-        
-        // Note: The success message will be handled by the redirect to contact-success.html
-        // or you can use JavaScript to detect successful submission
-    });
-    
-    // Input focus animations (keep this part)
-    document.querySelectorAll('.form-input').forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.style.transform = 'scale(1.02)';
+        // Input focus animations
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
         });
         
-        input.addEventListener('blur', function() {
-            this.parentElement.style.transform = 'scale(1)';
-        });
-    });
-    
-    // Check for success parameter in URL (if redirected back to same page)
-    window.addEventListener('DOMContentLoaded', function() {
+        // Check for success parameter in URL
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('success') === 'true') {
-            document.getElementById('successMessage').style.display = 'block';
+            const successMsg = document.getElementById('successMessage');
+            if (successMsg) {
+                successMsg.style.display = 'block';
+            }
             // Clear the URL parameter
             window.history.replaceState({}, document.title, window.location.pathname);
         }
     });
     </script>
-
+    
+    <!-- REMOVE THIS ENTIRE EmailJS SECTION -->
+    <!-- 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
         (function(){
             emailjs.init("RRpFpyiWmsgZWMbAQ"); 
         })();
     </script>
+    -->
+    
+    <!-- Keep your other scripts -->
+    <script src="js/ScrollToTop.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/shopping-cart.js"></script>
+    <script src="js/cookie-banner.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <!-- <script>
+        (function(){
+            emailjs.init("RRpFpyiWmsgZWMbAQ"); 
+        })();
+    </script> -->
         <script src="js/ScrollToTop.js"></script>
         <script src="js/index.js"></script>
         <script src="js/shopping-cart.js"> </script>
