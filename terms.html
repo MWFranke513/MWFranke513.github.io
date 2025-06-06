@@ -1,284 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MVP 3D Prints - Terms of Service</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP 3D Prints - Terms of Service</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <!-- Option 1: Include in HTML -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
-
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
     <!-- header section starts -->
-        <header class="header">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/MVP-Icon.svg" alt="MVP LOGO">
+        </a>
 
-            <a href="index.html" class="logo">
-                <img src="images/MVP-Icon.svg" alt="MVP LOGO">
-            </a>
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="index.html#about">about</a>
+            <a href="index.html#services">services</a>
+            <a href="products.html">products</a>
+            <a href="order.html">order</a>
+            <a href="index.html#review">gallery</a>
+            <a href="index.html#contact">contact</a>
+            <a href="faq.html">FAQ</a>
+        </nav>
 
-            <nav class="navbar">
-                <a href="index.html">home</a>
-                <a href="#about">about</a>
-                <a href="#menu">services</a>
-                <a href="products.html">products</a>
-                <a href="order.html">order</a>
-                <a href="#review">gallery</a>
-                <a href="#contact">contact</a>
-                <a href="faq.html">FAQ</a>
-            </nav>
+        <div class="icons">
+            <a href="order.html" class="btn header-btn">FREE QUOTES</a>
+            <div class="bi bi-list" id="menu-btn"></div>
+        </div>
 
-            <div class="icons">
-                <a href="order.html" class="btn header-btn">FREE QUOTES</a>
-                <div class="bi bi-list" id="menu-btn"></div>
-            </div>
-
-            <div class="search-form">
-                <input type="search" id="search-box" placeholder="what are you looking for?">
-                <label for="search-box" class="bi bi-search"></label>
-            </div>
-
-        </header>
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="what are you looking for?">
+            <label for="search-box" class="bi bi-search"></label>
+        </div>
+    </header>
     <!-- header section ends -->
-        <!-- terms section begins -->
-        <section class="terms" id="terms">
-            
-            <h1 class="heading"> Our <span>Terms of Service</span> </h1>
-            
-            <div class="content">
-                <div class="term">
-                    <h3>Effective Date: [INSERT DATE]</h3>
-                    <p>These Terms of Service ("Terms") govern your use of MVP Prints' 3D printing services. By placing an order, you agree to these Terms. Please read them carefully.</p><br>
-                </div>
 
-                <div class="term">
-                    <h3>1.0 Eligibility and Age Requirements</h3>
-                    <p>1.1 <span>Age Requirement.</span> You must be at least 18 years old to use our services. If you are under 18, a parent or guardian must place the order on your behalf and accept full responsibility for compliance with these Terms.</p><br>
-                    <p>1.2 <span>Legal Capacity.</span> By using our services, you represent that you have the legal capacity to enter into this agreement.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>2.0 Orders and Payment</h3>
-                    <p>2.1 <span>Payment.</span> Payment is due in full at the time of order placement. We accept all major credit cards and PayPal. Payments are processed through Square. All prices are in USD.</p><br>
-                    <p>2.2 <span>Orders.</span> Orders can be submitted through our order form at mvpprints.com. Once we receive your order, we will send you an invoice for payment. Once payment is received, we will begin processing your order.</p><br>
-                    <p>2.3 <span>File Requirements.</span> Files must be in compatible formats (.STL, .OBJ, .3MF) and meet our quality standards. We reserve the right to reject files that do not meet our technical requirements or violate these Terms.</p><br>
-                    <p>2.4 <span>File Review Process.</span> All submitted files are subject to review before printing. We reserve the right to reject any file for any reason, including but not limited to technical limitations, prohibited content, or potential legal concerns.</p><br>
-                    <p>2.5 <span>Cancellations.</span> Orders can be cancelled before printing begins for a full refund. Once printing has started, cancellations are not possible.</p><br>
-                    <p>2.6 <span>Right to Refuse Service.</span> We reserve the right to refuse service to anyone for any reason at any time, including but not limited to violations of these Terms.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>3.0 Prohibited Items and Content</h3>
-                    <p>3.1 <span>Firearms and Weapons.</span> We strictly prohibit the printing of:</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Firearms, firearm frames, receivers, or any firearm components</li>
-                        <li>Ammunition or ammunition components</li>
-                        <li>Weapons of any kind, including knives, brass knuckles, or other dangerous weapons</li>
-                        <li>Items that violate the Undetectable Firearms Act or similar laws</li>
-                    </ul><br>
-                    <p>3.2 <span>Illegal Items.</span> We prohibit printing of any items that:</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Violate federal, state, or local laws</li>
-                        <li>Are intended for illegal activities</li>
-                        <li>Could cause harm to persons or property</li>
-                        <li>Circumvent security measures or enable unauthorized access</li>
-                    </ul><br>
-                    <p>3.3 <span>Intellectual Property Violations.</span> Items that infringe on copyrights, trademarks, patents, or other intellectual property rights are strictly prohibited.</p><br>
-                    <p>3.4 <span>Adult Content.</span> We do not print items of an explicit sexual nature or adult content.</p><br>
-                    <p>3.5 <span>Medical Devices.</span> We do not print medical devices, implants, or items intended for medical use unless you provide proper certifications and assume all liability.</p><br>
-                    <p>3.6 <span>Reporting Violations.</span> If you believe any content violates these prohibitions, please contact us immediately.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>4.0 Intellectual Property Rights</h3>
-                    <p>4.1 <span>Customer Ownership.</span> You retain ownership of all intellectual property rights to your submitted designs.</p><br>
-                    <p>4.2 <span>License to MVP Prints.</span> You grant MVP Prints a non-exclusive, royalty-free license to use your designs solely for fulfilling your order.</p><br>
-                    <p>4.3 <span>Customer Warranties.</span> You warrant that you own or have permission to use all submitted designs and that they do not infringe on any third-party rights.</p><br>
-                    <p>4.4 <span>DMCA Compliance.</span> We comply with the Digital Millennium Copyright Act. If you believe your intellectual property has been infringed, please contact us with a detailed notice.</p><br>
-                    <p>4.5 <span>Indemnification.</span> You agree to indemnify and hold MVP Prints harmless from any claims related to intellectual property infringement of your submitted designs.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>5.0 Printing and Delivery</h3>
-                    <p>5.1 <span>Turnaround Times.</span> Estimated turnaround times are provided as guidelines only and are not guaranteed. Delays may occur due to technical issues, material availability, high order volume, or force majeure events.</p><br>
-                    <p>5.2 <span>Quality Standards.</span> 3D printing is an inherently imperfect process. We strive for high quality, but minor imperfections, layer lines, or support marks may occur and are considered normal.</p><br>
-                    <p>5.3 <span>Material Limitations.</span> Printed objects have inherent material limitations including temperature sensitivity, UV degradation, and mechanical stress limits. Consider these limitations before ordering.</p><br>
-                    <p>5.4 <span>Shipping.</span> Shipping costs and estimated delivery times will be provided during ordering. We are not responsible for delays, damage, or loss caused by shipping carriers after items leave our facility.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>6.0 Returns and Refunds</h3>
-                    <p>6.1 <span>Refund Policy.</span> Refunds will only be issued for:</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Printing errors on our part</li>
-                        <li>Items damaged during shipping (with proof of damage)</li>
-                        <li>Orders cancelled before printing begins</li>
-                    </ul><br>
-                    <p>6.2 <span>Return Process.</span> Returns must be reported within 7 days of delivery. We will inspect returned items and notify you of refund approval or rejection.</p><br>
-                    <p>6.3 <span>No Refunds for Custom Orders.</span> Custom printed items cannot be returned unless damaged or printed incorrectly.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>7.0 Safety and Use Disclaimers</h3>
-                    <p>7.1 <span>Potential Hazards.</span> 3D printed objects may have sharp edges, small parts, or other potential hazards. Use all items at your own risk and with appropriate safety precautions.</p><br>
-                    <p>7.2 <span>Not Food Safe.</span> Unless specifically stated, printed items are not food-safe and should not come into contact with food or beverages.</p><br>
-                    <p>7.3 <span>Age Appropriateness.</span> Items may contain small parts not suitable for children under 3 years old. Adult supervision is recommended.</p><br>
-                    <p>7.4 <span>Professional Use Disclaimer.</span> Items are not certified for professional, commercial, or safety-critical applications unless specifically stated.</p><br>
-                    <p>7.5 <span>Customer Responsibility.</span> You are solely responsible for the safe and appropriate use of all printed items. MVP Prints disclaims all liability for injuries or damages arising from use.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>8.0 Limitation of Liability</h3>
-                    <p>8.1 <span>Liability Cap.</span> MVP Prints' total liability for any claim shall not exceed the amount paid for the specific order in question.</p><br>
-                    <p>8.2 <span>Disclaimer of Warranties.</span> Services are provided "as-is" without warranties of any kind. We disclaim all warranties, express or implied, including merchantability and fitness for a particular purpose.</p><br>
-                    <p>8.3 <span>Consequential Damages.</span> MVP Prints is not liable for any indirect, incidental, special, or consequential damages, including but not limited to lost profits, data loss, personal injury, or property damage.</p><br>
-                    <p>8.4 <span>Indemnification.</span> You agree to indemnify and hold MVP Prints harmless from any claims, damages, or expenses arising from your use of our services or violation of these Terms.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>9.0 Privacy and Data Security</h3>
-                    <p>9.1 <span>Privacy Policy.</span> Please refer to our separate Privacy Policy for information on how we collect, use, and store your personal information.</p><br>
-                    <p>9.2 <span>File Security.</span> We implement reasonable security measures to protect your submitted files but cannot guarantee absolute security.</p><br>
-                    <p>9.3 <span>File Retention.</span> Customer files may be retained for a reasonable period to fulfill orders and provide customer service, then securely deleted.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>10.0 Force Majeure</h3>
-                    <p>10.1 <span>Excused Performance.</span> MVP Prints shall not be liable for delays or failures in performance due to circumstances beyond our reasonable control, including but not limited to natural disasters, government actions, pandemics, supply chain disruptions, or utility failures.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>11.0 Dispute Resolution</h3>
-                    <p>11.1 <span>Governing Law.</span> These Terms are governed by the laws of the State of Utah, without regard to conflict of law principles.</p><br>
-                    <p>11.2 <span>Jurisdiction.</span> Any disputes shall be resolved in the state or federal courts located in Utah County, Utah.</p><br>
-                    <p>11.3 <span>Informal Resolution.</span> Before filing any legal action, parties agree to attempt good faith informal resolution of disputes.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>12.0 Business Compliance</h3>
-                    <p>12.1 <span>Licensing.</span> MVP Prints operates in compliance with all applicable Utah business licensing requirements and regulations.</p><br>
-                    <p>12.2 <span>Tax Compliance.</span> Applicable taxes will be added to orders as required by law.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>13.0 Termination</h3>
-                    <p>13.1 <span>Right to Terminate.</span> MVP Prints reserves the right to terminate your access to our services at any time, for any reason, with or without notice.</p><br>
-                    <p>13.2 <span>Effect of Termination.</span> Upon termination, all rights and obligations cease, except those that by their nature should survive.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>14.0 Changes to Terms</h3>
-                    <p>14.1 <span>Right to Modify.</span> MVP Prints reserves the right to change these Terms at any time. Changes will be posted on our website with an updated effective date.</p><br>
-                    <p>14.2 <span>Acceptance of Changes.</span> Your continued use of our services after posting of revised Terms constitutes acceptance of the changes.</p><br>
-                    <p>14.3 <span>Notification.</span> For material changes, we will make reasonable efforts to notify customers via email or website notice.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>15.0 Severability and Entire Agreement</h3>
-                    <p>15.1 <span>Severability.</span> If any provision of these Terms is found unenforceable, the remaining provisions shall remain in full force and effect.</p><br>
-                    <p>15.2 <span>Entire Agreement.</span> These Terms constitute the entire agreement between you and MVP Prints regarding our services.</p><br>
-                </div>
-
-                <div class="term">
-                    <h3>16.0 Contact Information</h3>
-                    <p>16.1 <span>Questions or Concerns.</span> If you have questions about these Terms, please contact us through our website contact form or at the address provided on our website.</p><br>
-                    <p>16.2 <span>Legal Notices.</span> All legal notices should be sent in writing to our business address listed on our website.</p><br>
+    <!-- terms section starts -->
+    <section class="terms-section">
+        <div class="terms-container">
+            <div class="terms-header">
+                <h1 class="heading with-subtitle">Terms of <span>Service</span></h1>
+                <p class="terms-subtitle">Our service agreement and your rights and responsibilities</p>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Effective Date: June 05, 2025</span>
                 </div>
             </div>
-        </section>
 
-        <!-- terms section ends -->
+            <div class="terms-content">
+                <!-- Introduction -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h2>Service Agreement</h2>
+                    <p>
+                        These Terms of Service ("Terms") govern your use of MVP Prints' 3D printing services. 
+                        By placing an order, you agree to these Terms. Please read them carefully as they 
+                        establish the legal relationship between you and MVP Prints.
+                    </p>
+                    <div class="terms-highlight">
+                        <strong>By using our services, you acknowledge that you have read, understood, 
+                        and agree to be bound by these Terms of Service.</strong>
+                    </div>
+                </div>
 
-    <!-- contact section starts -->
-    <section class="contact" id="contact">
-        <h1 class="heading with-subtitle">Get in <span>Touch</span></h1>
-        <p class="contact-subtitle">Ready to bring your ideas to life? Let's discuss your 3D printing project and get you a free quote.</p>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's Start a Conversation</h3>
-                <p>Whether you need a prototype, custom part, or have questions about our 3D printing services, we're here to help. Our team typically responds within 24 hours.</p>
-                
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h4>Email Us</h4>
-                            <p>hello@mvpprints.com</p>
-                        </div>
+                <!-- Eligibility and Age Requirements -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h2>Eligibility and Age Requirements</h2>
+                    <ul class="terms-list">
+                        <li><strong>Age Requirement:</strong> You must be at least 18 years old to use our services. If you are under 18, a parent or guardian must place the order on your behalf and accept full responsibility for compliance with these Terms.</li>
+                        <li><strong>Legal Capacity:</strong> By using our services, you represent that you have the legal capacity to enter into this agreement and comply with all applicable laws.</li>
+                    </ul>
+                </div>
+
+                <!-- Orders and Payment -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h2>Orders and Payment</h2>
+                    <ul class="terms-list">
+                        <li><strong>Payment:</strong> Payment is due in full at the time of order placement. We accept all major credit cards and process payments through Helcim. All prices are in USD.</li>
+                        <li><strong>Order Process:</strong> Orders can be submitted through our order form at mvpprints.com. Once we receive your order, we will send you an invoice for payment. Once payment is received, we will begin processing your order.</li>
+                        <li><strong>File Requirements:</strong> Files must be in compatible formats (.STL, .OBJ, .3MF) and meet our quality standards. We reserve the right to reject files that do not meet our technical requirements or violate these Terms.</li>
+                        <li><strong>File Review Process:</strong> All submitted files are subject to review before printing. We reserve the right to reject any file for any reason, including but not limited to technical limitations, prohibited content, or potential legal concerns.</li>
+                        <li><strong>Cancellations:</strong> Orders can be cancelled before printing begins for a full refund. Once printing has started, cancellations are not possible.</li>
+                        <li><strong>Right to Refuse Service:</strong> We reserve the right to refuse service to anyone for any reason at any time, including but not limited to violations of these Terms.</li>
+                    </ul>
+                </div>
+
+                <!-- Prohibited Items -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h2>Prohibited Items and Content</h2>
+                    <div class="prohibited-section">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Firearms and Weapons</h3>
+                        <p>We strictly prohibit the printing of:</p>
+                        <ul class="prohibited-list">
+                            <li>Firearms, firearm frames, receivers, or any firearm components</li>
+                            <li>Ammunition or ammunition components</li>
+                            <li>Weapons of any kind, including knives, brass knuckles, or other dangerous weapons</li>
+                            <li>Items that violate the Undetectable Firearms Act or similar laws</li>
+                        </ul>
                     </div>
                     
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h4>Response Time</h4>
-                            <p>Within 24 hours</p>
-                        </div>
+                    <div class="prohibited-section">
+                        <h3><i class="fas fa-gavel"></i> Illegal Items</h3>
+                        <p>We prohibit printing of any items that:</p>
+                        <ul class="prohibited-list">
+                            <li>Violate federal, state, or local laws</li>
+                            <li>Are intended for illegal activities</li>
+                            <li>Could cause harm to persons or property</li>
+                            <li>Circumvent security measures or enable unauthorized access</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-notice">
+                        <p>
+                            <strong>Intellectual Property:</strong> Items that infringe on copyrights, trademarks, 
+                            patents, or other intellectual property rights are strictly prohibited. We do not print 
+                            adult content or medical devices without proper certifications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property Rights -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-copyright"></i>
+                    </div>
+                    <h2>Intellectual Property Rights</h2>
+                    <ul class="terms-list">
+                        <li><strong>Customer Ownership:</strong> You retain ownership of all intellectual property rights to your submitted designs.</li>
+                        <li><strong>License to MVP Prints:</strong> You grant MVP Prints a non-exclusive, royalty-free license to use your designs solely for fulfilling your order.</li>
+                        <li><strong>Customer Warranties:</strong> You warrant that you own or have permission to use all submitted designs and that they do not infringe on any third-party rights.</li>
+                        <li><strong>DMCA Compliance:</strong> We comply with the Digital Millennium Copyright Act. If you believe your intellectual property has been infringed, please contact us with a detailed notice.</li>
+                        <li><strong>Indemnification:</strong> You agree to indemnify and hold MVP Prints harmless from any claims related to intellectual property infringement of your submitted designs.</li>
+                    </ul>
+                </div>
+
+                <!-- Printing and Delivery -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h2>Printing and Delivery</h2>
+                    <ul class="terms-list">
+                        <li><strong>Turnaround Times:</strong> Estimated turnaround times are provided as guidelines only and are not guaranteed. Delays may occur due to technical issues, material availability, high order volume, or force majeure events.</li>
+                        <li><strong>Quality Standards:</strong> 3D printing is an inherently imperfect process. We strive for high quality, but minor imperfections, layer lines, or support marks may occur and are considered normal.</li>
+                        <li><strong>Material Limitations:</strong> Printed objects have inherent material limitations including temperature sensitivity, UV degradation, and mechanical stress limits. Consider these limitations before ordering.</li>
+                        <li><strong>Shipping:</strong> Shipping costs and estimated delivery times will be provided during ordering. We are not responsible for delays, damage, or loss caused by shipping carriers after items leave our facility.</li>
+                    </ul>
+                </div>
+
+                <!-- Returns and Refunds -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h2>Returns and Refunds</h2>
+                    <div class="refund-policy">
+                        <h3><i class="fas fa-check-circle"></i> Refund Policy</h3>
+                        <p>Refunds will only be issued for:</p>
+                        <ul class="terms-list">
+                            <li>Printing errors on our part</li>
+                            <li>Items damaged during shipping (with proof of damage)</li>
+                            <li>Orders cancelled before printing begins</li>
+                        </ul>
                     </div>
                     
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <div class="terms-notice">
+                        <p>
+                            <strong>Return Process:</strong> Returns must be reported within 7 days of delivery. 
+                            We will inspect returned items and notify you of refund approval or rejection. 
+                            Custom printed items cannot be returned unless damaged or printed incorrectly.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Safety and Use Disclaimers -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Safety and Use Disclaimers</h2>
+                    <div class="safety-warnings">
+                        <div class="warning-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <h4>Potential Hazards</h4>
+                                <p>3D printed objects may have sharp edges, small parts, or other potential hazards. Use all items at your own risk and with appropriate safety precautions.</p>
+                            </div>
                         </div>
-                        <div class="contact-method-info">
-                            <h4>Service Area</h4>
-                            <p>Utah County & Surrounding Areas</p>
+                        
+                        <div class="warning-item">
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <h4>Not Food Safe</h4>
+                                <p>Unless specifically stated, printed items are not food-safe and should not come into contact with food or beverages.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-item">
+                            <i class="fas fa-child"></i>
+                            <div>
+                                <h4>Age Appropriateness</h4>
+                                <p>Items may contain small parts not suitable for children under 3 years old. Adult supervision is recommended.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h2>Limitation of Liability</h2>
+                    <ul class="terms-list">
+                        <li><strong>Liability Cap:</strong> MVP Prints' total liability for any claim shall not exceed the amount paid for the specific order in question.</li>
+                        <li><strong>Disclaimer of Warranties:</strong> Services are provided "as-is" without warranties of any kind. We disclaim all warranties, express or implied, including merchantability and fitness for a particular purpose.</li>
+                        <li><strong>Consequential Damages:</strong> MVP Prints is not liable for any indirect, incidental, special, or consequential damages, including but not limited to lost profits, data loss, personal injury, or property damage.</li>
+                        <li><strong>Indemnification:</strong> You agree to indemnify and hold MVP Prints harmless from any claims, damages, or expenses arising from your use of our services or violation of these Terms.</li>
+                    </ul>
+                </div>
+
+                <!-- Additional Terms -->
+                <div class="terms-card">
+                    <div class="card-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h2>Additional Terms</h2>
+                    <div class="additional-terms-grid">
+                        <div class="term-item">
+                            <h4><i class="fas fa-user-shield"></i> Privacy and Data Security</h4>
+                            <p>Please refer to our separate Privacy Policy for information on how we collect, use, and store your personal information. We implement reasonable security measures to protect your submitted files.</p>
+                        </div>
+                        
+                        <div class="term-item">
+                            <h4><i class="fas fa-exclamation"></i> Force Majeure</h4>
+                            <p>MVP Prints shall not be liable for delays or failures in performance due to circumstances beyond our reasonable control, including natural disasters, government actions, or supply chain disruptions.</p>
+                        </div>
+                        
+                        <div class="term-item">
+                            <h4><i class="fas fa-map-marker-alt"></i> Governing Law</h4>
+                            <p>These Terms are governed by the laws of the State of Utah. Any disputes shall be resolved in the state or federal courts located in Utah County, Utah.</p>
+                        </div>
+                        
+                        <div class="term-item">
+                            <h4><i class="fas fa-edit"></i> Changes to Terms</h4>
+                            <p>MVP Prints reserves the right to change these Terms at any time. Changes will be posted on our website with an updated effective date. Your continued use constitutes acceptance.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="form-container">
-                <h2 class="form-title">Send Us a Message</h2>
-                <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
-                
-                <form action="/submit_contact" method="post" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+
+            <!-- Contact Information -->
+            <div class="terms-footer">
+                <div class="contact-notice">
+                    <h3>Questions About These Terms?</h3>
+                    <p>
+                        If you have questions about these Terms of Service or need clarification on any provisions, 
+                        please don't hesitate to contact us:
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-methods">
+                            <a href="mailto:hello@mvpprints.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                hello@mvpprints.com
+                            </a>
+                            <a href="index.html#contact" class="contact-link">
+                                <i class="fas fa-comment"></i>
+                                Contact Form
+                            </a>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about your project or ask any questions you have..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">
-                        <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
-                        Send Message
-                    </button>
-                    
-                    <div class="success-message" id="successMessage">
-                        <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
-                        Thank you! Your message has been sent successfully.
-                    </div>
-                </form>
+                    <p class="response-time">
+                        <i class="fas fa-clock"></i>
+                        We typically respond to legal inquiries within 24 hours.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-    <!-- contact section ends -->
+    <!-- terms section ends -->
+
 <!-- footer section starts -->
 <section class="footer">
     <div class="footer-container">
         <!-- Footer Header -->
         <div class="footer-header">
-            <div class="footer-logo"><img src="./images/MVP-Icon.svg" style="width: auto; height: 48px;"/>PRINTS</div>
+            <div class="footer-logo"><img src="./images/MVP-Icon.svg" style="width: auto; height: 48px;"/>3D</div>
             <div class="footer-tagline">Bringing Your Ideas to Life Through 3D Printing</div>
         </div>
 
@@ -375,17 +398,599 @@
     </div>
 </section>
 <!-- footer section ends -->
+    <!-- JavaScript -->
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/ScrollToTop.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/shopping-cart.js"></script>
+</body>
 
+<style>
+    /* Terms Section Styles - Matches Privacy Policy and Disclaimer */
+    .terms-section {
+        padding: 12rem 2rem 6rem;
+        background: linear-gradient(135deg, var(--bg) 0%, var(--bg3) 100%);
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
-        })();
-    </script>
-        <script src="js/ScrollToTop.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/shopping-cart.js"></script>
+    .terms-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(198, 150, 92, 0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(198, 150, 92, 0.03) 0%, transparent 50%);
+        pointer-events: none;
+    }
 
-    </body>
-    </html>
+    .terms-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .terms-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .terms-subtitle {
+        font-size: 1.3rem;
+        color: var(--light-text);
+        opacity: 0.85;
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
+    .terms-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .terms-card {
+        background: var(--bg2);
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(10px);
+        position: relative;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .terms-card::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: linear-gradient(135deg, 
+            rgba(198, 150, 92, 0.3) 0%, 
+            rgba(198, 150, 92, 0.1) 25%, 
+            transparent 50%, 
+            rgba(198, 150, 92, 0.1) 75%, 
+            rgba(198, 150, 92, 0.3) 100%);
+        border-radius: 20px;
+        z-index: -1;
+        opacity: 0.6;
+        transition: var(--transition);
+    }
+
+    .terms-card:hover::before {
+        opacity: 1;
+        background: linear-gradient(135deg, 
+            rgba(198, 150, 92, 0.5) 0%, 
+            rgba(198, 150, 92, 0.3) 25%, 
+            rgba(198, 150, 92, 0.1) 50%, 
+            rgba(198, 150, 92, 0.3) 75%, 
+            rgba(198, 150, 92, 0.5) 100%);
+    }
+
+    .terms-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--hover-shadow);
+    }
+
+    .card-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 1.8rem;
+        box-shadow: 0 4px 15px rgba(198, 150, 92, 0.3);
+    }
+
+    .terms-card h2 {
+        color: var(--light-text) !important;
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-family: "industry", sans-serif;
+    }
+
+    .terms-card p {
+        color: var(--light-text) !important;
+        font-size: 1.2rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+    }
+
+    .terms-highlight {
+        background: rgba(52, 152, 219, 0.12);
+        border-left: 4px solid #3498db;
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: 0 2px 10px rgba(52, 152, 219, 0.1);
+    }
+
+    .terms-highlight strong {
+        color: #5dade2 !important;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+
+    .terms-notice {
+        background: rgba(46, 204, 113, 0.12);
+        border-left: 4px solid #2ecc71;
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: 0 2px 10px rgba(46, 204, 113, 0.1);
+    }
+
+    .terms-notice p {
+        margin-bottom: 0 !important;
+        color: #27ae60 !important;
+        font-size: 1.2rem !important;
+        line-height: 1.6;
+    }
+
+    .terms-notice strong {
+        color: #2ecc71 !important;
+        font-weight: 700;
+    }
+
+    .terms-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+
+    .terms-list li {
+        color: var(--light-text) !important;
+        font-size: 1.3rem;
+        padding: 1rem 0;
+        padding-left: 2.5rem;
+        position: relative;
+        border-bottom: 1px solid rgba(198, 150, 92, 0.15);
+        line-height: 1.6;
+    }
+
+    .terms-list li:last-child {
+        border-bottom: none;
+    }
+
+    .terms-list li::before {
+        content: '\f00c';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--main-color);
+        font-size: 1rem;
+    }
+
+    .terms-list li strong {
+        color: var(--main-color);
+        font-weight: 700;
+    }
+
+    /* Prohibited Items Special Styling */
+    .prohibited-section {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(231, 76, 60, 0.08);
+        border-radius: 12px;
+        border-left: 4px solid #e74c3c;
+    }
+
+    .prohibited-section h3 {
+        color: #ff6b6b !important;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .prohibited-section h3 i {
+        color: #e74c3c;
+        font-size: 1.4rem;
+    }
+
+    .prohibited-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+    }
+
+    .prohibited-list li {
+        color: var(--light-text) !important;
+        font-size: 1.2rem;
+        padding: 0.8rem 0;
+        padding-left: 2rem;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .prohibited-list li::before {
+        content: '\f057';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: #e74c3c;
+        font-size: 1rem;
+    }
+
+    /* Refund Policy Special Styling */
+    .refund-policy {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(46, 204, 113, 0.08);
+        border-radius: 12px;
+        border-left: 4px solid #2ecc71;
+    }
+
+    .refund-policy h3 {
+        color: #27ae60 !important;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .refund-policy h3 i {
+        color: #2ecc71;
+        font-size: 1.4rem;
+    }
+
+    /* Safety Warnings */
+    .safety-warnings {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .warning-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 1.5rem;
+        background: rgba(255, 193, 7, 0.08);
+        border-radius: 12px;
+        border-left: 4px solid #ffc107;
+    }
+
+    .warning-item i {
+        color: #ffc107;
+        font-size: 1.5rem;
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+    }
+
+    .warning-item h4 {
+        color: #ffc107 !important;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .warning-item p {
+        color: var(--light-text) !important;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Additional Terms Grid */
+    .additional-terms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .term-item {
+        padding: 1.5rem;
+        background: rgba(128, 90, 213, 0.08);
+        border-radius: 12px;
+        border-left: 4px solid #8e44ad;
+    }
+
+    .term-item h4 {
+        color: #bb86fc !important;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 600;
+    }
+
+    .term-item h4 i {
+        color: #8e44ad;
+        font-size: 1.2rem;
+    }
+
+    .term-item p {
+        color: var(--light-text) !important;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Footer Styling */
+    .terms-footer {
+        background: var(--bg2);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        position: relative;
+        border: 1px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .terms-footer::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: linear-gradient(135deg, 
+            rgba(198, 150, 92, 0.3) 0%, 
+            rgba(198, 150, 92, 0.1) 25%, 
+            transparent 50%, 
+            rgba(198, 150, 92, 0.1) 75%, 
+            rgba(198, 150, 92, 0.3) 100%);
+        border-radius: 20px;
+        z-index: -1;
+        opacity: 0.6;
+    }
+
+    .contact-notice h3 {
+        color: var(--light-text) !important;
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-family: "industry", sans-serif;
+    }
+
+    .contact-notice p {
+        color: var(--light-text) !important;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+
+    .contact-methods {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+    }
+
+    .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: linear-gradient(to right, var(--main-color) 0%, var(--light-accent) 51%, var(--accent-color) 100%);
+        background-size: 200% auto;
+        color: white !important;
+        text-decoration: none;
+        padding: 1.2rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(198, 150, 92, 0.3);
+        margin: 0.5rem;
+    }
+
+    .contact-link:hover {
+        background-position: right center;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(198, 150, 92, 0.4);
+        color: white !important;
+    }
+
+    .last-updated {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: var(--bg2);
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        border: 1px solid rgba(198, 150, 92, 0.3);
+        color: var(--main-color) !important;
+        font-size: 1.2rem;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .last-updated i {
+        color: var(--main-color) !important;
+        font-size: 1.2rem;
+    }
+
+    .last-updated span {
+        color: var(--main-color) !important;
+    }
+
+    .response-time {
+        margin-top: 2rem;
+        color: var(--light-text) !important;
+        opacity: 0.8;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .response-time i {
+        margin-right: 0.5rem;
+        color: var(--main-color);
+        font-size: 1.2rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .terms-section {
+            padding: 10rem 1rem 4rem;
+        }
+        
+        .terms-card {
+            padding: 2rem;
+        }
+        
+        .terms-card h2 {
+            font-size: 2rem;
+        }
+        
+        .terms-card p {
+            font-size: 1.15rem;
+        }
+        
+        .terms-list li {
+            font-size: 1.15rem;
+            padding-left: 2rem;
+        }
+        
+        .additional-terms-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .safety-warnings {
+            gap: 1rem;
+        }
+        
+        .warning-item {
+            padding: 1.2rem;
+        }
+        
+        .contact-link {
+            font-size: 1.1rem;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+        
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            font-size: 1.6rem;
+        }
+        
+        .last-updated {
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .terms-section {
+            padding: 8rem 0.8rem 3rem;
+        }
+        
+        .terms-card {
+            padding: 1.5rem;
+        }
+        
+        .terms-card h2 {
+            font-size: 1.8rem;
+        }
+        
+        .terms-card p {
+            font-size: 1.1rem;
+        }
+        
+        .terms-list li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            padding-left: 1.8rem;
+        }
+        
+        .prohibited-section,
+        .refund-policy,
+        .warning-item,
+        .term-item {
+            padding: 1rem;
+        }
+        
+        .contact-link {
+            font-size: 1rem;
+            padding: 0.9rem 1.2rem;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.4rem;
+        }
+        
+        .last-updated {
+            font-size: 1rem;
+            padding: 0.7rem 1.2rem;
+            gap: 0.5rem;
+        }
+        
+        .response-time {
+            font-size: 1.1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+
+    /* Ensure all text is properly colored */
+    .terms-section * {
+        color: inherit;
+    }
+
+    .terms-section p,
+    .terms-section li {
+        color: var(--light-text) !important;
+    }
+
+    .terms-section h1,
+    .terms-section h2,
+    .terms-section h3,
+    .terms-section h4 {
+        color: var(--light-text) !important;
+    }
+</style>
+</html>

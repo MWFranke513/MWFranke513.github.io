@@ -3665,7 +3665,7 @@ input[type="number"]::-webkit-outer-spin-button {
             }
 
             .footer-logo {
-          font-size: 2.8rem;
+          font-size: 40px;
           font-weight: bold;
           color: var(--main-color);
           margin-bottom: 0.5rem;
@@ -4199,7 +4199,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-logo {
-      font-size: 2rem;
+      font-size: 4.5rem;
   }
   
   .footer-tagline {
@@ -4226,7 +4226,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-logo {
-      font-size: 1.8rem;
+      font-size: 4.5rem;
   }
   
   .footer-tagline {
@@ -4332,7 +4332,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
   .footer-logo {
-      font-size: 1.6rem;
+      font-size: 4.5rem;
   }
   
   .footer-tagline {
