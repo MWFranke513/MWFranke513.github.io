@@ -473,7 +473,7 @@
     <!-- quote section ends -->
 
     
-<!-- Replace your entire contact section with this -->
+<!-- Replace your contact form with this properly configured version -->
 <section class="contact" id="contact">
     <h1 class="heading with-subtitle">Get in <span>Touch</span></h1>
     <p class="contact-subtitle">Ready to bring your ideas to life? Let's discuss your 3D printing project and get you a free quote.</p>
@@ -521,7 +521,10 @@
             <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
             
             <!-- Clean Netlify Form -->
-            <form name="contact" method="POST" netlify netlify-honeypot="bot-field">
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/contact-success.html">
+                <!-- Hidden field for Netlify Forms detection -->
+                <input type="hidden" name="form-name" value="contact">
+                
                 <!-- Honeypot spam protection -->
                 <p style="display: none;">
                     <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -659,13 +662,19 @@
 <!-- footer section ends -->
 
 
+<!-- Remove ALL EmailJS references and clean up scripts -->
 <script>
-    // Simplified form handling - NO interference with Netlify
+    // Clean form handling for Netlify ONLY
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, setting up form...'); // Debug log
+        
         const form = document.querySelector('form[name="contact"]');
+        console.log('Form found:', form); // Debug log
         
         if (form) {
             form.addEventListener('submit', function(e) {
+                console.log('Form submitted'); // Debug log
+                
                 const submitBtn = this.querySelector('.form-submit');
                 
                 if (submitBtn) {
@@ -674,7 +683,7 @@
                     submitBtn.disabled = true;
                 }
                 
-                // Let Netlify handle the rest - DO NOT prevent default
+                // Let Netlify handle submission - DO NOT prevent default
             });
         }
         
@@ -696,56 +705,31 @@
             if (successMsg) {
                 successMsg.style.display = 'block';
             }
-            // Clear the URL parameter
             window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        // Menu toggle functionality
+        var menuBtn = document.getElementById('menu-btn');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function () {
+                var icon = this.querySelector('i');
+                if (icon.classList.contains('bi-list')) {
+                    icon.classList.remove('bi-list');
+                    icon.classList.add('bi-x');
+                } else {
+                    icon.classList.remove('bi-x');
+                    icon.classList.add('bi-list');
+                }
+                document.querySelector('.navbar').classList.toggle('active');
+            });
         }
     });
     </script>
     
-    <!-- REMOVE THIS ENTIRE EmailJS SECTION -->
-    <!-- 
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("RRpFpyiWmsgZWMbAQ"); 
-        })();
-    </script>
-    -->
-    
-    <!-- Keep your other scripts -->
+    <!-- Keep only these scripts -->
     <script src="js/ScrollToTop.js"></script>
     <script src="js/index.js"></script>
     <script src="js/shopping-cart.js"></script>
     <script src="js/cookie-banner.js"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script> -->
-    <!-- <script>
-        (function(){
-            emailjs.init("RRpFpyiWmsgZWMbAQ"); 
-        })();
-    </script> -->
-        <script src="js/ScrollToTop.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/shopping-cart.js"> </script>
-        <script src="js/cookie-banner.js"></script>
-        <!-- <script>
-            // Ensure icon toggling works for Bootstrap Icons
-            document.addEventListener('DOMContentLoaded', function () {
-                var menuBtn = document.getElementById('menu-btn');
-                if (menuBtn) {
-                    menuBtn.addEventListener('click', function () {
-                        var icon = this.querySelector('i');
-                        if (icon.classList.contains('bi-list')) {
-                            icon.classList.remove('bi-list');
-                            icon.classList.add('bi-x');
-                        } else {
-                            icon.classList.remove('bi-x');
-                            icon.classList.add('bi-list');
-                        }
-                        document.querySelector('.navbar').classList.toggle('active');
-                    });
-                }
-            });
-        </script> -->
     </body>
     </html>
