@@ -91,6 +91,20 @@
  * @function setupNavigationHandlers
  * @returns {void}
  */
+
+(function() {
+  const faviconUrl = 'images/favicon.svg'; // Change to your favicon path
+  let link = document.querySelector("link[rel~='icon']");
+  if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+  }
+  link.type = 'image/png';
+  link.href = faviconUrl;
+})();
+
+
 document.addEventListener('DOMContentLoaded', function setupNavigationHandlers() {
   console.log('Setting up navigation handlers for anchor links');
   
