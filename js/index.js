@@ -1,96 +1,374 @@
+
+
+
 /**
- * @fileoverview Main JavaScript file handling site navigation and product page functionality.
- * The file is responsible for handling navbar toggling, product filtering and sorting,
- * product interactions, lazy loading of images, and quick view modal functionality.
- * 
- * @requires AOS Optional AOS animation library for enhanced visual effects
- * 
- * @author MVP Prints
+ * @fileoverview Main JavaScript file for MVP Prints website functionality
+ * @description Handles all interactive features including navigation, product management, 
+ * modals, filtering, sorting, and user interface enhancements
+ * @author GitHub Copilot Assistant
  * @version 1.0.0
  */
 
 /**
- * Main initialization function for the product page.
- * Sets up all product-related functionality if a product grid is present.
- * 
- * @function initProductPage
- * @returns {void}
+ * Initializes the under construction banner on the homepage
+ * Creates and displays a modal banner with construction notice
+ * Only shows on homepage URLs (/, /index.html, index.html)
+ * @function
+ * @since 1.0.0
  */
 
 /**
- * Sets up product filtering and sorting functionality.
- * Handles filter button clicks and sort select changes.
- * 
- * @function setupFilteringAndSorting
- * @returns {void}
+ * Sets up the website favicon dynamically
+ * Creates or updates the favicon link element in the document head
+ * @function
+ * @since 1.0.0
  */
 
 /**
- * Filters products based on category.
- * 
- * @function filterProducts
- * @param {string} filterValue - The category to filter by or 'all' for all products
- * @returns {void}
- */
-
-/**
- * Sorts visible products by price or name.
- * 
- * @function sortProducts
- * @param {string} sortType - The sort method ('price-low', 'price-high', 'name')
- * @returns {void}
- */
-
-/**
- * Sets up product interaction handlers including add to cart buttons, 
- * order now buttons, and pagination links.
- * 
- * @function setupProductInteractions
- * @returns {void}
- */
-
-/**
- * Sets up lazy loading for product images.
- * Loads images only when needed and handles loading errors.
- * 
- * @function setupLazyLoading
- * @returns {void}
- */
-
-/**
- * Sets up quick view functionality for product images.
- * Creates a modal dialog when product images are clicked.
- * 
- * @function setupQuickView
- * @returns {void}
- */
-
-/**
- * Shows a loading overlay with spinner animation.
- * Used to indicate page transitions or data loading.
- * 
- * @function showLoading
- * @returns {void}
- */
-
-/**
- * Shows a toast notification message.
- * Creates and animates a toast notification in the bottom right corner.
- * 
- * @function showToast
- * @param {string} message - The message to show in the toast notification
- * @returns {void}
- */
-
-
-
-/**
- * Sets up navigation handlers for anchor links that need to redirect to homepage first.
- * Handles cases where user clicks on #about, #contact, etc. from non-homepage pages.
- * 
+ * Sets up navigation handlers for anchor links in header and footer
+ * Handles navigation between pages and sections with proper anchor linking
+ * Redirects to index.html with anchor if not currently on homepage
  * @function setupNavigationHandlers
- * @returns {void}
+ * @since 1.0.0
  */
+
+/**
+ * Initializes footer dropdown functionality for mobile screens
+ * Creates collapsible sections in footer for better mobile UX
+ * Only activates on screens 768px and below
+ * @function
+ * @since 1.0.0
+ */
+
+/**
+ * Toggles the visibility of footer dropdown sections
+ * @function toggleDropdown
+ * @param {HTMLElement} section - The footer section element to toggle
+ * @since 1.0.0
+ */
+
+/**
+ * Initializes responsive navbar functionality
+ * Handles mobile menu toggle, scroll behavior, and search form interactions
+ * @function
+ * @since 1.0.0
+ */
+
+/**
+ * Main initialization function for product page features
+ * Sets up all product-related functionality including filtering, sorting, and interactions
+ * Only runs if product grid is detected on the page
+ * @function initProductPage
+ * @since 1.0.0
+ */
+
+/**
+ * Sets up product filtering and sorting functionality
+ * Handles filter buttons and sort dropdown interactions
+ * @function setupFilteringAndSorting
+ * @since 1.0.0
+ */
+
+/**
+ * Sets up product interaction handlers (add to cart, order buttons)
+ * Uses event delegation for dynamic content handling
+ * @function setupProductInteractions
+ * @since 1.0.0
+ */
+
+/**
+ * Changes the quantity of a product in quantity controls
+ * @function changeQuantity
+ * @param {HTMLElement} button - The quantity button that was clicked
+ * @param {number} change - The amount to change (1 or -1)
+ * @since 1.0.0
+ */
+
+/**
+ * Updates the styling and state of quantity control buttons
+ * @function updateQuantityControls
+ * @param {HTMLElement} productCard - The product card element
+ * @param {number} quantity - The current quantity value
+ * @since 1.0.0
+ */
+
+/**
+ * Implements lazy loading for product images
+ * Adds loading states and error handling for product images
+ * @function setupLazyLoading
+ * @since 1.0.0
+ */
+
+/**
+ * Sets up quick view modal functionality for product images
+ * Creates modal overlay for detailed product preview
+ * @function setupQuickView
+ * @since 1.0.0
+ */
+
+/**
+ * Displays a loading overlay with spinner animation
+ * Used during page transitions and async operations
+ * @function showLoading
+ * @since 1.0.0
+ */
+
+/**
+ * Ripple effect class for product card hover animations
+ * Creates expanding circle animations on mouse hover
+ * @class RippleEffect
+ * @since 1.0.0
+ */
+
+/**
+ * Initializes the ripple effect system
+ * @method
+ * @memberof RippleEffect
+ * @since 1.0.0
+ */
+
+/**
+ * Creates a ripple animation at mouse position
+ * @method createRipple
+ * @memberof RippleEffect
+ * @param {Event} event - The mouse event containing position data
+ * @since 1.0.0
+ */
+
+/**
+ * Creates individual ripple ring elements
+ * @method createRippleRing
+ * @memberof RippleEffect
+ * @param {HTMLElement} card - The product card element
+ * @param {number} x - X coordinate for ripple center
+ * @param {number} y - Y coordinate for ripple center
+ * @param {string} className - CSS class name for the ripple
+ * @param {number} [delay=0] - Animation delay in milliseconds
+ * @since 1.0.0
+ */
+
+/**
+ * Removes existing ripple elements from a card
+ * @method removeExistingRipples
+ * @memberof RippleEffect
+ * @param {HTMLElement} card - The product card element to clean
+ * @since 1.0.0
+ */
+
+/**
+ * Initializes ripple effects for dynamically added content
+ * @function initializeRippleEffect
+ * @since 1.0.0
+ */
+
+/**
+ * Sets up active navigation state indicators
+ * Adds visual indicators (underline and color change) to navigation items
+ * that correspond to the current page
+ * @function setupActiveNavigation
+ * @returns {void}
+ * @since 1.0.0
+ */
+
+/**
+ * Shares a product using the Web Share API or falls back to copying to clipboard
+ * @function shareProduct
+ * @param {string} productName - The name of the product to share
+ * @param {string} productPrice - The price of the product to share
+ * @since 1.0.0
+ */
+
+/**
+ * Fallback share function that copies the share text to clipboard
+ * @function fallbackShare
+ * @param {Object} shareData - Object containing title, text, and url
+ * @param {string} shareData.title - The share title
+ * @param {string} shareData.text - The share description text
+ * @param {string} shareData.url - The URL to share
+ * @since 1.0.0
+ */
+
+/**
+ * Shows a notification when content is shared
+ * @function showShareNotification
+ * @param {string} message - The message to display in the notification
+ * @since 1.0.0
+ */
+
+/**
+ * Shows a modal with shareable text when clipboard API is not available
+ * @function showShareModal
+ * @param {string} shareText - The text to display for manual copying
+ * @since 1.0.0
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Only show on homepage
+  const isHomepage =
+    window.location.pathname === '/' ||
+    window.location.pathname.endsWith('/index.html') ||
+    window.location.pathname === '/index.html';
+
+  if (!isHomepage) return;
+
+  // Create modal overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'construction-overlay';
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+    zIndex: '99999',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backdropFilter: 'blur(5px)',
+    animation: 'fadeIn 0.3s ease-out'
+  });
+
+  // Create banner
+  const banner = document.createElement('div');
+  banner.id = 'under-construction-banner';
+  banner.innerHTML = `
+    <div style="
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+      color: #f0f0f0;
+      padding: 3rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+      font-size: 1.3rem;
+      max-width: 85vw;
+      width: 600px;
+      text-align: center;
+      position: relative;
+      border: 2px solid var(--main-color, #c6957e);
+    ">
+      <div style="
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(198, 149, 126, 0.5));
+      ">🚧</div>
+      <h2 style="
+        color: var(--main-color, #c6957e);
+        margin: 0 0 1.5rem 0;
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      ">Site Under Construction</h2>
+      <div style="
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        color: #e0e0e0;
+        font-size: 1.1rem;
+      ">
+        We're working hard to bring you an amazing experience!<br>
+        Please check back soon for our full range of services and updates.
+      </div>
+      <div style="
+        font-size: 0.9rem;
+        color: #bbb;
+        margin-bottom: 1rem;
+      ">
+        Expected completion: Coming Soon
+      </div>
+      <button id="close-banner-btn" style="
+        background: var(--main-color, #c6957e);
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(198, 149, 126, 0.3);
+      " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(198, 149, 126, 0.4)'" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(198, 149, 126, 0.3)'">
+        Continue to Site
+      </button>
+      <button id="close-x-btn" style="
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: transparent;
+        border: none;
+        color: #bbb;
+        font-size: 2rem;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      " onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='#fff'" 
+         onmouseout="this.style.backgroundColor='transparent'; this.style.color='#bbb'" 
+         aria-label="Close">&times;</button>
+    </div>
+  `;
+
+  // Add animation styles
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { 
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    #under-construction-banner > div {
+      animation: slideIn 0.4s ease-out 0.1s both;
+    }
+  `;
+  document.head.appendChild(style);
+
+  overlay.appendChild(banner);
+  document.body.appendChild(overlay);
+
+  // Close handlers
+  const closeHandler = function() {
+    overlay.style.animation = 'fadeOut 0.3s ease-out';
+    setTimeout(() => overlay.remove(), 300);
+  };
+
+  // Add fadeOut animation
+  style.textContent += `
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  `;
+
+  banner.querySelector('#close-banner-btn').onclick = closeHandler;
+  banner.querySelector('#close-x-btn').onclick = closeHandler;
+  
+  // Close on overlay click (but not banner click)
+  overlay.onclick = function(e) {
+    if (e.target === overlay) {
+      closeHandler();
+    }
+  };
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeHandler();
+    }
+  });
+});
+
 
 (function() {
   const faviconUrl = 'images/favicon.svg'; // Change to your favicon path
