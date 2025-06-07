@@ -133,85 +133,88 @@
     </section>
 
     <!-- faq section ends -->
-    <!-- contact section starts -->
-    <section class="contact" id="contact">
-        <h1 class="heading with-subtitle">Get in <span>Touch</span></h1>
-        <p class="contact-subtitle">Ready to bring your ideas to life? Let's discuss your 3D printing project and get you a free quote.</p>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's Start a Conversation</h3>
-                <p>Whether you need a prototype, custom part, or have questions about our 3D printing services, we're here to help. Our team typically responds within 24 hours.</p>
+<!-- contact section starts -->
+<section class="contact" id="contact">
+    <h1 class="heading with-subtitle">Get in <span>Touch</span></h1>
+    <p class="contact-subtitle">Ready to bring your ideas to life? Let's discuss your 3D printing project and get you a free quote.</p>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Let's Start a Conversation</h3>
+            <p>Whether you need a prototype, custom part, or have questions about our 3D printing services, we're here to help. Our team typically responds within 24 hours.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-method-info">
+                        <h4>Email Us</h4>
+                        <p>hello@mvpprints.com</p>
+                    </div>
+                </div>
                 
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h4>Email Us</h4>
-                            <p>hello@mvpprints.com</p>
-                        </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h4>Response Time</h4>
-                            <p>Within 24 hours</p>
-                        </div>
+                    <div class="contact-method-info">
+                        <h4>Response Time</h4>
+                        <p>Within 24 hours</p>
                     </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h4>Service Area</h4>
-                            <p>Utah County & Surrounding Areas</p>
-                        </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-method-info">
+                        <h4>Service Area</h4>
+                        <p>Utah County & Surrounding Areas</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="form-container">
-                <h2 class="form-title">Send Us a Message</h2>
-                <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
-                
-                <form name="contact" id="contactForm" method="POST" data-netlify="true" data-netlify-recaptcha="true"></form>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about your project or ask any questions you have..." required></textarea>
-                    </div>
-                    
-                    <div data-netlify-recaptcha="true"></div>
-                    
-                    <button type="submit" class="form-submit">
-                        <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
-                        Send Message
-                    </button>
-                    
-                    <div class="success-message" id="successMessage">
-                        <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
-                        Thank you! Your message has been sent successfully.
-                    </div>
-                </form>
-            </div>
         </div>
-    </section>
-    <!-- contact section ends -->
+        
+        <div class="form-container">
+            <h2 class="form-title">Send Us a Message</h2>
+            <p class="form-subtitle">Fill out the form below and we'll get back to you soon</p>
+            
+            <!-- Clean Netlify Form -->
+            <form id="contactForm" action="https://formspree.io/f/xovwjkqq" method="POST">
+                <!-- Honeypot spam protection (optional, but can keep) -->
+                <p style="display: none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </p>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about your project or ask any questions you have..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                    Send Message
+                </button>
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                    Thank you! Your message has been sent successfully.
+                </div>
+                <div class="success-message" id="errorMessage" style="display: none; background: #e74c3c;">
+                    <i class="fas fa-times-circle" style="margin-right: 0.5rem;"></i>
+                    Sorry, there was a problem sending your message. Please try again.
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- contact section ends -->
 
 <!-- footer section starts -->
 <section class="footer">
@@ -329,6 +332,78 @@
           event.target.parentNode.classList.toggle("active");
         });
       });
+    </script>
+
+<script>
+    // Formspree form handling - consolidated version
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+        
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('.form-submit');
+                const formData = new FormData(form);
+                
+                // Show loading state
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
+                    submitBtn.disabled = true;
+                }
+                
+                // Hide previous messages
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+                
+                // Honeypot spam protection
+                if (formData.get('bot-field')) {
+                    return; // Silent fail for bots
+                }
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Success
+                        form.reset();
+                        successMsg.style.display = 'block';
+                    } else {
+                        // Error
+                        errorMsg.style.display = 'block';
+                    }
+                } catch (error) {
+                    // Network error
+                    errorMsg.style.display = 'block';
+                } finally {
+                    // Reset button state
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>Send Message';
+                        submitBtn.disabled = false;
+                    }
+                }
+            });
+        }
+        
+        // Input focus animations
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    });
     </script>
     <script src="js/ScrollToTop.js"></script>
     <script src="js/index.js"></script>
