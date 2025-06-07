@@ -732,4 +732,11 @@
     <script src="js/shopping-cart.js"></script>
     <script src="js/cookie-banner.js"></script>
     </body>
+<!-- Add this right after <body> tag for Netlify form detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+
     </html>
