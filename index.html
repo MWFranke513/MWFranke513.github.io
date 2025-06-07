@@ -18,6 +18,13 @@
     </head>
     <body>
 
+<!-- Add this right after <body> tag for Netlify form detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+
     <!-- header section starts -->
         <header class="header">
 
@@ -665,27 +672,27 @@
 <!-- Remove ALL EmailJS references and clean up scripts -->
 <script>
     // Clean form handling for Netlify ONLY
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Page loaded, setting up form...'); // Debug log
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     console.log('Page loaded, setting up form...'); // Debug log
         
-        const form = document.querySelector('form[name="contact"]');
-        console.log('Form found:', form); // Debug log
+    //     const form = document.querySelector('form[name="contact"]');
+    //     console.log('Form found:', form); // Debug log
         
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                console.log('Form submitted'); // Debug log
+    //     if (form) {
+    //         form.addEventListener('submit', function(e) {
+    //             console.log('Form submitted'); // Debug log
                 
-                const submitBtn = this.querySelector('.form-submit');
+    //             const submitBtn = this.querySelector('.form-submit');
                 
-                if (submitBtn) {
-                    // Show loading state
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
-                    submitBtn.disabled = true;
-                }
+    //             if (submitBtn) {
+    //                 // Show loading state
+    //                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
+    //                 submitBtn.disabled = true;
+    //             }
                 
-                // Let Netlify handle submission - DO NOT prevent default
-            });
-        }
+    //             // Let Netlify handle submission - DO NOT prevent default
+    //         });
+    //     }
         
         // Input focus animations
         document.querySelectorAll('.form-input').forEach(input => {
@@ -698,32 +705,16 @@
             });
         });
         
-        // Check for success parameter in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            const successMsg = document.getElementById('successMessage');
-            if (successMsg) {
-                successMsg.style.display = 'block';
-            }
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-        
-        // Menu toggle functionality
-        var menuBtn = document.getElementById('menu-btn');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', function () {
-                var icon = this.querySelector('i');
-                if (icon.classList.contains('bi-list')) {
-                    icon.classList.remove('bi-list');
-                    icon.classList.add('bi-x');
-                } else {
-                    icon.classList.remove('bi-x');
-                    icon.classList.add('bi-list');
-                }
-                document.querySelector('.navbar').classList.toggle('active');
-            });
-        }
-    });
+    //     // Check for success parameter in URL
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     if (urlParams.get('success') === 'true') {
+    //         const successMsg = document.getElementById('successMessage');
+    //         if (successMsg) {
+    //             successMsg.style.display = 'block';
+    //         }
+    //         window.history.replaceState({}, document.title, window.location.pathname);
+    //     }
+    // });
     </script>
     
     <!-- Keep only these scripts -->
@@ -732,11 +723,4 @@
     <script src="js/shopping-cart.js"></script>
     <script src="js/cookie-banner.js"></script>
     </body>
-<!-- Add this right after <body> tag for Netlify form detection -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-    </form>
-
     </html>
