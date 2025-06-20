@@ -358,12 +358,35 @@
         height: 100%;
         color: var(--text-secondary);
         text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 15px;
+      }
+
+      .preview-placeholder:hover {
+        background: rgba(211, 173, 127, 0.05);
+        color: var(--main-color);
       }
 
       .preview-placeholder i {
         font-size: 3rem;
         margin-bottom: 1rem;
         opacity: 0.5;
+        transition: all 0.3s ease;
+      }
+
+      .preview-placeholder:hover i {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
+
+      .preview-placeholder p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .preview-placeholder:hover p {
+        font-weight: 500;
       }
 
       .preview-controls {
@@ -390,50 +413,126 @@
         box-shadow: 0 5px 15px rgba(211, 173, 127, 0.3);
       }
 
-      /* Radio Groups */
-      .radio-group {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 0.5rem;
-      }
+/* Radio Groups - Updated and Fixed */
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
 
-      .radio-option {
-        position: relative;
-      }
+.radio-option {
+  position: relative;
+}
 
-      .radio-option input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-      .radio-option label {
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-        border: 2px solid var(--border-color);
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.02);
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
+/* Default radio button styling (for most sections) */
+.radio-option label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between icon and text */
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  font-weight: 500;
+  width: 100%;
+}
 
-      .radio-option input[type="radio"]:checked + label {
-        background: linear-gradient(45deg, rgba(211, 173, 127, 0.1), rgba(193, 155, 108, 0.1));
-        border-color: var(--main-color);
-        color: var(--main-color);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(211, 173, 127, 0.2);
-      }
+.radio-option label i {
+  color: var(--main-color);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
 
-      .radio-option label i {
-        margin-right: 0.8rem;
-        font-size: 1.1rem;
-      }
+/* Active state for ALL radio buttons */
+.radio-option input[type="radio"]:checked + label {
+  border-color: var(--main-color);
+  background: rgba(211, 173, 127, 0.1);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(211, 173, 127, 0.2);
+}
+
+.radio-option input[type="radio"]:checked + label i {
+  color: var(--main-color);
+}
+
+.radio-option:hover label {
+  border-color: rgba(211, 173, 127, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Special styling for delivery method section ONLY */
+.radio-option label .main-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between icon and main text */
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.radio-option label .sub-text {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+/* Delivery method radio buttons - vertical layout with main/sub text */
+.radio-option:has(input[name="delivery"]) label {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.radio-option input[type="radio"]:checked + label .main-text {
+  color: var(--text-primary);
+}
+
+.radio-option input[type="radio"]:checked + label .main-text i {
+  color: var(--main-color);
+}
+
+.radio-option input[type="radio"]:checked + label .sub-text {
+  color: rgba(211, 173, 127, 0.7);
+}
+
+/* Disabled options styling */
+.radio-option.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.radio-option.disabled label {
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+/* Fix for specific radio groups that should NOT use the delivery method styling */
+.radio-option:has(input[name="file-source"]) label,
+.radio-option:has(input[name="print-type"]) label,
+.radio-option:has(input[name="custom-dimensions"]) label {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Ensure icons are properly colored for all sections */
+.radio-option:has(input[name="file-source"]) input[type="radio"]:checked + label i,
+.radio-option:has(input[name="print-type"]) input[type="radio"]:checked + label i,
+.radio-option:has(input[name="custom-dimensions"]) input[type="radio"]:checked + label i {
+  color: var(--main-color);
+}
 
       /* Select Styling */
       .select-wrapper {
@@ -455,6 +554,27 @@
       select.form-control {
         appearance: none;
         padding-right: 3rem;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+      }
+
+      /* Fix dropdown menu styling */
+      select.form-control option {
+        background: var(--card-bg);
+        color: var(--text-primary);
+        padding: 0.5rem;
+      }
+
+      /* Enhanced select styling for better visibility */
+      .select-wrapper select {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border: 2px solid transparent;
+      }
+
+      .select-wrapper select:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--main-color);
       }
 
       /* Submit Button */
@@ -562,6 +682,17 @@
       .form-group {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
+      /* Disabled options styling */
+      .radio-option.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .radio-option.disabled label {
+        color: rgba(255, 255, 255, 0.3);
+        cursor: not-allowed;
+      }
     </style>
   </head>
   <body>
@@ -634,7 +765,8 @@
               
               <div class="form-group">
                 <label class="form-label" for="phone">Phone Number (optional)</label>
-                <input type="tel" id="phone" name="phone_number" class="form-control" placeholder="555-555-5555">
+                <input type="tel" id="phone" name="phone_number" class="form-control"
+                  placeholder="555-555-5555" maxlength="12" pattern="^\d{3}-\d{3}-\d{4}$" inputmode="numeric">
                 <div class="helper-text">Format: 555-555-5555</div>
               </div>
             </div>
@@ -760,24 +892,37 @@
                   <div class="radio-option">
                     <input type="radio" id="delivery-shipping" name="delivery" value="shipping" required>
                     <label for="delivery-shipping">
-                      <i class="fas fa-truck"></i>
-                      Shipping
+                      <div class="main-text">
+                        <i class="fas fa-truck"></i>
+                        Shipping
+                      </div>
+                      <div class="sub-text">Available Everywhere</div>
                     </label>
                   </div>
                   <div class="radio-option">
                     <input type="radio" id="delivery-pickup" name="delivery" value="pickup">
                     <label for="delivery-pickup">
-                      <i class="fas fa-store"></i>
-                      Local Pickup
+                      <div class="main-text">
+                        <i class="fas fa-store"></i>
+                        Local Pickup
+                      </div>
+                      <div class="sub-text">Utah County Only</div>
                     </label>
                   </div>
                   <div class="radio-option">
                     <input type="radio" id="delivery-dropoff" name="delivery" value="dropoff">
                     <label for="delivery-dropoff">
-                      <i class="fas fa-hand-holding"></i>
-                      Local Dropoff
+                      <div class="main-text">
+                        <i class="fas fa-hand-holding"></i>
+                        Local Dropoff
+                      </div>
+                      <div class="sub-text">Utah County Only</div>
                     </label>
                   </div>
+                </div>
+                <div class="helper-text" id="locationHelper" style="display: none; color: var(--main-color);">
+                  <i class="fas fa-info-circle"></i>
+                  Local pickup and dropoff options are only available in Utah County, Utah.
                 </div>
               </div>
 
@@ -1106,6 +1251,30 @@ function initializeOrderForm() {
     });
   }
   
+  // Make 3D preview placeholder clickable to trigger file upload
+  const previewPlaceholder = document.getElementById('previewPlaceholder');
+  // fileInput is already declared above
+
+  if (previewPlaceholder && fileInput) {
+    previewPlaceholder.addEventListener('click', function() {
+      fileInput.click();
+    });
+    
+    // Add cursor pointer style
+    previewPlaceholder.style.cursor = 'pointer';
+    
+    // Add hover effect
+    previewPlaceholder.addEventListener('mouseenter', function() {
+      this.style.opacity = '0.8';
+      this.style.transform = 'scale(1.02)';
+    });
+    
+    previewPlaceholder.addEventListener('mouseleave', function() {
+      this.style.opacity = '1';
+      this.style.transform = 'scale(1)';
+    });
+  }
+  
   console.log('Order form initialization complete');
 }
 
@@ -1415,6 +1584,131 @@ window.addEventListener('resize', function() {
     }
   }
 });
+
+
+// Location detection and Utah County restriction
+let isUtahCounty = false;
+let locationChecked = false;
+
+// Check if user is in Utah County
+function checkUtahCountyLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        
+        // More accurate Utah County boundaries
+        // Expanded to cover all of Utah County properly
+        const utahCountyBounds = {
+          north: 40.6,    // Increased from 40.4
+          south: 39.4,    // Decreased from 39.6  
+          east: -111.0,   // Increased from -111.4
+          west: -112.2    // Decreased from -112.0
+        };
+        
+        isUtahCounty = (
+          lat >= utahCountyBounds.south &&
+          lat <= utahCountyBounds.north &&
+          lng >= utahCountyBounds.west &&
+          lng <= utahCountyBounds.east
+        );
+        
+        locationChecked = true;
+        updateDeliveryOptions();
+        console.log(`Location detected: ${isUtahCounty ? 'Inside' : 'Outside'} Utah County`);
+        console.log(`Coordinates: ${lat}, ${lng}`); // Debug info
+      },
+      function(error) {
+        console.log('Location access denied or unavailable');
+        locationChecked = true;
+        isUtahCounty = true; // Default to TRUE if location unavailable (changed from false)
+        updateDeliveryOptions();
+      },
+      {
+        timeout: 10000,
+        enableHighAccuracy: true // Changed to true for better accuracy
+      }
+    );
+  } else {
+    console.log('Geolocation not supported');
+    locationChecked = true;
+    isUtahCounty = true; // Default to TRUE (changed from false)
+    updateDeliveryOptions();
+  }
+}
+
+// Update delivery options based on location
+function updateDeliveryOptions() {
+  const pickupOption = document.querySelector('.radio-option:has(#delivery-pickup)');
+  const dropoffOption = document.querySelector('.radio-option:has(#delivery-dropoff)');
+  const pickupInput = document.getElementById('delivery-pickup');
+  const dropoffInput = document.getElementById('delivery-dropoff');
+  
+  if (!isUtahCounty) {
+    // Disable local options if not in Utah County
+    if (pickupOption) {
+      pickupOption.classList.add('disabled');
+      pickupOption.title = 'Local pickup only available in Utah County';
+    }
+    if (dropoffOption) {
+      dropoffOption.classList.add('disabled');
+      dropoffOption.title = 'Local dropoff only available in Utah County';
+    }
+    if (pickupInput) {
+      pickupInput.disabled = true;
+    }
+    if (dropoffInput) {
+      dropoffInput.disabled = true;
+    }
+    
+    // Auto-select shipping if local options were selected
+    if (pickupInput && pickupInput.checked) {
+      document.getElementById('delivery-shipping').checked = true;
+    }
+    if (dropoffInput && dropoffInput.checked) {
+      document.getElementById('delivery-shipping').checked = true;
+    }
+  } else {
+    // Enable local options if in Utah County
+    if (pickupOption) {
+      pickupOption.classList.remove('disabled');
+      pickupOption.title = '';
+    }
+    if (dropoffOption) {
+      dropoffOption.classList.remove('disabled');
+      dropoffOption.title = '';
+    }
+    if (pickupInput) {
+      pickupInput.disabled = false;
+    }
+    if (dropoffInput) {
+      dropoffInput.disabled = false;
+    }
+  }
+  
+  updateLocationHelper(); // Add this line at the end
+}
+
+// Show/hide location helper text
+function updateLocationHelper() {
+  const locationHelper = document.getElementById('locationHelper');
+  if (locationHelper) {
+    if (!isUtahCounty && locationChecked) {
+      locationHelper.style.display = 'block';
+      locationHelper.innerHTML = '<i class="fas fa-info-circle"></i> Local pickup and dropoff are not available in your area. Shipping is available everywhere.';
+    } else if (isUtahCounty && locationChecked) {
+      locationHelper.style.display = 'block';
+      locationHelper.innerHTML = '<i class="fas fa-check-circle"></i> Great! Local pickup and dropoff are available in your area.';
+      locationHelper.style.color = '#4CAF50';
+    }
+  }
+}
+
+// Call location check when form initializes
+setTimeout(() => {
+  checkUtahCountyLocation();
+}, 1000);
 </script>
     <script src="js/ScrollToTop.js"></script>
     <script src="js/index.js"></script>
