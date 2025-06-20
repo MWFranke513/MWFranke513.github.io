@@ -404,8 +404,224 @@
     </script>
 
     <script>
-      
-    </script>
+// Pagination functionality
+class ProductPagination {
+    constructor() {
+        this.itemsPerPage = 12;
+        this.currentPage = 1;
+        this.products = [];
+        this.filteredProducts = [];
+        this.init();
+    }
+
+    init() {
+        this.products = Array.from(document.querySelectorAll('.product-card'));
+        this.filteredProducts = [...this.products];
+        this.setupPagination();
+        this.updateDisplay();
+    }
+
+    setupPagination() {
+        const paginationContainer = document.querySelector('.pagination-container');
+        const pagination = document.querySelector('.pagination');
+        
+        if (!paginationContainer || !pagination) return;
+
+        // Clear existing pagination
+        pagination.innerHTML = '';
+        
+        const totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+        
+        // Hide pagination if 12 or fewer items
+        if (this.filteredProducts.length <= this.itemsPerPage) {
+            paginationContainer.style.display = 'none';
+            return;
+        }
+        
+        // Show pagination
+        paginationContainer.style.display = 'block';
+        
+        // Create pagination buttons
+        this.createPaginationButtons(totalPages);
+    }
+
+    createPaginationButtons(totalPages) {
+        const pagination = document.querySelector('.pagination');
+        
+        // Previous button
+        if (this.currentPage > 1) {
+            const prevBtn = this.createPageButton('prev', this.currentPage - 1, '<i class="fas fa-chevron-left"></i> Prev');
+            prevBtn.classList.add('prev');
+            pagination.appendChild(prevBtn);
+        }
+        
+        // Page number buttons
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = this.createPageButton('page', i, i.toString());
+            if (i === this.currentPage) {
+                pageBtn.classList.add('active');
+            }
+            pagination.appendChild(pageBtn);
+        }
+        
+        // Next button
+        if (this.currentPage < totalPages) {
+            const nextBtn = this.createPageButton('next', this.currentPage + 1, 'Next <i class="fas fa-chevron-right"></i>');
+            nextBtn.classList.add('next');
+            pagination.appendChild(nextBtn);
+        }
+    }
+
+    createPageButton(type, pageNum, content) {
+        const button = document.createElement('a');
+        button.href = '#';
+        button.className = 'page-link';
+        button.innerHTML = content;
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.goToPage(pageNum);
+        });
+        return button;
+    }
+
+    goToPage(pageNum) {
+        this.currentPage = pageNum;
+        this.updateDisplay();
+        this.setupPagination();
+        
+        // Scroll to top of products section smoothly
+        document.querySelector('.products').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
+    updateDisplay() {
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        
+        // Hide all products first
+        this.products.forEach(product => {
+            product.style.display = 'none';
+        });
+        
+        // Show only the products for current page
+        this.filteredProducts.slice(startIndex, endIndex).forEach(product => {
+            product.style.display = 'block';
+        });
+        
+        // Update results info
+        this.updateResultsInfo();
+    }
+
+    updateResultsInfo() {
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = Math.min(startIndex + this.itemsPerPage, this.filteredProducts.length);
+        const totalItems = this.filteredProducts.length;
+        
+        // Create or update results info
+        let resultsInfo = document.querySelector('.results-info');
+        if (!resultsInfo) {
+            resultsInfo = document.createElement('div');
+            resultsInfo.className = 'results-info';
+            const filterContainer = document.querySelector('.filter-container');
+            if (filterContainer) {
+                filterContainer.appendChild(resultsInfo);
+            }
+        }
+        
+        if (totalItems > this.itemsPerPage) {
+            resultsInfo.innerHTML = `Showing ${startIndex + 1}-${endIndex} of ${totalItems} products`;
+            resultsInfo.style.display = 'block';
+        } else {
+            resultsInfo.style.display = 'none';
+        }
+    }
+
+    // Method to handle filtering - call this when filters change
+    updateFiltered(newFilteredProducts) {
+        this.filteredProducts = newFilteredProducts;
+        this.currentPage = 1; // Reset to first page
+        this.setupPagination();
+        this.updateDisplay();
+    }
+}
+
+// Initialize pagination
+let productPagination;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize pagination after a short delay to ensure all products are loaded
+    setTimeout(() => {
+        productPagination = new ProductPagination();
+    }, 100);
+});
+
+// Update existing filter functionality to work with pagination
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const sortSelect = document.getElementById('sort-select');
+    
+    // Filter functionality
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            applyFilters(filterValue);
+        });
+    });
+    
+    // Sort functionality
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            const currentFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            applyFilters(currentFilter);
+        });
+    }
+    
+    function applyFilters(filterValue) {
+        const allProducts = Array.from(document.querySelectorAll('.product-card'));
+        let filteredProducts = allProducts;
+        
+        // Apply category filter
+        if (filterValue !== 'all') {
+            filteredProducts = allProducts.filter(product => 
+                product.getAttribute('data-category') === filterValue
+            );
+        }
+        
+        // Apply sorting
+        const sortValue = sortSelect ? sortSelect.value : 'default';
+        if (sortValue !== 'default') {
+            filteredProducts = sortProducts(filteredProducts, sortValue);
+        }
+        
+        // Update pagination with filtered results
+        if (productPagination) {
+            productPagination.updateFiltered(filteredProducts);
+        }
+    }
+    
+    function sortProducts(products, sortType) {
+        return products.sort((a, b) => {
+            switch(sortType) {
+                case 'price-low':
+                    return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+                case 'price-high':
+                    return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
+                case 'name':
+                    return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+                default:
+                    return 0;
+            }
+        });
+    }
+});
+</script>
     
     <!-- Add your JS files AFTER jQuery and AOS -->
     <script src="js/ScrollToTop.js"></script>
