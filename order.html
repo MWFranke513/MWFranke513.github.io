@@ -1,370 +1,873 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MVP 3D Prints</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MVP 3D Prints</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=cloud_upload" />
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <script src="path-to-the-file/splide.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
 
-    <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+<!-- Add this right after <body> tag for Netlify form detection -->
+
+    
+    <style>
+      :root {
+        --main-color: #d3ad7f;
+        --accent-color: #c19b6c;
+        --light-accent: #e6c896;
+        --dark-bg: #0d0d0d;
+        --section-bg: #151515;
+        --card-bg: #1a1a1a;
+        --text-primary: #fff;
+        --text-secondary: rgba(255, 255, 255, 0.8);
+        --border-color: rgba(211, 173, 127, 0.2);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--dark-bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+
+      .header {
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .order {
+        min-height: 100vh;
+        position: relative;
+        padding: 18rem 5% 4rem;
+      }
+
+      .order::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23d3ad7f" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .order-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .order-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .order-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .order-title span {
+        color: var(--main-color);
+      }
+
+      .order-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Form Layout */
+      .order-form {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .form-main {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 2.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-sidebar {
+        position: sticky;
+        top: 120px; /* Increased from 100px to account for header height */
+        margin-top: 3rem; /* Increased from 2rem for better spacing */
+      }
+
+      /* Form Sections */
+      .form-section {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .form-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--main-color);
+      }
+
+      .section-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .section-title {
+        color: var(--text-primary);
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      /* Form Controls */
+      .form-group {
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .form-group.hiding {
+        opacity: 0;
+        max-height: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .form-label {
+        display: block;
+        color: var(--text-primary);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-label .required {
+        color: var(--main-color);
+        margin-left: 0.3rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--main-color);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 0 4px rgba(211, 173, 127, 0.1);
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Enhanced File Upload */
+      .file-upload-area {
+        border: 2px dashed var(--border-color);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        background: linear-gradient(45deg, rgba(211, 173, 127, 0.05), rgba(193, 155, 108, 0.05));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .file-upload-area::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(211, 173, 127, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s ease;
+        opacity: 0;
+      }
+
+      .file-upload-area:hover::before {
+        opacity: 1;
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) rotate(45deg); }
+      }
+
+      .file-upload-area:hover {
+        border-color: var(--main-color);
+        background: rgba(211, 173, 127, 0.1);
+      }
+
+      .file-upload-area.dragover {
+        border-color: var(--main-color);
+        background: rgba(211, 173, 127, 0.15);
+        transform: scale(1.02);
+      }
+
+      .upload-icon {
+        font-size: 3rem;
+        color: var(--main-color);
+        margin-bottom: 1rem;
+      }
+
+      .upload-text {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .upload-browse {
+        color: var(--main-color);
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .file-input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .file-list {
+        margin-top: 1rem;
+        text-align: left;
+      }
+
+      .file-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      .file-name {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .file-size {
+        color: var(--main-color);
+        font-size: 0.8rem;
+      }
+
+      /* Enhanced 3D Preview */
+      .preview-panel {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        margin-top: 0; /* Reset any existing margin */
+      }
+
+      .preview-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .preview-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .three-canvas {
+        width: 100%;
+        height: 300px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+      }
+
+      .three-canvas canvas {
+        border-radius: 15px;
+      }
+
+      .preview-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: var(--text-secondary);
+        text-align: center;
+      }
+
+      .preview-placeholder i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      .preview-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .preview-btn {
+        padding: 0.7rem;
+        background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .preview-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(211, 173, 127, 0.3);
+      }
+
+      /* Radio Groups */
+      .radio-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .radio-option {
+        position: relative;
+      }
+
+      .radio-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .radio-option label {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .radio-option input[type="radio"]:checked + label {
+        background: linear-gradient(45deg, rgba(211, 173, 127, 0.1), rgba(193, 155, 108, 0.1));
+        border-color: var(--main-color);
+        color: var(--main-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(211, 173, 127, 0.2);
+      }
+
+      .radio-option label i {
+        margin-right: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      /* Select Styling */
+      .select-wrapper {
+        position: relative;
+      }
+
+      .select-wrapper::after {
+        content: '\f107';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--main-color);
+        pointer-events: none;
+      }
+
+      select.form-control {
+        appearance: none;
+        padding-right: 3rem;
+      }
+
+      /* Submit Button */
+      .submit-btn {
+        width: 100%;
+        padding: 1.2rem 2rem;
+        background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 2rem;
+        box-shadow: 0 10px 30px rgba(211, 173, 127, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(211, 173, 127, 0.4);
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Helper Text */
+      .helper-text {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .order-form {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .form-sidebar {
+          position: static;
+          order: -1;
+        }
+
+        .three-canvas {
+          height: 250px;
+        }
+
+        .radio-group {
+          grid-template-columns: 1fr;
+        }
+
+        .order-title {
+          font-size: 2rem;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--main-color);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* Hide/Show Sections */
+      .conditional-section {
+        display: none;
+        margin-top: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+      }
+
+      .conditional-section.active {
+        display: block;
+        animation: fadeInUp 0.3s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Enhanced conditional sections */
+      .conditional-section,
+      .form-group {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
   </head>
   <body>
     <!-- header section starts -->
-    <header class="header">
-      <a href="index.html" class="logo">
-        <img src="images/MVP-Icon.svg" alt="MVP LOGO" />
-      </a>
+        <header class="header">
 
-      <nav class="navbar">
-        <a href="index.html">home</a>
-        <a href="#about">about</a>
-        <a href="index.html">services</a>
-        <a href="products.html" class="active">products</a>
-        <a href="order.html">order</a>
-        <a href="index.html">gallery</a>
-        <a href="index.html/contact">contact</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
+            <a href="index.html" class="logo">
+                <img src="images/MVP-Icon.svg" alt="MVP LOGO">
+            </a>
 
-      <div class="icons">
-        <a href="order.html" class="btn header-btn">FREE QUOTES</a>
-        <div id="menu-btn">
-          <i class="bi bi-list"></i>
-      </div>
-      </div>
+            <nav class="navbar">
+                <a href="#home">home</a>
+                <a href="#about">about</a>
+                <a href="#menu">services</a>
+                <a href="products.html">products</a>
+                <a href="order.html">order</a>
+                <a href="#review">gallery</a>
+                <a href="#contact">contact</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
 
-      <div class="search-form">
-        <input
-          type="search"
-          id="search-box"
-          placeholder="what are you looking for?"
-        />
-        <label for="search-box" class="bi bi-search"></label>
-      </div>
-    </header>
+            <div class="icons">
+                <a href="order.html" class="btn">FREE QUOTES</a>
+                <div id="menu-btn">
+                    <i class="bi bi-list"></i>
+                </div>
+                <div class="search-form">
+                    <input type="search" id="search-box" placeholder="what are you looking for?">
+                    <label for="search-box" class="bi bi-search"></label>
+                </div>
+
+
+            </div>
+
+        </header>
     <!-- header section ends -->
 
-    <!-- order section starts -->
-    <section class="order" id="order">
-      <form action="/submit_order" method="post" enctype="multipart/form-data">
-        
-        <!-- Contact Information Section -->
-        <div class="form-section">
-          <h2 class="contact-header"><i class="fas fa-user"></i>Contact Information</h2>
-          
-          <div class="form-group">
-            <label for="name">Full Name<span>*</span></label>
-            <input type="text" id="name" name="name" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address<span>*</span></label>
-            <input type="email" id="email" name="email" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone Number (optional)</label>
-            <input type="tel" id="phone" name="phone_number" class="form-control" placeholder="555-555-5555" 
-                   pattern="\d{3}-\d{3}-\d{4}" maxlength="12" 
-                   onkeyup="formatPhoneNumber(this);">
-            <div class="helper-text">Format: 555-555-5555</div>
-          </div>
+    <!-- Order Section -->
+    <section class="order">
+      <div class="order-container">
+        <!-- Header -->
+        <div class="order-header">
+          <h1 class="order-title">Get Your <span>Custom Quote</span></h1>
+          <p class="order-subtitle">Upload your 3D models and get a professional quote within 24 hours</p>
         </div>
-        
-        <!-- File Upload Section -->
-        <div class="form-section">
-          <h2 class="contact-header"><i class="fas fa-file-upload"></i>File Details</h2>
-          
-          <div class="form-group">
-            <label for="files">Upload 3D Model Files<span>*</span></label>
-            <div class="file-upload">
-              <input type="file" id="files" name="files[]" 
-                     accept=".stl,.obj,.fbx,.dae,.3ds,.x3d,.blend" multiple required>
-              <label for="files" class="file-upload-label"><span class="material-symbols-outlined" style="color: var(--main-color); font-size: 6rem;">cloud_upload</span>Drop Files here or <span>Browse</span></label>
-              <br><span class="file-name">No files selected</span>
-            </div>
-            <div class="helper-text">Accepted formats: STL, OBJ, FBX, DAE, 3DS, X3D, BLEND</div>
-            <div id="fileDisplayArea"></div>
-          </div>
-          
-          <div class="form-group">
-            <label>File Source<span>*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="chkYes" name="file-source" value="chkYes" onClick="showSourceField();" required>
-                <label for="chkYes">From 3D model site</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="chkNo" name="file-source" value="chkNo" onClick="hideSourceField();" required>
-                <label for="chkNo">Original/other source</label>
-              </div>
-            </div>
+
+        <!-- Form Layout -->
+        <div class="order-form">
+          <!-- Main Form -->
+          <form class="form-main" action="/submit_order" method="post" enctype="multipart/form-data">
             
-            <a href="terms.html" class="terms-link">Why do we ask this?</a>
-            
-            <div id="div1">
-              <label for="dvText">Please paste the link to the model:</label>
-              <input type="text" id="dvText" class="form-control" name="model_link" 
-                     placeholder="https://www.thingiverse.com/thing:12345">
+            <!-- Contact Information -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+                <h2 class="section-title">Contact Information</h2>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name<span class="required">*</span></label>
+                <input type="text" id="name" name="name" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address<span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number (optional)</label>
+                <input type="tel" id="phone" name="phone_number" class="form-control" placeholder="555-555-5555">
+                <div class="helper-text">Format: 555-555-5555</div>
+              </div>
+            </div>
+
+            <!-- File Upload -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-file-upload"></i>
+                </div>
+                <h2 class="section-title">Upload Your Models</h2>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Upload 3D Model Files<span class="required">*</span></label>
+                <div class="file-upload-area" id="fileUploadArea">
+                  <input type="file" id="files" name="files[]" class="file-input" 
+                         accept=".stl,.obj,.fbx,.dae,.3ds,.x3d,.blend" multiple required>
+                  <div class="upload-icon">
+                    <span class="material-symbols-outlined">cloud_upload</span>
+                  </div>
+                  <div class="upload-text">
+                    Drop your files here or <span class="upload-browse">browse</span>
+                  </div>
+                  <div class="helper-text">Supported: STL, OBJ, FBX, DAE, 3DS, X3D, BLEND (Max 50MB each)</div>
+                </div>
+                <div class="file-list" id="fileList"></div>
+              </div>
+
+              <!-- File Source -->
+              <div class="form-group">
+                <label class="form-label">File Source<span class="required">*</span></label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="source-site" name="file-source" value="site" required>
+                    <label for="source-site">
+                      <i class="fas fa-globe"></i>
+                      From 3D model site
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="source-original" name="file-source" value="original" required>
+                    <label for="source-original">
+                      <i class="fas fa-user-edit"></i>
+                      Original/other source
+                    </label>
+                  </div>
+                </div>
+                
+                <div id="sourceLink" class="conditional-section">
+                  <label class="form-label" for="modelLink">Model Source Link</label>
+                  <input type="url" id="modelLink" name="model_link" class="form-control" 
+                         placeholder="https://www.thingiverse.com/thing:12345">
+                </div>
+              </div>
+            </div>
+
+            <!-- Print Specifications -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-print"></i>
+                </div>
+                <h2 class="section-title">Print Specifications</h2>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="quantity">Quantity<span class="required">*</span></label>
+                <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="100" value="1" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Print Type<span class="required">*</span></label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="print-fdm" name="print-type" value="fdm" required>
+                    <label for="print-fdm">
+                      <i class="fas fa-cube"></i>
+                      FDM Print
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="print-sla" name="print-type" value="sla" required>
+                    <label for="print-sla">
+                      <i class="fas fa-flask"></i>
+                      Resin (SLA) Print
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="material">Material<span class="required">*</span></label>
+                <div class="select-wrapper">
+                  <select id="material" name="material" class="form-control" required>
+                    <option value="" disabled selected>Select material</option>
+                    <option value="ABS">ABS (Default)</option>
+                    <option value="ASA">ASA</option>
+                    <option value="PETG">PETG (Unavailable)</option>
+                    <option value="PLA">PLA (Unavailable)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" id="colorGroup">
+                <label class="form-label" for="color">Color Preference</label>
+                <div class="select-wrapper">
+                  <select id="color" name="color" class="form-control">
+                    <option value="" disabled selected>Select color</option>
+                    <option value="Black">Black (Default)</option>
+                    <option value="White">White</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Delivery Method<span class="required">*</span></label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="delivery-shipping" name="delivery" value="shipping" required>
+                    <label for="delivery-shipping">
+                      <i class="fas fa-truck"></i>
+                      Shipping
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="delivery-pickup" name="delivery" value="pickup">
+                    <label for="delivery-pickup">
+                      <i class="fas fa-store"></i>
+                      Local Pickup
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="delivery-dropoff" name="delivery" value="dropoff">
+                    <label for="delivery-dropoff">
+                      <i class="fas fa-hand-holding"></i>
+                      Local Dropoff
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Custom Dimensions Required?</label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="dimensions-yes" name="custom-dimensions" value="yes">
+                    <label for="dimensions-yes">
+                      <i class="fas fa-ruler"></i>
+                      Yes
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="dimensions-no" name="custom-dimensions" value="no">
+                    <label for="dimensions-no">
+                      <i class="fas fa-times"></i>
+                      No
+                    </label>
+                  </div>
+                </div>
+                
+                <div id="dimensionsField" class="conditional-section">
+                  <label class="form-label" for="dimensions">Dimensions (mm)</label>
+                  <input type="text" id="dimensions" name="dimensions" class="form-control" 
+                         placeholder="e.g., 100mm x 50mm x 25mm">
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <h2 class="section-title">Additional Information</h2>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="notes">Special Instructions or Questions</label>
+                <textarea id="notes" name="notes" class="form-control" rows="4" 
+                          placeholder="Any special requirements, color preferences, or questions..."></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Get Your Quote
+              </button>
+            </div>
+          </form>
+
+          <!-- Sidebar -->
+          <div class="form-sidebar">
+            <!-- 3D Preview -->
+            <div class="preview-panel">
+              <div class="preview-header">
+                <div class="section-icon">
+                  <i class="fas fa-cube"></i>
+                </div>
+                <h3 class="preview-title">3D Preview</h3>
+              </div>
+              
+              <div class="three-canvas" id="threeCanvas">
+                <div class="preview-placeholder" id="previewPlaceholder">
+                  <i class="fas fa-upload"></i>
+                  <p>Upload a 3D model to see preview</p>
+                </div>
+              </div>
+              
+              <div class="preview-controls" id="previewControls" style="display: none;">
+                <button type="button" class="preview-btn" id="resetView">
+                  <i class="fas fa-home"></i> Reset View
+                </button>
+                <button type="button" class="preview-btn" id="toggleWireframe">
+                  <i class="fas fa-drafting-compass"></i> Toggle Wireframe
+                </button>
+                <button type="button" class="preview-btn" id="downloadModel">
+                  <i class="fas fa-download"></i> Download Model
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        
-        <!-- Print Details Section -->
-        <div class="form-section">
-          <h2 class="contact-header"><i class="fas fa-print"></i>Print Specifications</h2>
-          
-          <div class="form-group">
-            <label for="quantity">Part Quantity<span>*</span></label>
-            <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="100" value="1" required>
-          </div>
-
-            <div class="form-group">
-            <label>Print Type<span>*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="fdm-print" name="print-type" value="fdm" onClick="showFDMOptions();" required>
-                <label for="fdm-print">FDM Print</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="sla-print" name="print-type" value="sla" onClick="showSLAOptions();" required>
-                <label for="sla-print">Resin (SLA) Print</label>
-              </div>
-            </div>
-          </div>
-
-          <script>
-            function showFDMOptions() {
-              document.getElementById('color').parentElement.parentElement.style.display = 'block';
-              const materialDropdown = document.getElementById('materials');
-              materialDropdown.innerHTML = `
-                <option value="" disabled selected>Select a material</option>
-                <option value="ABS">ABS (default)</option>
-                <option value="ASA">ASA</option>
-                <option value="PETG">PETG (unavailable)</option>
-                <option value="PLA">PLA (unavailable)</option>
-              `;
-            }
-
-            function showSLAOptions() {
-              document.getElementById('color').parentElement.parentElement.style.display = 'none';
-              const materialDropdown = document.getElementById('materials');
-              materialDropdown.innerHTML = `
-                <option value="" disabled selected>Select a resin type</option>
-                <option value="Normal">Normal Resin</option>
-                <option value="ABS-Like">ABS-Like Resin</option>
-                <option value="Flexible">Flexible Resin</option>
-                <option value="Transparent">Transparent Resin</option>
-              `;
-            }
-          </script>
-
-          <div class="form-group">
-            <label for="color">Color Preference</label>
-            <div class="select-wrapper">
-              <select id="color" name="color" class="form-control">
-                <option value="" disabled selected>Select a color</option>
-                <option value="Black">Black (Default)</option>
-                <option value="White">White</option>
-                <option value="Red">Red</option>
-                <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
-                <option value="Yellow">Yellow</option>
-              </select>
-            </div>
-          
-          <div class="form-group">
-            <label for="materials">Material Preference</label>
-            <div class="select-wrapper">
-              <select id="materials" name="material" class="form-control" required>
-                <option value="" disabled selected>Select a material</option>
-                <option value="ABS">ABS (default)</option>
-                <option value="ASA">ASA</option>
-                <option value="PETG">PETG (unavailable)</option>
-                <option value="PLA">PLA (unavailable)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label>Delivery Preference<span>*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="shipping" name="delivery" value="shipping" required>
-                <label for="shipping"><i class="fas fa-shipping-fast"></i> Shipping</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="pickup" name="delivery" value="pickup">
-                <label for="pickup"><i class="fas fa-store"></i> Local Pickup</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="dropoff" name="delivery" value="dropoff">
-                <label for="dropoff"><i class="fas fa-hand-holding"></i> Local Dropoff</label>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label>Specific Dimensions Required?</label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="dimensions-yes" name="custom-dimensions" value="yes" 
-                       onClick="showDimensionsField();">
-                <label for="dimensions-yes">Yes</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="dimensions-no" name="custom-dimensions" value="no" 
-                       onClick="hideDimensionsField();">
-                <label for="dimensions-no">No</label>
-              </div>
-            </div>
-            
-            <div id="dimensions-field" style="display: none; margin-top: 1rem;">
-              <label for="dimensions">Enter dimensions (in mm):</label>
-              <input type="text" id="dimensions" name="dimensions" class="form-control" 
-                     placeholder="e.g., 100mm x 50mm x 25mm">
-            </div>
-          </div>
-        </div>
-        
-        <!-- Additional Information Section -->
-        <div class="form-section">
-          <h2 class="contact-header"><i class="fas fa-info-circle"></i>Additional Information</h2>
-          
-          <div class="form-group">
-            <label for="specs">Additional Instructions or Questions</label>
-            <textarea id="specs" name="specs" class="form-control" 
-                      placeholder="Include any special requests, color preferences, or questions here..."></textarea>
-          </div>
-          
-          <button type="submit" class="submit-btn">Get Your Quote</button>
-        </div>
-        
-      </form>
+      </div>
     </section>
+    <!-- Footer -->
 
-    <!-- order section ends -->
-
-<!-- footer section starts -->
-<section class="footer">
-  <div class="footer-container">
-      <!-- Footer Header -->
-      <div class="footer-header">
-          <div class="footer-logo"><img src="./images/MVP-Icon.svg" style="width: auto; height: 48px;"/>3D</div>
-          <div class="footer-tagline">Bringing Your Ideas to Life Through 3D Printing</div>
-      </div>
-
-      <!-- Main Footer Content -->
-      <div class="footer-content">
-          <!-- Navigation Section -->
-          <div class="footer-section">
-              <h3>Quick Links</h3>
-              <div class="nav-links">
-                  <a href="#home">Home</a>
-                  <a href="#about">About</a>
-                  <a href="#services">Services</a>
-                  <a href="#products">Products</a>
-                  <a href="#order">Order</a>
-                  <a href="#gallery">Gallery</a>
-                  <a href="#contact">Contact</a>
-                  <a href="#faq">FAQ</a>
-              </div>
-          </div>
-
-          <!-- Contact Section -->
-          <div class="footer-section">
-              <h3>Get In Touch</h3>
-              <div class="contact-info">
-                  <div class="contact-item">
-                      <i class="fas fa-envelope"></i>
-                      <span>hello@mvpprints.com</span>
-                  </div>
-                  <div class="contact-item">
-                      <i class="fas fa-clock"></i>
-                      <span>Response within 24 hours</span>
-                  </div>
-                  <div class="contact-item">
-                      <i class="fas fa-map-marker-alt"></i>
-                      <span>Utah County & Surrounding Areas</span>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Social Section -->
-          <div class="social-section footer-section">
-              <h3>Follow Us</h3>
-              <div class="social-links">
-                  <a href="#" aria-label="Facebook" title="Facebook">
-                      <i class="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="#" aria-label="Instagram" title="Instagram">
-                      <i class="fab fa-instagram"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/matthew-franke-a295a6221" aria-label="LinkedIn" title="LinkedIn">
-                      <i class="fab fa-linkedin"></i>
-                  </a>
-                  <a href="#" aria-label="YouTube" title="YouTube">
-                      <i class="fab fa-youtube"></i>
-                  </a>
-                  <a href="#" aria-label="GitHub" title="GitHub">
-                      <i class="fab fa-github"></i>
-                  </a>
-              </div>
-          </div>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-          <!-- Legal Links -->
-          <div class="footer-legal">
-              <a href="terms.html">Terms of Service</a>
-              <a href="privacy-policy.html">Privacy Policy</a>
-              <a href="disclaimer.html">Disclaimer</a>
-          </div>
-
-          <!-- Privacy Choices -->
-          <div class="privacy-choices">
-              <a href="privacy-options.html" class="privacy-link" title="Your Privacy Choices">
-                  <img src="./images/privacyoptions.svg" alt="Privacy Options" class="privacy-icon">
-                  Your Privacy Choices
-              </a>
-          </div>
-
-          <!-- Copyright -->
-          <div class="footer-copyright">
-              <div class="copyright-main">
-                  <span>MVP Prints © <script>document.write(new Date().getFullYear());</script> | All Rights Reserved</span>
-                  <span>| Payments Through</span>
-                  <a href="https://helcim.com" target="_blank" aria-label="Helcim">
-                      <svg class="helcim-logo" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Helcim</title><path fill="#F9DAA7" d="M14.906 23.784c-2.327-.766-2.655-3.207-2.198-5.277.11-.696.317-1.55.54-2.61.234-1.102.422-1.959.537-2.568q.16-.826.188-1.666c-.01-1.143-.423-1.748-1.225-1.741-.56 0-2.008.47-2.605 3.172 0 0-.306 1.868-1.305 6.134-1.318 6.868-4.492 4.607-7.215 3.58.794-.054 1.744-1.135 2.239-2.943C5.554 13.682 7.882.882 7.882.882L12.993 0 11.06 8.716a5.7 5.7 0 0 1 2.086-1.567c.583-.22 1.2-.339 1.823-.35 1.137-.01 2.032.274 2.726.874.696.646 1.057 1.627 1.076 2.93a15 15 0 0 1-.412 3.05c-.085.361-.195.899-.347 1.637-.32 1.22-1.075 4.137.017 5.355 1.396 1.561 3.654-.038 4.348-2.631-1.28 5.685-5.588 6.388-7.471 5.77"/></svg>
-                  </a></a>
-              </div>
-              <div class="made-by">
-                  Made with ❤️ by <span>Matthew Franke</span>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-<!-- footer section ends -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
       (function () {
         emailjs.init("RRpFpyiWmsgZWMbAQ"); // Replace with your EmailJS user ID
@@ -372,9 +875,46 @@
     </script>
 
 <script>
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Load Three.js scripts sequentially with correct URLs
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+    .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js'))
+    .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js'))
+    .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'))
+    .then(() => {
+      console.log('All Three.js scripts loaded');
+      initializeOrderForm();
+    })
+    .catch(error => {
+      console.error('Error loading Three.js scripts:', error);
+      initializeOrderForm(); // Initialize without 3D preview
+    });
+});
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+function initializeOrderForm() {
+  console.log('Initializing order form...');
+  
   // Format phone number dynamically
+  const phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function() {
+      formatPhoneNumber(this);
+    });
+  }
+
   function formatPhoneNumber(input) {
-    let value = input.value.replace(/\D/g, ''); // Remove all non-digit characters
+    let value = input.value.replace(/\D/g, '');
     if (value.length > 3 && value.length <= 6) {
       input.value = `${value.slice(0, 3)}-${value.slice(3)}`;
     } else if (value.length > 6) {
@@ -384,56 +924,605 @@
     }
   }
 
-  // File upload display
+  // File upload handling
   const fileInput = document.getElementById('files');
-  const fileDisplayArea = document.getElementById('fileDisplayArea');
-  const fileNameDisplay = document.querySelector('.file-name');
+  const fileList = document.getElementById('fileList');
   
-  fileInput.addEventListener('change', function(e) {
+  if (fileInput && fileList) {
+    fileInput.addEventListener('change', handleFileUpload);
+  }
+
+  function handleFileUpload(e) {
+    console.log('File upload triggered');
     const files = e.target.files;
-    const fileNames = [];
+    fileList.innerHTML = '';
     
-    for (let i = 0; i < files.length; i++) {
-      fileNames.push(files[i].name);
-    }
-    
-    if (fileNames.length > 0) {
-      fileNameDisplay.textContent = fileNames.length > 1 ? 
-        `${fileNames.length} files selected` : fileNames[0];
+    if (files.length > 0) {
+      console.log(`${files.length} files selected`);
       
-      fileDisplayArea.textContent = fileNames.join(', ');
-      fileDisplayArea.classList.add('active');
+      // Show preview panel
+      const previewPlaceholder = document.getElementById('previewPlaceholder');
+      const previewControls = document.getElementById('previewControls');
+      
+      if (previewPlaceholder) {
+        previewPlaceholder.style.display = 'none';
+        console.log('Hidden preview placeholder');
+      }
+      if (previewControls) {
+        previewControls.style.display = 'grid';
+        console.log('Shown preview controls');
+      }
+      
+      // Initialize 3D preview if Three.js is available
+      if (typeof THREE !== 'undefined' && !window.rendererInitialized) {
+        console.log('Initializing 3D preview...');
+        setTimeout(() => init3DPreview(), 100); // Small delay to ensure DOM is ready
+      } else if (typeof THREE === 'undefined') {
+        console.warn('Three.js not loaded - 3D preview disabled');
+      }
+      
+      // Display file list
+      Array.from(files).forEach(file => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `
+          <span class="file-name">${file.name}</span>
+          <span class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
+        `;
+        fileList.appendChild(fileItem);
+      });
+      
+      // Load first file for preview if Three.js is available
+      if (typeof THREE !== 'undefined') {
+        setTimeout(() => load3DModel(files[0]), 500); // Delay to ensure renderer is ready
+      }
     } else {
-      fileNameDisplay.textContent = "No files selected";
-      fileDisplayArea.textContent = "";
-      fileDisplayArea.classList.remove('active');
+      // Hide preview
+      const previewPlaceholder = document.getElementById('previewPlaceholder');
+      const previewControls = document.getElementById('previewControls');
+      
+      if (previewPlaceholder) previewPlaceholder.style.display = 'flex';
+      if (previewControls) previewControls.style.display = 'none';
     }
+  }
+
+  // File source toggle
+  const sourceInputs = document.querySelectorAll('input[name="file-source"]');
+  const sourceLink = document.getElementById('sourceLink');
+  
+  sourceInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      if (this.value === 'site' && sourceLink) {
+        sourceLink.style.display = 'block';
+        sourceLink.classList.add('active');
+      } else if (sourceLink) {
+        sourceLink.style.display = 'none';
+        sourceLink.classList.remove('active');
+      }
+    });
   });
+
+  // Custom dimensions toggle
+  const dimensionInputs = document.querySelectorAll('input[name="custom-dimensions"]');
+  const dimensionsField = document.getElementById('dimensionsField');
   
-  // Toggle source link field
-  function showSourceField() {
-    const sourceField = document.getElementById('div1');
-    sourceField.style.display = 'block';
-    sourceField.classList.add('active');
+  dimensionInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      if (this.value === 'yes' && dimensionsField) {
+        dimensionsField.style.display = 'block';
+        dimensionsField.classList.add('active');
+      } else if (dimensionsField) {
+        dimensionsField.style.display = 'none';
+        dimensionsField.classList.remove('active');
+      }
+    });
+  });
+
+  // Enhanced Print type toggle with smooth animations
+  const printTypeInputs = document.querySelectorAll('input[name="print-type"]');
+  const materialGroup = document.querySelector('#material').closest('.form-group');
+  const colorGroup = document.getElementById('colorGroup');
+  const materialSelect = document.getElementById('material');
+
+  printTypeInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      if (this.value === 'sla') {
+        // Smoothly hide material and color groups for SLA
+        if (materialGroup) {
+          materialGroup.style.opacity = '0';
+          materialGroup.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            materialGroup.style.display = 'none';
+          }, 300);
+        }
+        if (colorGroup) {
+          colorGroup.style.opacity = '0';
+          colorGroup.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            colorGroup.style.display = 'none';
+          }, 300);
+        }
+        
+        // Remove required attribute and clear selection
+        if (materialSelect) {
+          materialSelect.removeAttribute('required');
+          materialSelect.value = '';
+        }
+        
+        console.log('SLA selected - Material and color fields hidden');
+        
+      } else if (this.value === 'fdm') {
+        // Smoothly show material and color groups for FDM
+        if (materialGroup) {
+          materialGroup.style.display = 'block';
+          materialGroup.style.opacity = '0';
+          materialGroup.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            materialGroup.style.opacity = '1';
+            materialGroup.style.transform = 'translateY(0)';
+          }, 10);
+        }
+        if (colorGroup) {
+          colorGroup.style.display = 'block';
+          colorGroup.style.opacity = '0';
+          colorGroup.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            colorGroup.style.opacity = '1';
+            colorGroup.style.transform = 'translateY(0)';
+          }, 10);
+        }
+        
+        // Add required attribute back
+        if (materialSelect) {
+          materialSelect.setAttribute('required', 'required');
+        }
+        
+        console.log('FDM selected - Material and color fields shown');
+      }
+    });
+  });
+
+  // Drag and drop functionality
+  const fileUploadArea = document.getElementById('fileUploadArea');
+  if (fileUploadArea) {
+    fileUploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('dragover');
+    });
+
+    fileUploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+    });
+
+    fileUploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+      
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files;
+        handleFileUpload({ target: { files } });
+      }
+    });
   }
   
-  function hideSourceField() {
-    const sourceField = document.getElementById('div1');
-    sourceField.style.display = 'none';
-    sourceField.classList.remove('active');
+  console.log('Order form initialization complete');
+}
+
+// 3D Preview functionality
+let scene, camera, renderer, model, controls;
+
+function init3DPreview() {
+  const canvas = document.getElementById('threeCanvas');
+  if (!canvas) {
+    console.error('Canvas element not found');
+    return;
   }
   
-  // Toggle dimensions field
-  function showDimensionsField() {
-    document.getElementById('dimensions-field').style.display = 'block';
+  if (window.rendererInitialized) {
+    console.log('3D preview already initialized');
+    return;
   }
   
-  function hideDimensionsField() {
-    document.getElementById('dimensions-field').style.display = 'none';
+  if (typeof THREE === 'undefined') {
+    console.error('Three.js not loaded');
+    return;
   }
+  
+  try {
+    console.log('Setting up 3D scene...');
+    
+    // Scene setup
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x2a2a2a);
+    
+    // Get canvas dimensions
+    const canvasRect = canvas.getBoundingClientRect();
+    const width = canvasRect.width || 350;
+    const height = canvasRect.height || 300;
+    
+    console.log(`Canvas dimensions: ${width}x${height}`);
+    
+    // Camera setup
+    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    camera.position.set(3, 3, 5);
+    camera.lookAt(0, 0, 0);
+    
+    // Renderer setup
+    renderer = new THREE.WebGLRenderer({ 
+      antialias: true,
+      alpha: true
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x2a2a2a, 1);
+    
+    // Clear canvas and add renderer
+    canvas.innerHTML = '';
+    canvas.appendChild(renderer.domElement);
+    
+    // Add grid helper
+    const gridHelper = new THREE.GridHelper(10, 10, 0x444444, 0x444444);
+    scene.add(gridHelper);
+    
+    // Lighting setup
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+    scene.add(ambientLight);
+    
+    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight1.position.set(5, 5, 5);
+    directionalLight1.castShadow = true;
+    directionalLight1.shadow.mapSize.width = 2048;
+    directionalLight1.shadow.mapSize.height = 2048;
+    scene.add(directionalLight1);
+    
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+    directionalLight2.position.set(-5, -5, -5);
+    scene.add(directionalLight2);
+    
+    // Controls setup
+    if (typeof THREE.OrbitControls !== 'undefined') {
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.enableZoom = true;
+      controls.enablePan = true;
+      controls.enableRotate = true;
+      console.log('Orbit controls initialized');
+    } else {
+      console.warn('OrbitControls not available');
+    }
+    
+    window.rendererInitialized = true;
+    
+    // Start render loop
+    function animate() {
+      requestAnimationFrame(animate);
+      if (controls) controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+    
+    console.log('3D Preview initialized successfully');
+    
+    // Test with a simple cube
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshPhongMaterial({ color: 0xd3ad7f });
+    const testCube = new THREE.Mesh(geometry, material);
+    testCube.position.set(0, 0.5, 0);
+    scene.add(testCube);
+    console.log('Test cube added to verify 3D preview is working');
+    
+  } catch (error) {
+    console.error('Error initializing 3D preview:', error);
+  }
+}
+
+function load3DModel(file) {
+  if (!file || !scene) {
+    console.error('Missing file or scene for 3D model loading');
+    return;
+  }
+  
+  console.log('Loading 3D model:', file.name);
+  
+  const fileExtension = file.name.split('.').pop().toLowerCase();
+  const reader = new FileReader();
+  
+  reader.onload = function(e) {
+    try {
+      const contents = e.target.result;
+      
+      // Remove previous model (but keep test cube for now)
+      if (model) {
+        scene.remove(model);
+        console.log('Removed previous model');
+      }
+      
+      if (fileExtension === 'stl' && typeof THREE.STLLoader !== 'undefined') {
+        console.log('Loading STL file...');
+        loadSTL(contents);
+      } else if (fileExtension === 'obj' && typeof THREE.OBJLoader !== 'undefined') {
+        console.log('Loading OBJ file...');
+        loadOBJ(contents);
+      } else {
+        console.log('Unsupported file format or loader not available:', fileExtension);
+        alert(`Unsupported file format: ${fileExtension}`);
+      }
+    } catch (error) {
+      console.error('Error loading 3D model:', error);
+    }
+  };
+  
+  if (fileExtension === 'stl') {
+    reader.readAsArrayBuffer(file);
+  } else {
+    reader.readAsText(file);
+  }
+}
+
+function loadSTL(data) {
+  try {
+    if (typeof THREE.STLLoader === 'undefined') {
+      console.error('STLLoader not available');
+      return;
+    }
+    
+    const loader = new THREE.STLLoader();
+    const geometry = loader.parse(data);
+    
+    // Remove ALL previous models including test cube
+    const objectsToRemove = [];
+    scene.traverse((child) => {
+      if (child.isMesh && child.geometry.type === 'BoxGeometry') {
+        objectsToRemove.push(child); // Remove test cube
+      }
+    });
+    objectsToRemove.forEach(obj => scene.remove(obj));
+    
+    if (model) {
+      scene.remove(model);
+      console.log('Removed previous model');
+    }
+    
+    // Center and scale the model
+    geometry.computeBoundingBox();
+    const center = geometry.boundingBox.getCenter(new THREE.Vector3());
+    geometry.translate(-center.x, -center.y, -center.z);
+    
+    const material = new THREE.MeshPhongMaterial({ 
+      color: 0xd3ad7f,
+      shininess: 100,
+      transparent: false,
+      opacity: 1.0
+    });
+    model = new THREE.Mesh(geometry, material);
+    model.castShadow = true;
+    model.receiveShadow = true;
+    
+    // Scale to fit viewport
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 2 / maxDim; // Scale to fit in 2 unit cube
+    model.scale.multiplyScalar(scale);
+    
+    // Position model above ground
+    model.position.y = (size.y * scale) / 2;
+    
+    scene.add(model);
+    console.log('STL model loaded and added to scene successfully');
+    
+  } catch (error) {
+    console.error('Error loading STL:', error);
+  }
+}
+
+function loadOBJ(data) {
+  try {
+    if (typeof THREE.OBJLoader === 'undefined') {
+      console.error('OBJLoader not available');
+      return;
+    }
+    
+    // Remove ALL previous models including test cube
+    const objectsToRemove = [];
+    scene.traverse((child) => {
+      if (child.isMesh && child.geometry.type === 'BoxGeometry') {
+        objectsToRemove.push(child); // Remove test cube
+      }
+    });
+    objectsToRemove.forEach(obj => scene.remove(obj));
+    
+    if (model) {
+      scene.remove(model);
+      console.log('Removed previous model');
+    }
+    
+    const loader = new THREE.OBJLoader();
+    model = loader.parse(data);
+    
+    // Apply material to all meshes
+    model.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshPhongMaterial({ 
+          color: 0xd3ad7f,
+          shininess: 100,
+          transparent: false,
+          opacity: 1.0
+        });
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+    
+    // Center and scale
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    model.position.sub(center);
+    
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 2 / maxDim;
+    model.scale.multiplyScalar(scale);
+    
+    // Position model above ground
+    model.position.y = (size.y * scale) / 2;
+    
+    scene.add(model);
+    console.log('OBJ model loaded and added to scene successfully');
+    
+  } catch (error) {
+    console.error('Error loading OBJ:', error);
+  }
+}
+
+// Preview controls
+document.addEventListener('click', function(e) {
+  if (e.target.id === 'resetView' && camera && controls) {
+    console.log('Resetting camera view');
+    camera.position.set(3, 3, 5);
+    camera.lookAt(0, 0, 0);
+    if (controls) controls.reset();
+  }
+  
+  if (e.target.id === 'toggleWireframe' && model) {
+    console.log('Toggling wireframe mode');
+    model.traverse((child) => {
+      if (child.isMesh) {
+        child.material.wireframe = !child.material.wireframe;
+      }
+    });
+  }
+  
+  if (e.target.id === 'downloadModel') {
+    alert('Download functionality would be implemented here');
+  }
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+  if (camera && renderer) {
+    const canvas = document.getElementById('threeCanvas');
+    if (canvas) {
+      const rect = canvas.getBoundingClientRect();
+      camera.aspect = rect.width / rect.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(rect.width, rect.height);
+      console.log('3D preview resized');
+    }
+  }
+});
 </script>
     <script src="js/ScrollToTop.js"></script>
     <script src="js/index.js"></script>
     <script src="js/shopping-cart.js"></script>
-  </body>
-</html>
+
+
+    <!-- footer section starts -->
+<section class="footer">
+    <div class="footer-container">
+        <!-- Footer Header -->
+        <div class="footer-header">
+            <div class="footer-logo">
+                <img src="./images/MVP-Icon.svg" style="width: auto; height: 48px;" alt="MVP Logo">3D
+            </div>
+            <div class="footer-tagline">Bringing Your Ideas to Life Through 3D Printing</div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <!-- Navigation Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#order">Order</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@mvpprints.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Response within 24 hours</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Utah County & Surrounding Areas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Section -->
+            <div class="social-section footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/matthew-franke-a295a6221" aria-label="LinkedIn" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <!-- Legal Links -->
+            <div class="footer-legal">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+
+            <!-- Privacy Choices -->
+            <div class="privacy-choices">
+                <a href="privacy-options.html" class="privacy-link" title="Your Privacy Choices">
+                    <img src="./images/privacyoptions.svg" alt="Privacy Options" class="privacy-icon">
+                    Your Privacy Choices
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                <div class="copyright-main">
+                    <span>MVP Prints © <script>document.write(new Date().getFullYear());</script> | All Rights Reserved</span>
+                    <span>| Payments Through</span>
+                    <a href="https://helcim.com" target="_blank" aria-label="Helcim">
+                        <svg class="helcim-logo" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Helcim</title><path fill="#F9DAA7" d="M14.906 23.784c-2.327-.766-2.655-3.207-2.198-5.277.11-.696.317-1.55.54-2.61.234-1.102.422-1.959.537-2.568q.16-.826.188-1.666c-.01-1.143-.423-1.748-1.225-1.741-.56 0-2.008.47-2.605 3.172 0 0-.306 1.868-1.305 6.134-1.318 6.868-4.492 4.607-7.215 3.58.794-.054 1.744-1.135 2.239-2.943C5.554 13.682 7.882.882 7.882.882L12.993 0 11.06 8.716a5.7 5.7 0 0 1 2.086-1.567c.583-.22 1.2-.339 1.823-.35 1.137-.01 2.032.274 2.726.874.696.646 1.057 1.627 1.076 2.93a15 15 0 0 1-.412 3.05c-.085.361-.195.899-.347 1.637-.32 1.22-1.075 4.137.017 5.355 1.396 1.561 3.654-.038 4.348-2.631-1.28 5.685-5.588 6.388-7.471 5.77"/></svg>
+                    </a>
+                </div>
+                <div class="made-by">
+                    Made with ❤️ by <span>Matthew Franke</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer section ends -->
